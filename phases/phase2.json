@@ -1,0 +1,26 @@
+{
+    "data": {
+        "init": 1,
+        "init_data": {
+            "create_aliens_grid": [],
+            "spawn_boss": [
+                {
+                    "pos": [0, -100],
+                    "health": 200,
+                    "speed": 1,
+                    "fig": 2,
+                    "shot_cd": 500,
+                    "shot_cnt": 5,
+                    "shot_rest": 5000
+                }
+            ]
+        },
+        "spawn_powerups": 1,
+        "spawn_hong_bao": 1,
+        "spawn_aliens": 1,
+        "spawn_aliens_teams": 1,
+        "end": {
+            "killed_aliens": -1
+        }
+    }
+}

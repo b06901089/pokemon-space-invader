@@ -1,0 +1,44 @@
+{
+    "data": {
+        "init": 1,
+        "init_data": {
+            "create_aliens_grid": [],
+            "spawn_boss": [
+                {
+                    "pos": [0, -100],
+                    "health": 300,
+                    "speed": 1,
+                    "fig": 3,
+                    "shot_cd": 250,
+                    "shot_cnt": 10,
+                    "shot_rest": 3000
+                },
+                {
+                    "pos": [-100, -100],
+                    "health": 300,
+                    "speed": 1,
+                    "fig": 3,
+                    "shot_cd": 250,
+                    "shot_cnt": 10,
+                    "shot_rest": 4000
+                },
+                {
+                    "pos": [100, -100],
+                    "health": 300,
+                    "speed": 1,
+                    "fig": 3,
+                    "shot_cd": 250,
+                    "shot_cnt": 10,
+                    "shot_rest": 4000
+                }
+            ]
+        },
+        "spawn_powerups": 1,
+        "spawn_hong_bao": 1,
+        "spawn_aliens": 1,
+        "spawn_aliens_teams": 1,
+        "end": {
+            "killed_aliens": -1
+        }
+    }
+}
