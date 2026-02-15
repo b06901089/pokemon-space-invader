@@ -2,11 +2,13 @@ import pygame
 import random
 import math
 import json
+import config.constant as C
+
 
 from objects import *
 from config import sound_manager
 from collisions import resolve_all
-import config.constant as C
+from scripts.utils import spawn_boss, spawn_boss_bullet, spawn_aliens_teams
 
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -47,6 +49,7 @@ killed_aliens = 0
 game_over = 0 # 0 is game not over, 1 is player has won, -1 is player has lost
 boss_shot_counter = 0
 hong_bao_collected = 0
+powerup_collected = 0
 boss_wave_active = False
 
 
@@ -138,12 +141,6 @@ spawn_aliens.cooldown = C.SPAWN_ALIEN_COOLDOWN
 spawn_aliens.repeat = spawn_alien_repeat
 
 
-def spawn_aliens_teams(number, place=0):
-    x, y, vx, vy, fig, is_flip = C.SPAWN_ALIENS_TEAMS_MAP[place]
-    for i in range(number):
-        sprite_groups['alien'].add(PassByAlien(x - vx * 15 * i, y - vy * 15 * i, vx, vy, fig, is_flip))
-
-
 def spawn_alien_bullet(unbreakable=False):
     random_alien = random.choice(sprite_groups['alien'].sprites())
     if not unbreakable:
@@ -174,26 +171,6 @@ def spawn_hong_bao():
 spawn_hong_bao.countdown = hong_bao_spawn_time
 
 
-def spawn_boss(x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest):
-    boss = Boss(x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest)
-    sprite_groups['boss'].add(boss)
-
-
-def spawn_boss_bullet():
-    for bo in sprite_groups['boss'].sprites():
-        time_now = pygame.time.get_ticks()
-        if time_now - bo.last_shot > bo.shot_cd:
-            if bo.shot_counter < bo.shot_cnt:
-                bo.shot_counter += 1
-                sprite_groups['unbreakable_bullet'].add(Alien_Bullet(bo.rect.centerx, bo.rect.bottom, bu_type=1))
-                sprite_groups['alien_bullet'].add(Alien_Bullet(bo.rect.centerx - 20, bo.rect.bottom, mode=1))
-                sprite_groups['alien_bullet'].add(Alien_Bullet(bo.rect.centerx + 20, bo.rect.bottom, mode=2))
-                bo.last_shot = time_now
-            else:
-                bo.shot_counter = 0
-                bo.last_shot = time_now + bo.shot_rest
-
-
 def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
@@ -205,11 +182,6 @@ def load_phase(game_phase):
         phase_data = json.load(f)
     
     return phase_data
-
-
-
-
-
 
 
 # main game loop
@@ -252,7 +224,8 @@ while run:
                     if len(temp) > 0:
                         create_aliens_grid(temp[0], temp[1])
                     for b in phase_data['data']['init_data']['spawn_boss']:
-                        spawn_boss(screen_width // 2 + b['pos'][0], 
+                        spawn_boss(sprite_groups,
+                                   screen_width // 2 + b['pos'][0], 
                                    b['pos'][1], 
                                    b['health'], 
                                    b['speed'], 
@@ -263,15 +236,15 @@ while run:
                         )
                         boss_wave_active = True
                         
-            spawn_powerups()
+
             spawn_hong_bao()
-            spawn_aliens()    
+            spawn_aliens()  
+            if powerup_collected < phase_data['data']['powerup_cnt_limit']:
+                spawn_powerups()  
             if phase_data['data']['spawn_aliens_teams'] != -1:
-                time_now = pygame.time.get_ticks()
-                if time_now - last_alien_team > C.SPAWN_ALIENS_TEAMS_COOLDOWN:
-                    spawn_aliens_teams(5, random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1))
-                    last_alien_team = time_now
-            spawn_boss_bullet()
+                which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
+                last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
+            spawn_boss_bullet(sprite_groups)
 
 
             # create random alien bullets
@@ -296,6 +269,7 @@ while run:
             killed_aliens += collision_results['killed_aliens']
             hong_bao_collected += collision_results['hong_bao_collected']
             # PowerUP Effect Resolver
+            powerup_collected += len(collision_results['applied_powerups'])
             for ship, pu_type in collision_results['applied_powerups']:
                 if pu_type == 1:
                     ship.health_start += C.POWERUP_RECOVER_HEALTH

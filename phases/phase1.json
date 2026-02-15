@@ -11,6 +11,7 @@
         "spawn_aliens_teams": 0,
         "end": {
             "killed_aliens": 200
-        }
+        },
+        "powerup_cnt_limit": 15
     }
 }

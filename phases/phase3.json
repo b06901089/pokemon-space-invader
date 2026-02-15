@@ -6,7 +6,7 @@
             "spawn_boss": [
                 {
                     "pos": [0, -100],
-                    "health": 300,
+                    "health": 200,
                     "speed": 1,
                     "fig": 3,
                     "shot_cd": 250,
@@ -15,7 +15,7 @@
                 },
                 {
                     "pos": [-100, -100],
-                    "health": 300,
+                    "health": 200,
                     "speed": 1,
                     "fig": 3,
                     "shot_cd": 250,
@@ -24,7 +24,7 @@
                 },
                 {
                     "pos": [100, -100],
-                    "health": 300,
+                    "health": 200,
                     "speed": 1,
                     "fig": 3,
                     "shot_cd": 250,
@@ -39,6 +39,7 @@
         "spawn_aliens_teams": 1,
         "end": {
             "killed_aliens": -1
-        }
+        },
+        "powerup_cnt_limit": 30
     }
 }
