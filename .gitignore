@@ -1,2 +1,8 @@
+### To clean the repo, run the following commands in terminal:
+# git rm -r --cached .
+# git add .
+# git commit -m "Clean repo using .gitignore"
+# git push
+
 __pycache__/
 *.pyc
