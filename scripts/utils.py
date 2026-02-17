@@ -7,6 +7,10 @@ from objects import *
 def get_random_x():
     return random.randint(0, C.SCREEN_WIDTH)
 
+def draw_text(screen, text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
+
 def spawn_boss(sprite_groups, x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest, moves):
     boss = Boss(x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest, moves)
     sprite_groups['boss'].add(boss)
@@ -47,3 +51,16 @@ def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
             sprite_groups['alien'].add(PassByAlien(x - vx * 15 * i, y - vy * 15 * i, vx, vy, fig, is_flip))
         return time_now
     return last_alien_team
+
+def spawn_alien_bullet(sprite_groups, unbreakable=False):
+    random_alien = random.choice(sprite_groups['alien'].sprites())
+    if not unbreakable:
+        sprite_groups['alien_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom))
+    else:
+        sprite_groups['unbreakable_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom, bu_type=1))
+
+def create_aliens_grid(sprite_groups, row, col):
+    interval = C.SCREEN_WIDTH // (col + 1)
+    for r in range(row):
+        for c in range(col):
+            sprite_groups['alien'].add(Alien(interval + c * interval, 100 + r * 70))

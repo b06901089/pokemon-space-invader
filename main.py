@@ -8,7 +8,7 @@ import config.constant as C
 from objects import *
 from config import sound_manager
 from collisions import resolve_all
-from scripts.utils import spawn_boss, spawn_boss_bullet, spawn_animation_for_group, spawn_animation_for_sprite, spawn_aliens_teams
+from scripts.utils import *
 
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -104,23 +104,10 @@ def draw_bg():
 draw_bg.bg_y = 0
 
 
-def draw_text(text, font, text_col, x, y):
-    img = font.render(text, True, text_col)
-    screen.blit(img, (x, y))
-
-
 def spawn_bullet(x, y, mode=1):
     for offset, m in spaceship_fire_modes.get(mode, []):
         b = Bullet(x + offset, y, m)
         sprite_groups['bullet'].add(b)
-
-
-def create_aliens_grid(row, col):
-    interval = screen_width // (col + 1)
-    for r in range(row):
-        for c in range(col):
-            alien = Alien(interval + c * interval, 100 + r * 70)
-            sprite_groups['alien'].add(alien)
 
 
 def spawn_aliens():
@@ -140,14 +127,6 @@ def spawn_aliens():
 spawn_aliens.countdown = C.SPAWN_ALIEN_COOLDOWN
 spawn_aliens.cooldown = C.SPAWN_ALIEN_COOLDOWN
 spawn_aliens.repeat = spawn_alien_repeat
-
-
-def spawn_alien_bullet(unbreakable=False):
-    random_alien = random.choice(sprite_groups['alien'].sprites())
-    if not unbreakable:
-        sprite_groups['alien_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom))
-    else:
-        sprite_groups['unbreakable_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom, bu_type=1))
 
 
 def spawn_powerups():
@@ -194,8 +173,8 @@ while run:
     draw_bg()
 
     if countdown > 0:
-        draw_text("GET READY!", font40, white, screen_width // 2 - 100, screen_height // 2 + 50)
-        draw_text(str(countdown), font40, white, screen_width // 2 - 10, screen_height // 2 + 100)
+        draw_text(screen, "GET READY!", font40, white, screen_width // 2 - 100, screen_height // 2 + 50)
+        draw_text(screen, str(countdown), font40, white, screen_width // 2 - 10, screen_height // 2 + 100)
         time_now = pygame.time.get_ticks()
         if time_now - last_countdown > 1000:
             countdown -= 1
@@ -223,7 +202,7 @@ while run:
                 if phase_data['data']['init'] == 1:
                     temp = phase_data['data']['init_data']['create_aliens_grid']
                     if len(temp) > 0:
-                        create_aliens_grid(temp[0], temp[1])
+                        create_aliens_grid(sprite_groups, temp[0], temp[1])
                     for b in phase_data['data']['init_data']['spawn_boss']:
                         spawn_boss(sprite_groups,
                                    screen_width // 2 + b['pos'][0], 
@@ -261,9 +240,9 @@ while run:
             time_now = pygame.time.get_ticks()
             if time_now - last_alien_shot > C.ALIEN_SHOT_COOLDOWN:
                 for _ in range(len(sprite_groups['alien']) // C.ALIEN_SHOT_RATIO):
-                    spawn_alien_bullet()
+                    spawn_alien_bullet(sprite_groups)
                 for _ in range(len(sprite_groups['alien']) // C.ALIEN_UNBREAKABLE_SHOT_RATIO):
-                    spawn_alien_bullet(unbreakable=True)
+                    spawn_alien_bullet(sprite_groups, unbreakable=True)
                 last_alien_shot = time_now
 
             # update sprite group
@@ -323,16 +302,16 @@ while run:
             for obj in sprite_groups[k].sprites():
                 obj.draw_healthbar(screen)
 
-    draw_text("aliens killed: {0}".format(killed_aliens), font20, white, screen_width // 2 + 100, 20)
-    draw_text("hong bao collected: {0}".format(hong_bao_collected), font20, white, screen_width // 2 + 100, 50)
+    draw_text(screen, "aliens killed: {0}".format(killed_aliens), font20, white, screen_width // 2 + 100, 20)
+    draw_text(screen, "hong bao collected: {0}".format(hong_bao_collected), font20, white, screen_width // 2 + 100, 50)
     if len(sprite_groups['spaceship']) > 0:
         s = sprite_groups['spaceship'].sprites()[0]
-        draw_text("heath: {0} / {1}".format(s.health_remaining, s.health_start), font20, white, screen_width // 2 + 100, 80)
+        draw_text(screen, "heath: {0} / {1}".format(s.health_remaining, s.health_start), font20, white, screen_width // 2 + 100, 80)
     if game_over == -1:
-        draw_text("GAME OVER!", font40, white, screen_width // 2 - 120, screen_height // 2 + 50)
+        draw_text(screen, "GAME OVER!", font40, white, screen_width // 2 - 120, screen_height // 2 + 50)
     if game_over == 1:
-        draw_text("YOU WIN!", font40, white, screen_width // 2 - 100, screen_height // 2 + 50)
-        draw_text("hong bao collected: {0}".format(hong_bao_collected), font30, white, screen_width // 2 - 100, screen_height // 2 + 100)
+        draw_text(screen, "YOU WIN!", font40, white, screen_width // 2 - 100, screen_height // 2 + 50)
+        draw_text(screen, "hong bao collected: {0}".format(hong_bao_collected), font30, white, screen_width // 2 - 100, screen_height // 2 + 100)
 
     # create event handler
     for event in pygame.event.get():
