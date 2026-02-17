@@ -16,7 +16,7 @@
                         {
                             "name": "leaf_drop",
                             "spawn_dir": "rdm_top",
-                            "freq": 200,
+                            "freq": 1000,
                             "last_move_time": 0,
                             "power": 5
                         }

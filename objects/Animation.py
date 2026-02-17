@@ -4,7 +4,7 @@ import config.constant as C
 class Animation(pygame.sprite.Sprite):
     def __init__(self, x, y, ani, sheet):
         pygame.sprite.Sprite.__init__(self)
-        spritesheet = pygame.image.load(C.Animation_sprite[sheet]).convert_alpha()
+        spritesheet = pygame.image.load(C.ANIMATION_SPRTIES[sheet]).convert_alpha()
         data = C.ANIMATION_SPRTIES[ani]
 
         self.ani = ani
