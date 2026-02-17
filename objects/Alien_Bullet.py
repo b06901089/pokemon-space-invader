@@ -8,7 +8,7 @@ class Alien_Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.posX = float(self.rect.x)
-        self.bullet_dir = C.ALIEN_BULLET_DIR[mode]
+        self.bullet_dir = C.ALIEN_BULLET_X_SPEED[mode]
 
     def update(self):
         self.posX -= self.bullet_dir

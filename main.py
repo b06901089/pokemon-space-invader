@@ -33,7 +33,7 @@ blue = C.BLUE
 white = C.WHITE
 spawn_alien_repeat = C.SPAWN_ALIEN_REPEAT
 hong_bao_spawn_time = C.HONG_BAO_SPAWN_TIME
-bullet_mode_dict = C.BULLET_MODE_DICT
+spaceship_fire_modes = C.POWERUP_FIRE_MODES
 bg_scroll_speed = 1  # pixels per frame;
 
 
@@ -110,7 +110,7 @@ def draw_text(text, font, text_col, x, y):
 
 
 def spawn_bullet(x, y, mode=1):
-    for offset, m in bullet_mode_dict.get(mode, []):
+    for offset, m in spaceship_fire_modes.get(mode, []):
         b = Bullet(x + offset, y, m)
         sprite_groups['bullet'].add(b)
 
@@ -288,7 +288,7 @@ while run:
                     # ship.bullet_cooldown = max(C.POWERUP_COOLDOWN_MIN, ship.bullet_cooldown - C.POWERUP_DECREASE_COOLDOWN)
                     ship.bullet_cd_state += 1
                 elif pu_type == 3:
-                    if ship.mode < len(bullet_mode_dict):
+                    if ship.mode < len(spaceship_fire_modes):
                         ship.mode += 1
                     else:
                         # ship.bullet_cooldown = max(C.POWERUP_COOLDOWN_MIN, ship.bullet_cooldown - C.POWERUP_DECREASE_COOLDOWN)

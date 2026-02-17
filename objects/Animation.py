@@ -5,7 +5,7 @@ class Animation(pygame.sprite.Sprite):
     def __init__(self, x, y, ani, sheet):
         pygame.sprite.Sprite.__init__(self)
         spritesheet = pygame.image.load(C.Animation_sprite[sheet]).convert_alpha()
-        data = C.Animation_sprite[ani]
+        data = C.ANIMATION_SPRTIES[ani]
 
         self.ani = ani
         self.images = []

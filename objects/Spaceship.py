@@ -39,7 +39,7 @@ class Spaceship(pygame.sprite.Sprite):
         # shoot bullet
         time_now = pygame.time.get_ticks()
         # if key[pygame.K_SPACE] and time_now - self.last_shot > self.bullet_cooldown:
-        if key[pygame.K_SPACE] and time_now - self.last_shot > self.bullet_cooldown - C.POWERUP_COOLDOWN_LIST[max(min(len(C.POWERUP_COOLDOWN_LIST) - 1, self.bullet_cd_state), 0)]:
+        if key[pygame.K_SPACE] and time_now - self.last_shot > self.bullet_cooldown - C.POWERUP_BULLET_CD[max(min(len(C.POWERUP_BULLET_CD) - 1, self.bullet_cd_state), 0)]:
             sound_manager.play("laser")
             self.spawn_bullet(self.rect.centerx, self.rect.top, self.mode)
             self.last_shot = time_now

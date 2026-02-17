@@ -1,3 +1,4 @@
+# Game general settings
 GAME_TITLE = "Space Invaders"
 
 DEFAULT_VOLUME = 0.02
@@ -10,44 +11,41 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 
+
+# Game object setting
 SPACESHIP_HEALTH = 25
 BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
-BULLET_DIR = [0, 1, -1, 3, -3]
+BULLET_X_SPEED = [0, 1, -1, 3, -3] # relative to fixed y speed
+
 
 ALIEN_PATH = {
     '#0043': 'img/pokemon/gen3/oddish.png',
     '#0458': 'img/pokemon/gen4/mantyke_48.png'
 }
-ALIEN_SHOT_COOLDOWN = 2000 # shoot every {#/1000} second
+ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
 ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
 ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
-ALIEN_BULLET_DIR = [0, 0.25, -0.25]
+ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
 SPAWN_ALIEN_COOLDOWN = 120 # spawn a new alien every {#} frames at the beginning
 SPAWN_ALIEN_COOLDOWN_MIN = 10
 SPAWN_ALIEN_COOLDOWN_DECREASE = 5
 SPAWN_ALIEN_REPEAT = 2
-PHASE_2_THRESHOLD = 5 # number of aliens to kill before phase 2 starts
+
 
 BOSS_PATH = {
     2: ['img/boss1.png', (160, 160)],
     # 3: ['img/boss2.png', (60, 45)],
     3: ['img/pokemon/gen3/torchic.png', (64, 64)],
     4: ['img/pokemon/gen5/exeggutor.png', (96, 96)],
-    
 }
-# BOSS_HEALTH = 5
-# BOSS_MOVE_SPEED = 1
-# BOSS_SHOT_COOLDOWN = 500 # shoot every {#/1000} second
-# BOSS_REST_EVERY = 4 # rest every {#} shots
-# BOSS_REST_TIME = 5000 # rest for {#/1000} seconds every time the boss shoots
 
 
 POWERUP_SPAWN_TIME = 200 # spawn the first powerup at the {#} frames
 POWERUP_RECOVER_HEALTH = 3
-# POWERUP_DECREASE_COOLDOWN = 150
+# POWERUP_COOLDOWN_DECREASE = 150
 # POWERUP_COOLDOWN_MIN = 100
-POWERUP_COOLDOWN_LIST = [0, 150, 300, 450, 550, 650, 750, 800, 850, 875, 900]
-BULLET_MODE_DICT = {
+POWERUP_BULLET_CD = [0, 150, 300, 450, 550, 650, 750, 800, 850, 875, 900]
+POWERUP_FIRE_MODES = {
     1: [(0, 0)],
     2: [(-10, 0), (10, 0)],
     3: [(0, 0), (-20, 0), (20, 0)],
@@ -60,9 +58,13 @@ HONG_BAO_SPAWN_TIME = 400 # spawn the first hong bao at the {#} frames
 # HONG_BAO_SPAWN_TIME_DECREASE = 60
 # HONG_BAO_SPAWN_TIME_MIN = 60
 
-IMG_SCALING_MAP = {
-    'pu_type': [(-1, -1), (48, 48), (64, 64), (32, 32), (32, 32)]
-}
+POWERUP_PATH = [
+    (-1, (-1, -1)),
+    ('img/powerup/pu1.png', (48, 48)),
+    ('img/powerup/pu2.png', (64, 64)),
+    ('img/powerup/pu3.png', (32, 32)),
+    ('img/powerup/pu4.png', (32, 32)),
+]
 
 SPAWN_ALIENS_TEAMS_COOLDOWN = 7200
 SPAWN_ALIENS_TEAMS_MAP = [
@@ -93,7 +95,7 @@ SPAWN_ALIENS_TEAMS_MAP = [
     [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0043', False],
 ]
 
-Animation_sprite = {
+ANIMATION_SPRTIES = {
     'sprtie_sheet_1': 'img/pokemon/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png',
     # top-left x, top-left y, w, h, 0: horizontal/1: vertical, frame counts, repeat, vx, vy
     'leaf_drop':    [274, 994, 16, 16, 0, 9, 5, 0, 3],
