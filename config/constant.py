@@ -1,3 +1,5 @@
+import math
+
 # Game general settings
 GAME_TITLE = "Space Invaders"
 
@@ -33,7 +35,8 @@ SPAWN_ALIEN_REPEAT = 2
 
 
 BOSS_PATH = {
-    2: ['img/boss1.png', (160, 160)],
+    # 2: ['img/boss1.png', (160, 160)],
+    2: ['img/pokemon/gen2/fearow.png', (56, 56)],
     # 3: ['img/boss2.png', (60, 45)],
     3: ['img/pokemon/gen3/torchic.png', (64, 64)],
     4: ['img/pokemon/gen5/exeggutor.png', (96, 96)],
@@ -95,9 +98,24 @@ SPAWN_ALIENS_TEAMS_MAP = [
     [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0043', False],
 ]
 
+# https://www.youtube.com/watch?v=mnCPCgA3HvI
 ANIMATION_SPRTIES = {
     'sprtie_sheet_1': 'img/pokemon/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png',
-    # top-left x, top-left y, w, h, 0: horizontal/1: vertical, frame counts, repeat, vx, vy
-    'leaf_drop':    [274, 994, 16, 16, 0, 9, 5, 0, 3],
-    'leaf_attack':  [274, 1042, 16, 16, 0, 1, 30, 0, 10],
+    # 0: top-left x
+    # 1: top-left y
+    # 2: w
+    # 3: h
+    # 4: 0: horizontal/1: vertical
+    # 5: frame counts
+    # 6: repeat
+    # 7: vx
+    # 8: vy
+    # 9: in-game scaling
+    # 10: move direction: 0: normal, 1: counter-clockwise
+    # 11: starting angle (for move direction 1)
+    'leaf_drop':    [[274, 994, 16, 16, 0, 9, 4, 0, 3, 2, 0, 0]], # 26:05
+    'leaf_attack':  [[274, 1042, 16, 16, 0, 1, 10, 0, 10, 2, 0, 0]],
+    'tornado':      [[51, 54, 32, 64, 0, 1, 35, 0, 3, 1, 1, 0],
+                     [51, 54, 32, 64, 0, 1, 35, 0, 3, 1, 1, math.pi * 2 / 3],
+                     [51, 54, 32, 64, 0, 1, 35, 0, 3, 1, 1, math.pi * 4 / 3]], # 26:10, 34:25
 }

@@ -31,17 +31,23 @@ def spawn_boss_bullet(sprite_groups):
 
 def spawn_animation_for_group(sprite_groups, group, ani, sheet, spawn_dir):
     if spawn_dir == "rdm_top":
+        x = get_random_x()
         for obj in sprite_groups[group].sprites():
-            sprite_groups['animation'].add(Animation(get_random_x(), -50, ani, sheet))
-    else:
+            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
+                sprite_groups['animation'].add(Animation(x, -50, sheet, ani, idx))
+    elif spawn_dir == "self":
         for obj in sprite_groups[group].sprites():
-            sprite_groups['animation'].add(Animation(obj.rect.centerx, obj.rect.centery, ani, sheet))
+            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
+                sprite_groups['animation'].add(Animation(obj.rect.centerx, obj.rect.centery, sheet, ani, idx))
 
 def spawn_animation_for_sprite(sprite_groups, sprite, ani, sheet, spawn_dir):
         if spawn_dir == "rdm_top":
-            sprite_groups['animation'].add(Animation(get_random_x(), -50, ani, sheet))
-        else:
-            sprite_groups['animation'].add(Animation(sprite.rect.centerx, sprite.rect.centery, ani, sheet))
+            x = get_random_x()
+            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
+                sprite_groups['animation'].add(Animation(x, -50, sheet, ani, idx))
+        elif spawn_dir == "self":
+            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
+                sprite_groups['animation'].add(Animation(sprite.rect.centerx, sprite.rect.centery, sheet, ani, idx))
 
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
     time_now = pygame.time.get_ticks()
