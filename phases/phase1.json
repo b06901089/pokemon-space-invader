@@ -10,7 +10,7 @@
         "spawn_aliens": 1,
         "spawn_aliens_teams": 0,
         "end": {
-            "killed_aliens": 200
+            "killed_aliens": 1
         },
         "powerup_cnt_limit": 15
     }

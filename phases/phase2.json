@@ -8,10 +8,19 @@
                     "pos": [0, -100],
                     "health": 200,
                     "speed": 1,
-                    "fig": 2,
+                    "fig": 4,
                     "shot_cd": 500,
                     "shot_cnt": 5,
-                    "shot_rest": 5000
+                    "shot_rest": 5000,
+                    "moves": [
+                        {
+                            "name": "leaf_drop",
+                            "spawn_dir": "rdm_top",
+                            "freq": 200,
+                            "last_move_time": 0,
+                            "power": 5
+                        }
+                    ]
                 }
             ]
         },

@@ -11,7 +11,8 @@
                     "fig": 3,
                     "shot_cd": 250,
                     "shot_cnt": 10,
-                    "shot_rest": 3000
+                    "shot_rest": 3000,
+                    "moves": []
                 },
                 {
                     "pos": [-100, -100],
@@ -20,7 +21,8 @@
                     "fig": 3,
                     "shot_cd": 250,
                     "shot_cnt": 10,
-                    "shot_rest": 4000
+                    "shot_rest": 4000,
+                    "moves": []
                 },
                 {
                     "pos": [100, -100],
@@ -29,7 +31,8 @@
                     "fig": 3,
                     "shot_cd": 250,
                     "shot_cnt": 10,
-                    "shot_rest": 4000
+                    "shot_rest": 4000,
+                    "moves": []
                 }
             ]
         },

@@ -8,7 +8,7 @@ import config.constant as C
 from objects import *
 from config import sound_manager
 from collisions import resolve_all
-from scripts.utils import spawn_boss, spawn_boss_bullet, spawn_aliens_teams
+from scripts.utils import spawn_boss, spawn_boss_bullet, spawn_animation_for_group, spawn_animation_for_sprite, spawn_aliens_teams
 
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -85,6 +85,7 @@ sprite_groups = {
     'boss': pygame.sprite.Group(),
     'hong_bao': pygame.sprite.Group(),
     'sword': pygame.sprite.Group(),
+    'animation': pygame.sprite.Group(),
 }
 
 # scrolling background variables
@@ -232,10 +233,19 @@ while run:
                                    b['fig'], 
                                    b['shot_cd'], 
                                    b['shot_cnt'], 
-                                   b['shot_rest']
+                                   b['shot_rest'],
+                                   b['moves']
                         )
                         boss_wave_active = True
-                        
+
+            # create boss moves
+            time_now = pygame.time.get_ticks()
+            for bo in sprite_groups['boss'].sprites():
+                for move in bo.moves:
+                    if time_now - move['last_move_time'] > move['freq']:
+                        move['last_move_time'] = time_now
+                        spawn_animation_for_sprite(sprite_groups, bo, move['name'], 'sprtie_sheet_1', move['spawn_dir'])
+
 
             spawn_hong_bao()
             spawn_aliens()  
@@ -258,7 +268,7 @@ while run:
 
             # update sprite group
             for k in sprite_groups:
-                if k != 'explosion':
+                if k != 'explosion' and k != 'animation':
                     sprite_groups[k].update()
 
             # check for collisions
@@ -280,7 +290,6 @@ while run:
                 elif pu_type == 3:
                     if ship.mode < len(bullet_mode_dict):
                         ship.mode += 1
-                        ship.bullet_cd_state -= 1 # mode increase too unbalanced so make culldown longer
                     else:
                         # ship.bullet_cooldown = max(C.POWERUP_COOLDOWN_MIN, ship.bullet_cooldown - C.POWERUP_DECREASE_COOLDOWN)
                         ship.bullet_cd_state += 1
@@ -301,8 +310,9 @@ while run:
             
 
 
-        # update explosion group (do this regardless of game over so explosions can finish)
+        # update explosion and animation group (do this regardless of game over so explosions can finish)
         sprite_groups['explosion'].update()
+        sprite_groups['animation'].update()
 
     # draw sprite groups
     for k in sprite_groups:

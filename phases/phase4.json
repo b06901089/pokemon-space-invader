@@ -11,7 +11,16 @@
                     "fig": 4,
                     "shot_cd": 200,
                     "shot_cnt": 15,
-                    "shot_rest": 2000
+                    "shot_rest": 2000,
+                    "moves": [
+                        {
+                            "name": "leaf_drop",
+                            "spawn_dir": "rdm_top",
+                            "freq": 1000,
+                            "last_move_time": 0,
+                            "power": 5
+                        }
+                    ]
                 }
             ]
         },

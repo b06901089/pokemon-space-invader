@@ -3,10 +3,10 @@ import random
 import config.constant as C
 
 class Boss(pygame.sprite.Sprite):
-    def __init__(self,x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest):
+    def __init__(self, x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest, moves):
         pygame.sprite.Sprite.__init__(self)
-        img = pygame.image.load(C.BOSS_PATH[fig])
-        self.image = pygame.transform.scale(img, C.IMG_SCALING_MAP['boss_fig'][fig])
+        img = pygame.image.load(C.BOSS_PATH[fig][0])
+        self.image = pygame.transform.scale(img, C.BOSS_PATH[fig][1])
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.health_start = health
@@ -18,6 +18,7 @@ class Boss(pygame.sprite.Sprite):
         self.shot_rest = shot_rest
         self.last_shot = 0
         self.shot_counter = 0
+        self.moves = moves
 
     def draw_healthbar(self, surface):
         pygame.draw.rect(surface, C.RED, (self.rect.x, self.rect.bottom + 5, self.rect.width, 5))

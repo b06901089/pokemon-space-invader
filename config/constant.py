@@ -15,7 +15,8 @@ BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
 BULLET_DIR = [0, 1, -1, 3, -3]
 
 ALIEN_PATH = {
-    '#0458': 'img/pokemon/mantyke_48.png'
+    '#0043': 'img/pokemon/gen3/oddish.png',
+    '#0458': 'img/pokemon/gen4/mantyke_48.png'
 }
 ALIEN_SHOT_COOLDOWN = 2000 # shoot every {#/1000} second
 ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
@@ -27,13 +28,13 @@ SPAWN_ALIEN_COOLDOWN_DECREASE = 5
 SPAWN_ALIEN_REPEAT = 2
 PHASE_2_THRESHOLD = 5 # number of aliens to kill before phase 2 starts
 
-BOSS_PATH = [
-    'None_Path',
-    'None_Path',
-    'img/boss1.png',
-    'img/boss2.png',
-    'img/pokemon/exeggutor.png',
-]
+BOSS_PATH = {
+    2: ['img/boss1.png', (160, 160)],
+    # 3: ['img/boss2.png', (60, 45)],
+    3: ['img/pokemon/gen3/torchic.png', (64, 64)],
+    4: ['img/pokemon/gen5/exeggutor.png', (96, 96)],
+    
+}
 # BOSS_HEALTH = 5
 # BOSS_MOVE_SPEED = 1
 # BOSS_SHOT_COOLDOWN = 500 # shoot every {#/1000} second
@@ -41,7 +42,7 @@ BOSS_PATH = [
 # BOSS_REST_TIME = 5000 # rest for {#/1000} seconds every time the boss shoots
 
 
-POWERUP_SPAWN_TIME = 100 # spawn the first powerup at the {#} frames
+POWERUP_SPAWN_TIME = 200 # spawn the first powerup at the {#} frames
 POWERUP_RECOVER_HEALTH = 3
 # POWERUP_DECREASE_COOLDOWN = 150
 # POWERUP_COOLDOWN_MIN = 100
@@ -60,35 +61,41 @@ HONG_BAO_SPAWN_TIME = 400 # spawn the first hong bao at the {#} frames
 # HONG_BAO_SPAWN_TIME_MIN = 60
 
 IMG_SCALING_MAP = {
-    'boss_fig': [(-1, -1), (-1, -1), (160, 160), (60, 45), (96, 96)],
     'pu_type': [(-1, -1), (48, 48), (64, 64), (32, 32), (32, 32)]
 }
 
 SPAWN_ALIENS_TEAMS_COOLDOWN = 7200
 SPAWN_ALIENS_TEAMS_MAP = [
-    [-50, 100, 2, 5, '#0458', True],
-    [-50, -50, 2, 5, '#0458', True],
-    [-50, -200, 2, 5, '#0458', True],
-    [SCREEN_WIDTH + 50, 100, -2, 5, '#0458', False],
-    [SCREEN_WIDTH + 50, -50, -2, 5, '#0458', False],
-    [SCREEN_WIDTH + 50, -200, -2, 5, '#0458', False],
+    [-50, 100, 2, 5, '#0043', True],
+    [-50, -50, 2, 5, '#0043', True],
+    [-50, -200, 2, 5, '#0043', True],
+    [SCREEN_WIDTH + 50, 100, -2, 5, '#0043', False],
+    [SCREEN_WIDTH + 50, -50, -2, 5, '#0043', False],
+    [SCREEN_WIDTH + 50, -200, -2, 5, '#0043', False],
 
-    [-50, 100, 2, 4, '#0458', True],
-    [-50, -50, 2, 4, '#0458', True],
-    [-50, -200, 2, 4, '#0458', True],
-    [SCREEN_WIDTH + 50, 100, -2, 4, '#0458', False],
-    [SCREEN_WIDTH + 50, -50, -2, 4, '#0458', False],
-    [SCREEN_WIDTH + 50, -200, -2, 4, '#0458', False],
+    [-50, 100, 2, 4, '#0043', True],
+    [-50, -50, 2, 4, '#0043', True],
+    [-50, -200, 2, 4, '#0043', True],
+    [SCREEN_WIDTH + 50, 100, -2, 4, '#0043', False],
+    [SCREEN_WIDTH + 50, -50, -2, 4, '#0043', False],
+    [SCREEN_WIDTH + 50, -200, -2, 4, '#0043', False],
 
-    [-50, 300, 2, 3, '#0458', True],
-    [-50, 150, 2, 3, '#0458', True],
-    [-50, 0, 2, 3, '#0458', True],
-    [SCREEN_WIDTH + 50, 300, -2, 3, '#0458', False],
-    [SCREEN_WIDTH + 50, 150, -2, 3, '#0458', False],
-    [SCREEN_WIDTH + 50, 0, -2, 3, '#0458', False],
+    [-50, 300, 2, 3, '#0043', True],
+    [-50, 150, 2, 3, '#0043', True],
+    [-50, 0, 2, 3, '#0043', True],
+    [SCREEN_WIDTH + 50, 300, -2, 3, '#0043', False],
+    [SCREEN_WIDTH + 50, 150, -2, 3, '#0043', False],
+    [SCREEN_WIDTH + 50, 0, -2, 3, '#0043', False],
 
-    [-50, SCREEN_HEIGHT - 200, 4, 0, '#0458', True],
-    [-50, SCREEN_HEIGHT - 400, 4, 0, '#0458', True],
-    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 200, -4, 0, '#0458', False],
-    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0458', False],
+    [-50, SCREEN_HEIGHT - 200, 4, 0, '#0043', True],
+    [-50, SCREEN_HEIGHT - 400, 4, 0, '#0043', True],
+    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 200, -4, 0, '#0043', False],
+    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0043', False],
 ]
+
+Animation_sprite = {
+    'sprtie_sheet_1': 'img/pokemon/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png',
+    # top-left x, top-left y, w, h, 0: horizontal/1: vertical, frame counts, repeat, vx, vy
+    'leaf_drop':    [274, 994, 16, 16, 0, 9, 5, 0, 3],
+    'leaf_attack':  [274, 1042, 16, 16, 0, 1, 30, 0, 10],
+}
