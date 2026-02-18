@@ -1,0 +1,91 @@
+{
+    "sprite": {
+        "sprtie_sheet_1": {
+            "url": "img/pokemon/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png"
+        }
+    },
+    "animations": {
+        "leaf_drop": {
+            "sprite_sheet": "sprtie_sheet_1",
+            "x": 274,
+            "y": 994,
+            "w": 16,
+            "h": 16,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 9
+        },
+        "leaf_attack": {
+            "sprite_sheet": "sprtie_sheet_1",
+            "x": 274,
+            "y": 1042,
+            "w": 16,
+            "h": 16,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 1
+        },
+        "tornado": {
+            "sprite_sheet": "sprtie_sheet_1",
+            "x": 51,
+            "y": 54,
+            "w": 32,
+            "h": 64,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 1
+        }
+    },
+    "moves": {
+        "leaf_drop": [{
+            "animation": "leaf_drop",
+            "speed": 10,
+            "repeat": 4,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 2,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0
+        }],
+        "leaf_attack": [{
+            "animation": "leaf_attack",
+            "speed": 10,
+            "repeat": 10,
+            "vx": 0,
+            "vy": 10,
+            "in_game_scaling": 2,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0
+        }],
+        "tornado": [{
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 1,
+            "move_direction": 1,
+            "starting_angle": 0,
+            "rotate_radius": 16
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 1,
+            "move_direction": 1,
+            "starting_angle": 120,
+            "rotate_radius": 16
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 1,
+            "move_direction": 1,
+            "starting_angle": 240,
+            "rotate_radius": 16
+        }]
+    }
+}

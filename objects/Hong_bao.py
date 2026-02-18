@@ -1,5 +1,5 @@
 # Sprite references:
-# https://clockworkraven.itch.io/raven-fantasy-icons/download/eyJpZCI6MTcyNDcyNiwiZXhwaXJlcyI6MTc3MDgyNzgxN30%3d%2ebQ6pD3vecFxK5G1lzNdWmS0G7UI%3d
+# https://witpop.itch.io/sprite-pack-hred-envelope-icons
 
 import pygame
 import config.constant as C

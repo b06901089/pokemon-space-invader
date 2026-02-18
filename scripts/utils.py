@@ -1,4 +1,5 @@
 import pygame
+import json
 import random
 import config.constant as C
 
@@ -29,25 +30,25 @@ def spawn_boss_bullet(sprite_groups):
                 bo.shot_counter = 0
                 bo.last_shot = time_now + bo.shot_rest
 
-def spawn_animation_for_group(sprite_groups, group, ani, sheet, spawn_dir):
+def spawn_animation_for_group(sprite_groups, group, ani, spawn_dir, ani_copys):
     if spawn_dir == "rdm_top":
         x = get_random_x()
         for obj in sprite_groups[group].sprites():
-            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
-                sprite_groups['animation'].add(Animation(x, -50, sheet, ani, idx))
+            for idx in range(ani_copys):
+                sprite_groups['animation'].add(Animation(x, -50, ani, idx))
     elif spawn_dir == "self":
         for obj in sprite_groups[group].sprites():
-            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
-                sprite_groups['animation'].add(Animation(obj.rect.centerx, obj.rect.centery, sheet, ani, idx))
+            for idx in range(ani_copys):
+                sprite_groups['animation'].add(Animation(obj.rect.centerx, obj.rect.centery, ani, idx))
 
-def spawn_animation_for_sprite(sprite_groups, sprite, ani, sheet, spawn_dir):
+def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_copys):
         if spawn_dir == "rdm_top":
             x = get_random_x()
-            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
-                sprite_groups['animation'].add(Animation(x, -50, sheet, ani, idx))
+            for idx in range(ani_copys):
+                sprite_groups['animation'].add(Animation(x, -50, ani, idx))
         elif spawn_dir == "self":
-            for idx in range(len(C.ANIMATION_SPRTIES[ani])):
-                sprite_groups['animation'].add(Animation(sprite.rect.centerx, sprite.rect.centery, sheet, ani, idx))
+            for idx in range(ani_copys):
+                sprite_groups['animation'].add(Animation(sprite.rect.centerx, sprite.rect.centery, ani, idx))
 
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
     time_now = pygame.time.get_ticks()
@@ -70,3 +71,11 @@ def create_aliens_grid(sprite_groups, row, col):
     for r in range(row):
         for c in range(col):
             sprite_groups['alien'].add(Alien(interval + c * interval, 100 + r * 70))
+
+def load_json(path):
+    with open(path, 'r') as f:
+        return json.load(f)
+    
+def load_phase(game_phase):
+    with open(f"./phases/phase{game_phase}.json", 'r') as f:
+        return json.load(f)

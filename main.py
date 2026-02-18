@@ -1,7 +1,6 @@
 import pygame
 import random
 import math
-import json
 import config.constant as C
 
 
@@ -155,13 +154,7 @@ def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
     sprite_groups['spaceship'].add(spaceship)
-
-
-def load_phase(game_phase):
-    with open(f"./phases/phase{game_phase}.json", 'r') as f:
-        phase_data = json.load(f)
-    
-    return phase_data
+    moves_json = load_json(C.MOVE_JSON_PATH)
 
 
 # main game loop
@@ -223,16 +216,22 @@ while run:
                 for move in bo.moves:
                     if time_now - move['last_move_time'] > move['freq']:
                         move['last_move_time'] = time_now
-                        spawn_animation_for_sprite(sprite_groups, bo, move['name'], 'sprtie_sheet_1', move['spawn_dir'])
+                        spawn_animation_for_sprite(
+                            sprite_groups, 
+                            bo, 
+                            move['name'], 
+                            move['spawn_dir'], 
+                            len(C.MOVE_JSON["moves"][move['name']])
+                        )
 
 
             spawn_hong_bao()
             spawn_aliens()  
             if powerup_collected < phase_data['data']['powerup_cnt_limit']:
                 spawn_powerups()  
-            if phase_data['data']['spawn_aliens_teams'] != -1:
-                which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
-                last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
+            # if phase_data['data']['spawn_aliens_teams'] != -1:
+            #     which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
+            #     last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
             spawn_boss_bullet(sprite_groups)
 
 
