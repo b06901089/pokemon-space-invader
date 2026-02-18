@@ -40,21 +40,43 @@
             "repeat": 4,
             "vx": 0,
             "vy": 3,
+            "offset_x": 0,
+            "offset_y": 0,
             "in_game_scaling": 2,
             "move_direction": 0,
             "starting_angle": 0,
-            "rotate_radius": 0
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0
         }],
         "leaf_attack": [{
             "animation": "leaf_attack",
             "speed": 10,
-            "repeat": 10,
+            "repeat": 30,
             "vx": 0,
-            "vy": 10,
+            "vy": 5,
+            "offset_x": 0,
+            "offset_y": 0,
             "in_game_scaling": 2,
             "move_direction": 0,
             "starting_angle": 0,
-            "rotate_radius": 0
+            "rotate_radius": 0,
+            "replicas": 10,
+            "replica_delay": 1
+        }, {
+            "animation": "leaf_attack",
+            "speed": 10,
+            "repeat": 30,
+            "vx": 0,
+            "vy": 5,
+            "offset_x": 0,
+            "offset_y": 0,
+            "in_game_scaling": 2,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 10,
+            "replica_delay": 1
         }],
         "tornado": [{
             "animation": "tornado",
@@ -62,30 +84,42 @@
             "repeat": 35,
             "vx": 0,
             "vy": 3,
+            "offset_x": 0,
+            "offset_y": 0,
             "in_game_scaling": 1,
             "move_direction": 1,
             "starting_angle": 0,
-            "rotate_radius": 16
+            "rotate_radius": 16,
+            "replicas": 0,
+            "replica_delay": 0
         }, {
             "animation": "tornado",
             "speed": 10,
             "repeat": 35,
             "vx": 0,
             "vy": 3,
+            "offset_x": 0,
+            "offset_y": 0,
             "in_game_scaling": 1,
             "move_direction": 1,
             "starting_angle": 120,
-            "rotate_radius": 16
+            "rotate_radius": 16,
+            "replicas": 0,
+            "replica_delay": 0
         }, {
             "animation": "tornado",
             "speed": 10,
             "repeat": 35,
             "vx": 0,
             "vy": 3,
+            "offset_x": 0,
+            "offset_y": 0,
             "in_game_scaling": 1,
             "move_direction": 1,
             "starting_angle": 240,
-            "rotate_radius": 16
+            "rotate_radius": 16,
+            "replicas": 0,
+            "replica_delay": 0
         }]
     }
 }

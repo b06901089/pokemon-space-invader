@@ -50,6 +50,7 @@ boss_shot_counter = 0
 hong_bao_collected = 0
 powerup_collected = 0
 boss_wave_active = False
+replicas_list = []
 
 
 # define FPS
@@ -154,7 +155,6 @@ def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
     sprite_groups['spaceship'].add(spaceship)
-    moves_json = load_json(C.MOVE_JSON_PATH)
 
 
 # main game loop
@@ -210,6 +210,19 @@ while run:
                         )
                         boss_wave_active = True
 
+            new_replicas = []
+            for r in replicas_list:
+                if r[0] >= r[2]:
+                    sprite_groups['animation'].add(Animation(*r[3]))
+                    r[0] = 0
+                    r[1] -= 1
+                    if r[1] > 0:
+                        new_replicas.append(r)
+                else:
+                    r[0] += 1
+                    new_replicas.append(r)
+            replicas_list[:] = new_replicas
+
             # create boss moves
             time_now = pygame.time.get_ticks()
             for bo in sprite_groups['boss'].sprites():
@@ -221,9 +234,9 @@ while run:
                             bo, 
                             move['name'], 
                             move['spawn_dir'], 
-                            len(C.MOVE_JSON["moves"][move['name']])
+                            len(C.MOVE_JSON['moves'][move['name']]),
+                            replicas_list
                         )
-
 
             spawn_hong_bao()
             spawn_aliens()  

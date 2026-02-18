@@ -30,25 +30,20 @@ def spawn_boss_bullet(sprite_groups):
                 bo.shot_counter = 0
                 bo.last_shot = time_now + bo.shot_rest
 
-def spawn_animation_for_group(sprite_groups, group, ani, spawn_dir, ani_copys):
+def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, replicas_list):
     if spawn_dir == "rdm_top":
         x = get_random_x()
-        for obj in sprite_groups[group].sprites():
-            for idx in range(ani_copys):
-                sprite_groups['animation'].add(Animation(x, -50, ani, idx))
+        y = -50
     elif spawn_dir == "self":
-        for obj in sprite_groups[group].sprites():
-            for idx in range(ani_copys):
-                sprite_groups['animation'].add(Animation(obj.rect.centerx, obj.rect.centery, ani, idx))
-
-def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_copys):
-        if spawn_dir == "rdm_top":
-            x = get_random_x()
-            for idx in range(ani_copys):
-                sprite_groups['animation'].add(Animation(x, -50, ani, idx))
-        elif spawn_dir == "self":
-            for idx in range(ani_copys):
-                sprite_groups['animation'].add(Animation(sprite.rect.centerx, sprite.rect.centery, ani, idx))
+        x = sprite.rect.centerx
+        y = sprite.rect.centery
+        
+    for idx in range(ani_part):
+        sprite_groups['animation'].add(Animation(x, y, ani, idx))
+        rep = C.MOVE_JSON['moves'][ani][idx]['replicas']
+        rep_delay = C.MOVE_JSON['moves'][ani][idx]['replica_delay']
+        if rep > 0:
+            replicas_list.append([0, rep, rep_delay, (x, y, ani, idx)])
 
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
     time_now = pygame.time.get_ticks()

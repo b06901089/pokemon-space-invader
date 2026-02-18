@@ -30,7 +30,7 @@ class Animation(pygame.sprite.Sprite):
         self.index = 0
         self.image = self.images[self.index]
         self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
+        self.rect.center = (x + setting['offset_x'], y + setting['offset_y'])
 
         # Store animation settings
         self.speed = setting['speed']
@@ -40,7 +40,7 @@ class Animation(pygame.sprite.Sprite):
         self.move_dir = setting['move_direction']
         self.angle = setting['starting_angle'] * math.pi / 180.0
         self.rotate_radius = setting['rotate_radius']
-        self.rotate_center = [x, y]
+        self.rotate_center = [x + setting['offset_x'], y + setting['offset_y']]
         
     def update(self):
 

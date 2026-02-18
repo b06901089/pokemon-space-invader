@@ -19,6 +19,12 @@
                             "freq": 1000,
                             "last_move_time": 0,
                             "power": 5
+                        },  {
+                            "name": "leaf_attack",
+                            "spawn_dir": "self",
+                            "freq": 3000,
+                            "last_move_time": 0,
+                            "power": 5
                         }
                     ]
                 }
