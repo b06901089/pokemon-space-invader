@@ -73,19 +73,15 @@ Mouse Click to retrieve item rewards
 Respect all asset licenses, copyrights and creators when redistributing.
 
 Red Envelope:
-
     Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
 
 Pokemon Sprites:
-
     `https://pokemondb.net/`
 
 Pokemon Move Effects:
-
     `https://www.spriters-resource.com/game_boy_advance/pokemonrubysapphire/asset/28884/`
 
 Original Space Invaders, Aliens, Explosion, Sound Effects:
-
     `http://www.codingwithruss.com/gamepage/Invaders/`
 
 ## License
