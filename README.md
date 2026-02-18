@@ -1,16 +1,17 @@
 # pokemon-space-invader
 
-A simple, local Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites.
+A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites. It's sometimes playable yes sometimes unplayable due to high frequency of updates.
 
-This repository contains a small arcade game built for practice and learning. The game is data-driven via phase JSON files and includes enemies, bosses, power-ups, and visual/audio effects.
+## About me and the projects
+
+Hello, I am a software engineer and a big pokemon fan. This project starting from me wanting to make a simple game for my gf with fun purposes. But I decided to make it into something bigger, wishing to let more people enjoy the game. It still in early-developed stage, but any comments or contribution are very very welcomed.
 
 ## Features
 
 - Player spaceship with health and multiple fire modes
 - Multiple alien types and bosses
-- Power-ups and collectible "hong bao"
+- Collectible power-ups
 - Explosion/animation effects and sound
-- Phase/level definitions in `phases/*.json`
 
 ## Requirements
 
@@ -41,29 +42,51 @@ python3 main.py
 
 ## Controls
 
-Controls are implemented in the spaceship object. For the definitive control mapping, check `objects/Spaceship.py`.
+Up/Down/Left/Right to control your ships
+Space to fire
+Mouse Click to retrieve item rewards
 
-## Project layout
+## TODO (GamePlay)
 
-- `main.py` — game entry point and main loop
-- `objects/` — game object classes (Alien, Spaceship, Bullet, Boss, Powerup, etc.)
-- `phases/` — JSON files describing level/phase configuration
-- `img/` — images and sprite sheets used by the game
-- `config/` — constants and sound manager
-- `scripts/` — helper scripts used to spawn bosses/animations
-- `collisions.py` — collision resolver
+- Add inventory
+- Add more stages
+- Add more attacks
+- Add more items
+- Add pokeballs and pokemon catching system
+- Improve attack system (type, pp, power...)
+- Improve visual effects
 
-## TODO
+## TODO (Tech)
+
+- Add unit tests for non-graphical logic (collision resolver, spawn logic)
+- Keep Improving code qaulity
+
+## TODO (Description)
 
 - Add a `requirements.txt` for pinning dependencies
-- Add a short controls section to the README (after confirming mapping)
+- Add a short controls section to the README
 - Add screenshots and/or a short recorded GIF to show gameplay
 - Add packaging or a simple launcher script
-- Add unit tests for non-graphical logic (collision resolver, spawn logic)
 
 ## References & Assets
 
-Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` (and other image credit files) for asset credits and license details. Respect asset licenses when redistributing.
+Respect all asset licenses, copyrights and creators when redistributing.
+
+Red Envelope:
+
+    Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
+
+Pokemon Sprites:
+
+    `https://pokemondb.net/`
+
+Pokemon Move Effects:
+
+    `https://www.spriters-resource.com/game_boy_advance/pokemonrubysapphire/asset/28884/`
+
+Original Space Invaders, Aliens, Explosion, Sound Effects:
+
+    `http://www.codingwithruss.com/gamepage/Invaders/`
 
 ## License
 
@@ -71,10 +94,4 @@ This repository does not include a license file by default. Add a LICENSE file i
 
 ---
 
-If you'd like, I can also:
-
-- add a minimal `requirements.txt` with `pygame`,
-- add a short controls subsection (I can inspect `objects/Spaceship.py` and document exact keys),
-- or add one screenshot and update the README with it.
-
-Feel free to tell me which of those you'd like next.
+Thank you
