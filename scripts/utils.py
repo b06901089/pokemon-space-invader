@@ -74,3 +74,20 @@ def load_json(path):
 def load_phase(game_phase):
     with open(f"./phases/phase{game_phase}.json", 'r') as f:
         return json.load(f)
+    
+def render_item_choice_panel():
+    # prepare a centered panel and three inner boxes to render choices
+    panel_w = 3 * 180 + 4 * 15
+    panel_h = 200
+    panel_x = (C.SCREEN_WIDTH - panel_w) // 2
+    panel_y = (C.SCREEN_HEIGHT - panel_h) // 2
+    phase_choice_panel = pygame.Rect(panel_x, panel_y, panel_w, panel_h)
+   
+    # inner boxes
+    phase_choice_rects = []
+    for i in range(3):
+        bx = panel_x + i * (180 + 15) + 15
+        by = panel_y + 20
+        phase_choice_rects.append(pygame.Rect(bx, by, 180, 160))
+    
+    return phase_choice_panel, phase_choice_rects

@@ -52,6 +52,11 @@ powerup_collected = 0
 boss_wave_active = False
 replicas_list = []
 
+# simple UI: panel for 3-item choice (render-only)
+phase_choice_visible = False
+phase_choice_panel = None
+phase_choice_rects = []
+
 
 # define FPS
 clock = pygame.time.Clock()
@@ -155,10 +160,11 @@ def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
     sprite_groups['spaceship'].add(spaceship)
+    return render_item_choice_panel()
 
 
 # main game loop
-initialize_game()
+phase_choice_panel, phase_choice_rects = initialize_game()
 run = True
 while run:
     
@@ -173,14 +179,11 @@ while run:
             countdown -= 1
             last_countdown = time_now
 
-
-    if countdown == 0:
+    if countdown == 0 and not phase_choice_visible:
 
         # Check Game Over
         if len(sprite_groups['spaceship']) == 0:
             game_over = -1
-        # if game_phase >= 5:
-        #     C.SPAWN_ALIEN_COOLDOWN_MIN = 1
         if game_phase >= 5:
             game_over = 1
 
@@ -188,8 +191,8 @@ while run:
         if game_over == 0:
 
             if state == 0:
-                state += 1
                 phase_data = load_phase(game_phase)
+                phase_choice_visible = True
             if state == 1:
                 state += 1
                 if phase_data['data']['init'] == 1:
@@ -300,7 +303,6 @@ while run:
                 state = 0
             
 
-
         # update explosion and animation group (do this regardless of game over so explosions can finish)
         sprite_groups['explosion'].update()
         sprite_groups['animation'].update()
@@ -325,12 +327,34 @@ while run:
         draw_text(screen, "YOU WIN!", font40, white, screen_width // 2 - 100, screen_height // 2 + 50)
         draw_text(screen, "hong bao collected: {0}".format(hong_bao_collected), font30, white, screen_width // 2 - 100, screen_height // 2 + 100)
 
+    if phase_choice_visible:
+        # panel background
+        pygame.draw.rect(screen, (30, 30, 30), phase_choice_panel)
+        pygame.draw.rect(screen, (200, 200, 200), phase_choice_panel, 4)
+        # inner boxes
+        for idx, r in enumerate(phase_choice_rects):
+            pygame.draw.rect(screen, (60, 60, 60), r)
+            pygame.draw.rect(screen, (220, 220, 220), r, 3)
+            # placeholder label
+            label = f"Item {idx+1}"
+            draw_text(screen, label, font20, (240,240,240), r.x + 10, r.y + r.height - 28)
+
     # create event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+            break
+        if event.type == pygame.MOUSEBUTTONUP and phase_choice_visible:
+            pos = pygame.mouse.get_pos()
+            clicked_idx = None
+            for i, r in enumerate(phase_choice_rects):
+                if r.collidepoint(pos):
+                    clicked_idx = i
+                    break
+            if clicked_idx is not None:
+                phase_choice_visible = False
+                state += 1
 
     pygame.display.update()
-
 
 pygame.quit()
