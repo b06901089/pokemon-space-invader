@@ -104,3 +104,7 @@ SPAWN_ALIENS_TEAMS_MAP = [
 MOVE_JSON_PATH = 'config/moves.json'
 with open(MOVE_JSON_PATH, 'r') as f:
     MOVE_JSON = json.load(f)
+
+ITEM_JSON_PATH = 'config/items.json'
+with open(ITEM_JSON_PATH, 'r') as f:
+    ITEM_JSON = json.load(f)

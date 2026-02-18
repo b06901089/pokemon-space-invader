@@ -91,3 +91,6 @@ def render_item_choice_panel():
         phase_choice_rects.append(pygame.Rect(bx, by, 180, 160))
     
     return phase_choice_panel, phase_choice_rects
+
+def get_random_three_items():
+    return random.sample(list(C.ITEM_JSON.keys()), 3)

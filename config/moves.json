@@ -11,7 +11,7 @@
             "y": 994,
             "w": 16,
             "h": 16,
-            "horizontal_or_vertical": 0,
+            "horizontal_or_vertical": 1,
             "frame_counts": 9
         },
         "leaf_attack": {

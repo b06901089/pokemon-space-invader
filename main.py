@@ -193,6 +193,7 @@ while run:
             if state == 0:
                 phase_data = load_phase(game_phase)
                 phase_choice_visible = True
+                item_rewards = get_random_three_items()
             if state == 1:
                 state += 1
                 if phase_data['data']['init'] == 1:
@@ -335,9 +336,10 @@ while run:
         for idx, r in enumerate(phase_choice_rects):
             pygame.draw.rect(screen, (60, 60, 60), r)
             pygame.draw.rect(screen, (220, 220, 220), r, 3)
-            # placeholder label
-            label = f"Item {idx+1}"
-            draw_text(screen, label, font20, (240,240,240), r.x + 10, r.y + r.height - 28)
+            image_surface = pygame.image.load(C.ITEM_JSON[item_rewards[idx]]['url']).convert_alpha() 
+            image_rect = image_surface.get_rect()
+            image_rect.center = r.center
+            screen.blit(image_surface, image_rect)
 
     # create event handler
     for event in pygame.event.get():
