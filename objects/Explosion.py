@@ -5,7 +5,7 @@ class Explosion(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         for num in range(1, 6):
-            img = pygame.image.load(f"img/exp{num}.png")
+            img = pygame.image.load(f"img/org_space_invader/exp{num}.png")
             if size == 1:
                 img = pygame.transform.scale(img, (20, 20))
             elif size == 2:

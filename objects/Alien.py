@@ -7,7 +7,7 @@ class Alien(pygame.sprite.Sprite):
     def __init__(self, x, y, alien_tpye=-1, speed_dir=(-1, -1, -1), alien_figure=None):
         pygame.sprite.Sprite.__init__(self)
         if not alien_figure:
-            self.image = pygame.image.load("img/alien" + str(random.randint(1, 5)) + ".png")
+            self.image = pygame.image.load(C.ORG_ALIEN_PATH[random.randint(0, 4)])
         else:
             self.image = pygame.image.load(C.ALIEN_PATH[alien_figure])
         self.rect = self.image.get_rect()

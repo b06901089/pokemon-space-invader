@@ -16,11 +16,20 @@ WHITE = (255, 255, 255)
 
 
 # Game object setting
+SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
 SPACESHIP_HEALTH = 25
+
+BULLET_PATH = 'img/org_space_invader/bullet.png'
 BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
 BULLET_X_SPEED = [0, 1, -1, 3, -3] # relative to fixed y speed
 
-
+ORG_ALIEN_PATH = [
+    'img/org_space_invader/alien1.png',
+    'img/org_space_invader/alien2.png',
+    'img/org_space_invader/alien3.png',
+    'img/org_space_invader/alien4.png',
+    'img/org_space_invader/alien5.png',
+]
 ALIEN_PATH = {
     '#0043': 'img/pokemon/gen3/oddish.png',
     '#0458': 'img/pokemon/gen4/mantyke_48.png'
@@ -29,6 +38,7 @@ ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
 ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
 ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
 ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
+ALIEN_BULLET_PATH = ['img/org_space_invader/alien_bullet0.png', 'img/org_space_invader/alien_bullet1.png']
 SPAWN_ALIEN_COOLDOWN = 120 # spawn a new alien every {#} frames at the beginning
 SPAWN_ALIEN_COOLDOWN_MIN = 10
 SPAWN_ALIEN_COOLDOWN_DECREASE = 5
@@ -36,9 +46,9 @@ SPAWN_ALIEN_REPEAT = 2
 
 
 BOSS_PATH = {
-    # 2: ['img/boss1.png', (160, 160)],
+    # 2: ['img/edited/boss1.png', (160, 160)],
     2: ['img/pokemon/gen2/fearow.png', (56, 56)],
-    # 3: ['img/boss2.png', (60, 45)],
+    # 3: ['img/edited/boss2.png', (60, 45)],
     3: ['img/pokemon/gen3/torchic.png', (64, 64)],
     4: ['img/pokemon/gen5/exeggutor.png', (96, 96)],
 }
@@ -64,11 +74,12 @@ HONG_BAO_SPAWN_TIME = 400 # spawn the first hong bao at the {#} frames
 
 POWERUP_PATH = [
     (-1, (-1, -1)),
-    ('img/powerup/pu1.png', (48, 48)),
-    ('img/powerup/pu2.png', (64, 64)),
-    ('img/powerup/pu3.png', (32, 32)),
-    ('img/powerup/pu4.png', (32, 32)),
+    ('img/Free - Raven Fantasy Icons/64x64/fc51.png', (48, 48)),
+    ('img/powerup/HH_face_1.png', (64, 64)),
+    ('img/Free - Raven Fantasy Icons/64x64/fc759.png', (32, 32)),
+    ('img/Free - Raven Fantasy Icons/64x64/fc155.png', (32, 32)),
 ]
+SWORD_PATH = 'img/edited/sword.png'
 
 SPAWN_ALIENS_TEAMS_COOLDOWN = 7200
 SPAWN_ALIENS_TEAMS_MAP = [

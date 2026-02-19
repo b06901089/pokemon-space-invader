@@ -5,7 +5,7 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, mode=0):
         pygame.sprite.Sprite.__init__(self)
         # load with per-pixel alpha and tweak visuals to be less distracting
-        image = pygame.image.load("img/bullet.png").convert_alpha()
+        image = pygame.image.load(C.BULLET_PATH).convert_alpha()
 
         # # Optional: scale down slightly to be less visually dominant
         # orig_w, orig_h = image.get_size()

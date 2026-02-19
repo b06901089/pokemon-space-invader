@@ -15,9 +15,9 @@ pygame.init()
 pygame.mixer.set_num_channels(16)
 
 
-sound_manager.load("explosion", "img/explosion.wav")
-sound_manager.load("explosion2", "img/explosion2.wav")
-sound_manager.load("laser", "img/laser.wav")
+sound_manager.load("explosion", "img/org_space_invader/explosion.wav")
+sound_manager.load("explosion2", "img/org_space_invader/explosion2.wav")
+sound_manager.load("laser", "img/org_space_invader/laser.wav")
 
 
 # define constants
@@ -69,7 +69,7 @@ pygame.display.set_caption(game_title)
 
 
 # loading background image
-background = pygame.image.load("img/bg.png")
+background = pygame.image.load("img/org_space_invader/bg.png")
 
 
 # define font

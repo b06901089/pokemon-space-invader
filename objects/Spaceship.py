@@ -6,7 +6,7 @@ from config import sound_manager
 class Spaceship(pygame.sprite.Sprite):
     def __init__(self, x, y, health, spawn_bullet):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("img/spaceship.png")
+        self.image = pygame.image.load(C.SPACESHIP_PATH)
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.health_start = health

@@ -6,7 +6,7 @@ class Sword(pygame.sprite.Sprite):
     def __init__(self, spaceship, angle=0.0):
         pygame.sprite.Sprite.__init__(self)
         self.spaceship = spaceship
-        img = pygame.image.load("img/sword.png")
+        img = pygame.image.load(C.SWORD_PATH)
         img = pygame.transform.scale(img, (32, 32))
         self.image = pygame.transform.rotate(img, 45)
         self.angle = angle
