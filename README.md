@@ -77,6 +77,7 @@ Mouse Click to retrieve item rewards
 - Add a short controls section to the README
 - Add screenshots and/or a short recorded GIF to show gameplay
 - Add packaging or a simple launcher script
+- Add description(tutorial) before starting the game
 
 ## References & Assets
 
