@@ -17,7 +17,8 @@ resp.raise_for_status()
 soup = BeautifulSoup(resp.text, "html.parser")
 
 # output folder
-os.makedirs("item_icons", exist_ok=True)
+os.makedirs("img/pokemon", exist_ok=True)
+os.makedirs("img/pokemon/items", exist_ok=True)
 
 rows = soup.select("table.data-table tbody tr")
 print("Rows found:", len(rows))

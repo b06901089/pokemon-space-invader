@@ -26,6 +26,16 @@ pip install pygame
 
 On some systems you may need `python3` and `pip3` instead of `python`/`pip`.
 
+Download the images for pokemon
+```
+mkdir img/pokemon
+python3 download_pokemon_items.py
+python3 download_pokemon_sprites.py
+```
+
+Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons)
+Extract it and put it under `img/`
+
 ## Running the game
 
 From the project root run:
@@ -72,14 +82,16 @@ Mouse Click to retrieve item rewards
 
 Respect all asset licenses, copyrights and creators when redistributing.
 
-Red Envelope:
-    Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
+Red Envelope: [Link](https://witpop.itch.io/sprite-pack-hred-envelope-icons)
+    OR Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
 
 Pokemon Sprites: [Link](https://pokemondb.net/)
 
 Pokemon Move Effects: [Link](https://www.spriters-resource.com/game_boy_advance/pokemonrubysapphire/asset/28884/)
 
 Original Space Invaders, Aliens, Explosion, Sound Effects: [Link](http://www.codingwithruss.com/gamepage/Invaders/)
+
+Raven Fantasy Icons - Full Collection: [Link](https://clockworkraven.itch.io/raven-fantasy-icons)
 
 ## License
 

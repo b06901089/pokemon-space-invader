@@ -5,7 +5,9 @@
 # git commit -m "Clean repo using .gitignore"
 # git push
 
-img/
+img/org_img
+img/pokemon
+img/Red Envelope Starter Pack
 
 __pycache__/
 *.pyc
