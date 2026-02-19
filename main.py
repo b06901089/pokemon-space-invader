@@ -52,10 +52,8 @@ powerup_collected = 0
 boss_wave_active = False
 replicas_list = []
 
-# simple UI: panel for 3-item choice (render-only)
+# simple UI: panel for 3-item choice and panel for inventory
 phase_choice_visible = False
-phase_choice_panel = None
-phase_choice_rects = []
 
 
 # define FPS
@@ -160,11 +158,12 @@ def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
     sprite_groups['spaceship'].add(spaceship)
-    return render_item_choice_panel()
 
 
 # main game loop
-phase_choice_panel, phase_choice_rects = initialize_game()
+initialize_game()
+phase_choice_panel, phase_choice_rects = render_item_choice_panel()
+inventory_panel, inventory_rects = render_inventory_panel()
 run = True
 while run:
     
@@ -340,7 +339,15 @@ while run:
             image_rect = image_surface.get_rect()
             image_rect.center = r.center
             screen.blit(image_surface, image_rect)
+            draw_text(screen, item_rewards[idx], font20, white, r.x + 10, r.y + r.height - 30)
 
+    # inventory panel (render-only)
+    pygame.draw.rect(screen, (24, 24, 24), inventory_panel)
+    pygame.draw.rect(screen, (180, 180, 180), inventory_panel, 1)
+    for i in range(6):
+        pygame.draw.rect(screen, (48, 48, 48), inventory_rects[i])
+        pygame.draw.rect(screen, (200, 200, 200), inventory_rects[i], 1)
+    
     # create event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

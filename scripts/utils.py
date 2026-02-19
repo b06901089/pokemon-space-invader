@@ -92,5 +92,29 @@ def render_item_choice_panel():
     
     return phase_choice_panel, phase_choice_rects
 
+def render_inventory_panel():
+    # prepare a bottom-left panel and six inner boxes to render inventory
+    box_w = 20
+    box_h = 20
+    cols = 3
+    rows = 2
+    padding = 2
+    panel_w = box_w * cols + padding * (cols + 1)
+    panel_h = box_h * rows + padding * (rows + 1)
+    panel_x = 0
+    panel_y = C.SCREEN_HEIGHT - panel_h
+    inventory_panel = pygame.Rect(panel_x, panel_y, panel_w, panel_h)
+    
+    # inner boxes
+    inventory_rects = []
+    for i in range(6):
+        col = i % cols
+        row = i // cols
+        bx = panel_x + padding + col * (box_w + padding)
+        by = panel_y + padding + row * (box_h + padding)
+        inventory_rects.append(pygame.Rect(bx, by, box_w, box_h))
+    
+    return inventory_panel, inventory_rects
+
 def get_random_three_items():
     return random.sample(list(C.ITEM_JSON.keys()), 3)
