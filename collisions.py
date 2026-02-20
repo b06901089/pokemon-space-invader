@@ -84,6 +84,7 @@ def resolve_all(sprite_groups, sound_manager):
     # alien vs sword
     collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['sword'], True, False)
     for a, _ in collisions.items():
+        result["killed_aliens"] += 1
         sound_manager.play("explosion")
         sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
 

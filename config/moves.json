@@ -1,12 +1,12 @@
 {
     "sprite": {
-        "sprtie_sheet_1": {
+        "sprite_sheet_1": {
             "url": "img/edited/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png"
         }
     },
     "animations": {
         "leaf_drop": {
-            "sprite_sheet": "sprtie_sheet_1",
+            "sprite_sheet": "sprite_sheet_1",
             "x": 274,
             "y": 994,
             "w": 16,
@@ -15,7 +15,7 @@
             "frame_counts": 9
         },
         "leaf_attack": {
-            "sprite_sheet": "sprtie_sheet_1",
+            "sprite_sheet": "sprite_sheet_1",
             "x": 274,
             "y": 1042,
             "w": 16,
@@ -24,13 +24,22 @@
             "frame_counts": 1
         },
         "tornado": {
-            "sprite_sheet": "sprtie_sheet_1",
+            "sprite_sheet": "sprite_sheet_1",
             "x": 51,
             "y": 54,
             "w": 32,
             "h": 64,
             "horizontal_or_vertical": 0,
             "frame_counts": 1
+        },
+        "ember": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 241,
+            "y": 1164,
+            "w": 32,
+            "h": 32,
+            "horizontal_or_vertical": 1,
+            "frame_counts": 5
         }
     },
     "moves": {
@@ -51,21 +60,6 @@
             "power": 1
         }],
         "leaf_attack": [{
-            "animation": "leaf_attack",
-            "speed": 10,
-            "repeat": 30,
-            "vx": 0,
-            "vy": 5,
-            "offset_x": 0,
-            "offset_y": 0,
-            "in_game_scaling": 2,
-            "move_direction": 0,
-            "starting_angle": 0,
-            "rotate_radius": 0,
-            "replicas": 10,
-            "replica_delay": 1,
-            "power": 1
-        }, {
             "animation": "leaf_attack",
             "speed": 10,
             "repeat": 30,
@@ -126,6 +120,22 @@
             "replicas": 0,
             "replica_delay": 0,
             "power": 2
+        }],
+        "ember": [{
+            "animation": "ember",
+            "speed": 5,
+            "repeat": 5,
+            "vx": 0,
+            "vy": 0,
+            "offset_x": 0,
+            "offset_y": 0,
+            "in_game_scaling": 2,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0,
+            "power": 1
         }]
     }
 }

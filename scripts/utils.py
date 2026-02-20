@@ -8,6 +8,13 @@ from objects import *
 def get_random_x():
     return random.randint(0, C.SCREEN_WIDTH)
 
+def is_too_close_to_spaceship(spaceship, x, y, exclusion_radius_2=14400):
+    dx = x - spaceship.rect.centerx
+    dy = y - spaceship.rect.centery
+    distance = (dx ** 2 + dy ** 2)
+    
+    return distance < exclusion_radius_2
+
 def draw_text(screen, text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
@@ -37,6 +44,15 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
     elif spawn_dir == "self":
         x = sprite.rect.centerx
         y = sprite.rect.centery
+    elif spawn_dir == "full_rdm":
+        max_attempts = 20
+        attempts = 0
+        while attempts < max_attempts:
+            x = random.randint(32, C.SCREEN_WIDTH - 32)
+            y = random.randint(32, C.SCREEN_HEIGHT + 32)
+            if sprite_groups['spaceship'] and not is_too_close_to_spaceship(sprite_groups['spaceship'].sprites()[0], x, y, exclusion_radius_2=14400):
+                break
+            attempts += 1
     
     for idx in range(ani_part):        
         sprite_groups['animation'].add(Animation(x, y, ani, idx))
@@ -46,7 +62,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
         if rep > 0:
             scheduler = ReplicaScheduler(sprite_groups, x, y, ani, idx, rep, rep_delay)
             schedulers_list.append(scheduler)
-            
+
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
     time_now = pygame.time.get_ticks()
     if time_now - last_alien_team > C.SPAWN_ALIENS_TEAMS_COOLDOWN:
