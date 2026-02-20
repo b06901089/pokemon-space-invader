@@ -17,8 +17,7 @@
                             "name": "tornado",
                             "spawn_dir": "self",
                             "freq": 5000,
-                            "last_move_time": 0,
-                            "power": 5
+                            "last_move_time": 0
                         }
                     ]
                 }

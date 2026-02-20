@@ -41,6 +41,9 @@ class Animation(pygame.sprite.Sprite):
         self.angle = setting['starting_angle'] * math.pi / 180.0
         self.rotate_radius = setting['rotate_radius']
         self.rotate_center = [x + setting['offset_x'], y + setting['offset_y']]
+
+        # power settings
+        self.power = setting['power']
         
     def update(self):
 

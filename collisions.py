@@ -93,4 +93,12 @@ def resolve_all(sprite_groups, sound_manager):
         sound_manager.play("explosion")
         sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
 
+    # spaceship vs animation
+    collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
+    for s, anis in collisions.items():
+        for ani in anis:
+            sound_manager.play("explosion2")
+            s.health_remaining -= ani.power
+            sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
+
     return result
