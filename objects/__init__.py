@@ -8,6 +8,7 @@ from .Animation import Animation
 from .Boss import Boss
 from .Hong_bao import Hong_bao
 from .Sword import Sword
+from .Inventory import Inventory
 
 __all__ = [
     "Bullet",
@@ -21,4 +22,5 @@ __all__ = [
     "Boss",
     "Hong_bao",
     "Sword",
+    "Inventory"
 ]

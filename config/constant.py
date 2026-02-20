@@ -119,3 +119,5 @@ with open(MOVE_JSON_PATH, 'r') as f:
 ITEM_JSON_PATH = 'config/items.json'
 with open(ITEM_JSON_PATH, 'r') as f:
     ITEM_JSON = json.load(f)
+
+INVENTORY_SHOW_KEY = ['q', 'w', 'e', 'a', 's', 'd']

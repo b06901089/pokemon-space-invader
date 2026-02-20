@@ -71,6 +71,7 @@ background = pygame.image.load("img/org_space_invader/bg.png")
 
 
 # define font
+font10 = pygame.font.SysFont("Constantia", 10)
 font20 = pygame.font.SysFont("Constantia", 20)
 font30 = pygame.font.SysFont("Constantia", 30)
 font40 = pygame.font.SysFont("Constantia", 40)
@@ -164,6 +165,7 @@ def initialize_game():
 initialize_game()
 phase_choice_panel, phase_choice_rects = render_item_choice_panel()
 inventory_panel, inventory_rects = render_inventory_panel()
+my_inventory = Inventory()
 run = True
 while run:
     
@@ -335,19 +337,27 @@ while run:
         for idx, r in enumerate(phase_choice_rects):
             pygame.draw.rect(screen, (60, 60, 60), r)
             pygame.draw.rect(screen, (220, 220, 220), r, 3)
+            draw_text(screen, item_rewards[idx], font20, white, r.x + 10, r.y + r.height - 30)
             image_surface = pygame.image.load(C.ITEM_JSON[item_rewards[idx]]['url']).convert_alpha() 
             image_rect = image_surface.get_rect()
             image_rect.center = r.center
             screen.blit(image_surface, image_rect)
-            draw_text(screen, item_rewards[idx], font20, white, r.x + 10, r.y + r.height - 30)
 
     # inventory panel (render-only)
     pygame.draw.rect(screen, (24, 24, 24), inventory_panel)
     pygame.draw.rect(screen, (180, 180, 180), inventory_panel, 1)
+    items = my_inventory.get_inventory()
     for i in range(6):
         pygame.draw.rect(screen, (48, 48, 48), inventory_rects[i])
         pygame.draw.rect(screen, (200, 200, 200), inventory_rects[i], 1)
-    
+        draw_text(screen, C.INVENTORY_SHOW_KEY[i], font10, white, inventory_rects[i].x + 24, inventory_rects[i].y + 20)
+        if items[i][0] is not None:
+            image_surface = pygame.image.load(C.ITEM_JSON[items[i][0]]['url']).convert_alpha() 
+            image_rect = image_surface.get_rect()
+            image_rect.center = inventory_rects[i].center
+            screen.blit(image_surface, image_rect)
+            draw_text(screen, "x{0}".format(items[i][1]), font10, white, inventory_rects[i].x + 4, inventory_rects[i].y + 20)
+
     # create event handler
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -359,6 +369,7 @@ while run:
             for i, r in enumerate(phase_choice_rects):
                 if r.collidepoint(pos):
                     clicked_idx = i
+                    my_inventory.add_item(item_rewards[i])
                     break
             if clicked_idx is not None:
                 phase_choice_visible = False

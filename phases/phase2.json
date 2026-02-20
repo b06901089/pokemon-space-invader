@@ -6,7 +6,7 @@
             "spawn_boss": [
                 {
                     "pos": [0, -100],
-                    "health": 200,
+                    "health": 100,
                     "speed": 1,
                     "fig": 2,
                     "shot_cd": 500,
@@ -31,6 +31,6 @@
         "end": {
             "killed_aliens": -1
         },
-        "powerup_cnt_limit": 25
+        "powerup_cnt_limit": 20
     }
 }

@@ -94,8 +94,8 @@ def render_item_choice_panel():
 
 def render_inventory_panel():
     # prepare a bottom-left panel and six inner boxes to render inventory
-    box_w = 20
-    box_h = 20
+    box_w = 32
+    box_h = 32
     cols = 3
     rows = 2
     padding = 2
