@@ -69,10 +69,12 @@ Mouse Click to retrieve item rewards
 - Improve attack system (type, pp, power...)
 - Improve visual effects
 
-## TODO (Tech)
+## TODO (Tech & Bugs)
 
 - Add unit tests for non-graphical logic (collision resolver, spawn logic)
 - Keep Improving code qaulity
+
+- Known Bug: when game pause (choose item), time/frame counters won't be stop (e.g. instant refire)
 
 ## TODO (Description)
 
