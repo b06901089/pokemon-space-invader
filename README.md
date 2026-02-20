@@ -61,7 +61,7 @@ Mouse Click to retrieve item rewards
 
 ## TODO (GamePlay)
 
-- Add inventory
+- Finish inventory
 - Add more stages
 - Add more attacks
 - Add more items
