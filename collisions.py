@@ -76,9 +76,9 @@ def resolve_all(sprite_groups, sound_manager):
     collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['hong_bao'], False, True, pygame.sprite.collide_mask)
     collected = 0
     for ship, hbs in collisions.items():
-        for hb in hbs:
+        for _ in hbs:
             collected += 1
-            ship.health_remaining = min(ship.health_start, ship.health_remaining + 1)
+            # ship.health_remaining = min(ship.health_start, ship.health_remaining + 1)
     result["hong_bao_collected"] = collected
 
     # alien vs sword

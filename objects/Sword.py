@@ -15,6 +15,6 @@ class Sword(pygame.sprite.Sprite):
         self.rect.centery = self.spaceship.rect.centery + C.SWORD_RANGE * math.sin(self.angle)
     
     def update(self):
-        self.angle += math.pi / 120.0
+        self.angle += math.pi / 150.0
         self.rect.centerx = self.spaceship.rect.centerx + C.SWORD_RANGE * math.cos(self.angle)
         self.rect.centery = self.spaceship.rect.centery + C.SWORD_RANGE * math.sin(self.angle)
