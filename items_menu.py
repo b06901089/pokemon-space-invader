@@ -20,15 +20,15 @@ def _format_item_description(item_key, item_data):
 def _format_powerup_description(idx):
     # Map powerup index to description consistent with game logic in main.py
     if idx == 1:
-        return f"Recover {C.POWERUP_RECOVER_HEALTH} health when collected."
+        return f"Increase maximum health by {C.POWERUP_RECOVER_HEALTH} when collected."
     elif idx == 2:
         return "Increase bullet fire rate / reduces cooldown."
     elif idx == 3:
         return "Upgrade ship fire mode (more bullets)."
     elif idx == 4:
-        return "Spawn protective swords around the ship (damage nearby enemies)."
+        return "Spawn protective swords around the ship (currently only damage non-boss enemies)."
     else:
-        return "Unknown powerup."
+        return "Error: Unknown powerup."
 
 
 def _load_image(path, size=None):
