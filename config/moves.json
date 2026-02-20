@@ -71,8 +71,8 @@
             "move_direction": 0,
             "starting_angle": 0,
             "rotate_radius": 0,
-            "replicas": 10,
-            "replica_delay": 1,
+            "replicas": 5,
+            "replica_delay": 2,
             "power": 1
         }],
         "tornado": [{

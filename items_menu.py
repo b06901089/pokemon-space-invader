@@ -78,30 +78,31 @@ def show_items_menu(screen):
         for ev in pygame.event.get():
             if ev.type == pygame.QUIT:
                 running = False
-            elif ev.type == pygame.KEYDOWN:
-                if ev.key in (pygame.K_SPACE, pygame.K_RETURN, pygame.K_ESCAPE):
-                    running = False
-                elif ev.key == pygame.K_UP:
-                    scroll_y = min(scroll_y + 40, 0)
-                elif ev.key == pygame.K_DOWN:
-                    scroll_y = max(scroll_y - 40, -max_scroll)
-            # elif ev.type == pygame.MOUSEBUTTONDOWN:
-            #     if ev.button == 4:  # wheel up
-            #         scroll_y = min(scroll_y + 40, 0)
-            #     elif ev.button == 5:  # wheel down
-            #         scroll_y = max(scroll_y - 40, -max_scroll)
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_UP]:
+            scroll_y = min(scroll_y + 10, 0)
+        elif keys[pygame.K_DOWN]:
+            scroll_y = max(scroll_y - 10, -max_scroll)
+        elif keys[pygame.K_SPACE] or keys[pygame.K_RETURN]:
+            running = False
 
         # Background overlay
         screen.fill((18, 18, 18))
 
-        # Title
-        title_surf = title_font.render('Items & Powerups', True, C.WHITE)
-        screen.blit(title_surf, (padding, padding))
+        # # Title
+        # title_surf = title_font.render('Items & Powerups', True, C.WHITE)
+        # screen.blit(title_surf, (padding, padding))
 
         # Single-column layout: render Items first, then Powerups below
         content_x = padding
-        content_y = padding + 64 + scroll_y
+        content_y = padding + scroll_y
         full_w = w - padding * 2
+
+        content_y += 8
+        item_header = header_font.render('Items', True, C.WHITE)
+        screen.blit(item_header, (content_x, content_y))
+        content_y += 36
 
         # Items (full-width blocks stacked vertically)
         for key, data in items:
@@ -187,9 +188,10 @@ def show_items_menu(screen):
         # compute scroll limits based on final content_y
         # Determine content start (just below the title) and footer top so we can
         # compute the visible viewport height exactly instead of using a heuristic.
-        title_h = title_surf.get_height()
-        content_start = padding + title_h + 8  # matches how content_y was initially computed
-        footer_top = h - 40  # we draw the footer at y = h - 40
+        # title_h = title_surf.get_height()
+        # content_start = padding + title_h + 8  # matches how content_y was initially computed
+        content_start = padding + 8
+        # footer_top = h - 40  # we draw the footer at y = h - 40
 
         total_content_height = content_y - content_start
         # visible_height = max(0, footer_top - content_start)
@@ -197,7 +199,7 @@ def show_items_menu(screen):
         max_scroll = max(0, total_content_height - visible_height)
 
         # footer
-        hint = body_font.render('Press SPACE/ENTER to start the game. Use mouse wheel or UP/DOWN to scroll items.', True, (200, 200, 200))
+        hint = body_font.render('Press SPACE/ENTER to start the game. Use UP/DOWN to scroll items.', True, (200, 200, 200))
         screen.blit(hint, (padding, h - 40))
 
         pygame.display.flip()
