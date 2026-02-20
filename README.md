@@ -33,6 +33,9 @@ python3 download_pokemon_items.py
 python3 download_pokemon_sprites.py
 ```
 
+Gen2 sprites came with white backgrounds. I use [piskelapp.com](https://www.piskelapp.com/) to eliminate background.
+
+
 Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons). Extract it and put it under `img/`
 Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and move `64x64` under the root `Free - Raven Fantasy Icons` folder.
 

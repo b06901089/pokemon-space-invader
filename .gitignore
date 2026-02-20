@@ -11,3 +11,5 @@ img/Free - Raven Fantasy Icons
 
 __pycache__/
 *.pyc
+
+*.DS_Store
