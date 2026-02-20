@@ -30,21 +30,23 @@ def spawn_boss_bullet(sprite_groups):
                 bo.shot_counter = 0
                 bo.last_shot = time_now + bo.shot_rest
 
-def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, replicas_list):
+def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, schedulers_list):
     if spawn_dir == "rdm_top":
         x = get_random_x()
         y = -50
     elif spawn_dir == "self":
         x = sprite.rect.centerx
         y = sprite.rect.centery
-        
-    for idx in range(ani_part):
+    
+    for idx in range(ani_part):        
         sprite_groups['animation'].add(Animation(x, y, ani, idx))
+        
         rep = C.MOVE_JSON['moves'][ani][idx]['replicas']
         rep_delay = C.MOVE_JSON['moves'][ani][idx]['replica_delay']
         if rep > 0:
-            replicas_list.append([0, rep, rep_delay, (x, y, ani, idx)])
-
+            scheduler = ReplicaScheduler(sprite_groups, x, y, ani, idx, rep, rep_delay)
+            schedulers_list.append(scheduler)
+            
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
     time_now = pygame.time.get_ticks()
     if time_now - last_alien_team > C.SPAWN_ALIENS_TEAMS_COOLDOWN:

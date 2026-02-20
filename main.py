@@ -51,7 +51,7 @@ boss_shot_counter = 0
 hong_bao_collected = 0
 powerup_collected = 0
 boss_wave_active = False
-replicas_list = []
+schedulers_list = []
 
 # simple UI: panel for 3-item choice and panel for inventory
 phase_choice_visible = False
@@ -220,18 +220,7 @@ while run:
                         )
                         boss_wave_active = True
 
-            new_replicas = []
-            for r in replicas_list:
-                if r[0] >= r[2]:
-                    sprite_groups['animation'].add(Animation(*r[3]))
-                    r[0] = 0
-                    r[1] -= 1
-                    if r[1] > 0:
-                        new_replicas.append(r)
-                else:
-                    r[0] += 1
-                    new_replicas.append(r)
-            replicas_list[:] = new_replicas
+            schedulers_list = [s for s in schedulers_list if s.update()]
 
             # create boss moves
             time_now = pygame.time.get_ticks()
@@ -245,7 +234,7 @@ while run:
                             move['name'], 
                             move['spawn_dir'], 
                             len(C.MOVE_JSON['moves'][move['name']]),
-                            replicas_list
+                            schedulers_list
                         )
 
             spawn_hong_bao()
