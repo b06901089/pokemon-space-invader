@@ -8,6 +8,7 @@ from objects import *
 from config import sound_manager
 from collisions import resolve_all
 from scripts.utils import *
+from items_menu import show_items_menu
 
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -159,6 +160,10 @@ def initialize_game():
     # create player spaceship
     spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
     sprite_groups['spaceship'].add(spaceship)
+
+
+# show items/powerups UI before starting the game
+show_items_menu(screen)
 
 
 # main game loop
