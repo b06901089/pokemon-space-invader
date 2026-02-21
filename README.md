@@ -27,17 +27,21 @@ pip install pygame
 On some systems you may need `python3` and `pip3` instead of `python`/`pip`.
 
 Download the images for pokemon
+
+Gen2 sprites came with white backgrounds. I use [piskelapp.com](https://www.piskelapp.com/) to eliminate background.
+
 ```
 mkdir img/pokemon
 python3 download_pokemon_items.py
 python3 download_pokemon_sprites.py
 ```
 
-Gen2 sprites came with white backgrounds. I use [piskelapp.com](https://www.piskelapp.com/) to eliminate background.
 
 Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons). Extract it and put it under `img/`
 
-Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and move `64x64` under the root `Free - Raven Fantasy Icons` folder.
+Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and put it under `img/`
+
+Extract it and move `64x64/` under the root `Free - Raven Fantasy Icons/` folder.
 
 ## Running the game
 
@@ -56,7 +60,9 @@ python3 main.py
 ## Controls
 
 Up/Down/Left/Right to control your ships
+
 Space to fire
+
 Mouse Click to retrieve item rewards
 
 ## TODO (GamePlay)
@@ -89,7 +95,7 @@ Mouse Click to retrieve item rewards
 Respect all asset licenses, copyrights and creators when redistributing.
 
 Red Envelope: [Link](https://witpop.itch.io/sprite-pack-hred-envelope-icons)
-    OR Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
+    or Check the `img/Red Envelope Starter Pack/READ ME CC-BY-NC.txt` for asset credits and license details.
 
 Pokemon Sprites: [Link](https://pokemondb.net/)
 
