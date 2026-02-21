@@ -1,4 +1,4 @@
-![](img/logo/logo-gpt-v1.png =256x256)
+<img src="img/logo/logo-gpt-v1.png" width="384" height="256">
 
 # pokemon-space-invader
 
