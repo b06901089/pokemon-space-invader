@@ -11,10 +11,8 @@ class Boss(pygame.sprite.Sprite):
         self.rect.center = (x, y)
         self.health_start = health
         self.health_remaining = self.health_start
-        self.boss_speed = speed
+        self.move_speed = speed
         self.y_limit = C.SCREEN_HEIGHT // 2 - random.randint(0, 200)
-        self.last_shot = 0
-        self.shot_counter = 0
         self.moves = moves
 
     def draw_healthbar(self, surface):
@@ -24,12 +22,12 @@ class Boss(pygame.sprite.Sprite):
 
     def update(self):
         if self.rect.bottom <= self.y_limit:
-            self.rect.y += self.boss_speed
+            self.rect.y += self.move_speed
         else:
             if self.rect.left < 0:
                 self.rect.left = 0
-                self.boss_speed *= -1
+                self.move_speed *= -1
             elif self.rect.right > C.SCREEN_WIDTH:
                 self.rect.right = C.SCREEN_WIDTH
-                self.boss_speed *= -1
-            self.rect.x += self.boss_speed
+                self.move_speed *= -1
+            self.rect.x += self.move_speed

@@ -37,8 +37,8 @@ ORG_ALIEN_PATH = [
 #     '#0458': 'img/pokemon/gen4/mantyke_48.png'
 # }
 ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
-ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
-ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
+# ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
+# ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
 ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
 ALIEN_BULLET_PATH = ['img/org_space_invader/alien_bullet0.png', 'img/org_space_invader/alien_bullet1.png']
 SPAWN_ALIEN_COOLDOWN = 120 # spawn a new alien every {#} frames at the beginning

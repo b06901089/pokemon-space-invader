@@ -64,13 +64,6 @@ def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
                     schedulers_list
                 )
 
-def spawn_alien_bullet(sprite_groups, unbreakable=False):
-    random_alien = random.choice(sprite_groups['alien'].sprites())
-    if not unbreakable:
-        sprite_groups['alien_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom))
-    else:
-        sprite_groups['unbreakable_bullet'].add(Alien_Bullet(random_alien.rect.centerx, random_alien.rect.bottom, bu_type=1))
-
 def create_aliens_grid(sprite_groups, row, col):
     interval = C.SCREEN_WIDTH // (col + 1)
     for r in range(row):

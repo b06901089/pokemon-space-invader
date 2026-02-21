@@ -47,7 +47,6 @@ game_phase = 2 # modify this to test different phases directly
 state = 0
 killed_aliens = 0
 game_over = 0 # 0 is game not over, 1 is player has won, -1 is player has lost
-boss_shot_counter = 0
 hong_bao_collected = 0
 powerup_collected = 0
 boss_wave_active = False
@@ -165,7 +164,6 @@ def initialize_game():
 # show items/powerups UI before starting the game
 show_items_menu(screen)
 
-
 # main game loop
 initialize_game()
 phase_choice_panel, phase_choice_rects = render_item_choice_panel()
@@ -230,16 +228,6 @@ while run:
             # if phase_data['data']['spawn_aliens_teams'] != -1:
             #     which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
             #     last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
-            
-
-            # create random alien bullets
-            time_now = pygame.time.get_ticks()
-            if time_now - last_alien_shot > C.ALIEN_SHOT_COOLDOWN:
-                for _ in range(len(sprite_groups['alien']) // C.ALIEN_SHOT_RATIO):
-                    spawn_alien_bullet(sprite_groups)
-                for _ in range(len(sprite_groups['alien']) // C.ALIEN_UNBREAKABLE_SHOT_RATIO):
-                    spawn_alien_bullet(sprite_groups, unbreakable=True)
-                last_alien_shot = time_now
 
             # update sprite group
             for k in sprite_groups:
