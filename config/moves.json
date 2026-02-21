@@ -151,7 +151,7 @@
         }],
         "shoot_alien_bullet0": [{
             "animation": "alien_bullet0",
-            "speed": 600,
+            "speed": -1,
             "repeat": 1,
             "vx": 0,
             "vy": 2,
@@ -166,7 +166,7 @@
             "power": 1
         }, {
             "animation": "alien_bullet0",
-            "speed": 600,
+            "speed": -1,
             "repeat": 1,
             "vx": -0.25,
             "vy": 2,
@@ -181,7 +181,7 @@
             "power": 1
         }, {
             "animation": "alien_bullet0",
-            "speed": 600,
+            "speed": -1,
             "repeat": 1,
             "vx": 0.25,
             "vy": 2,

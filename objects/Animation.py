@@ -62,6 +62,12 @@ class Animation(pygame.sprite.Sprite):
             self.rect.x = int(self.pos[0])
             self.rect.y = int(self.pos[1])
 
+        # static objects
+        if self.speed == -1:
+            if self.rect.bottom < 0 or self.rect.right < 0 or self.rect.left > C.SCREEN_WIDTH:
+                self.kill()
+            return
+
         self.counter += 1
         if self.counter >= self.speed and self.index < len(self.images) - 1:
             self.counter = 0
