@@ -1,6 +1,5 @@
 from .Bullet import Bullet
 from .Alien import Alien
-from .Alien_Bullet import Alien_Bullet
 from .Explosion import Explosion
 from .Powerup import Powerup
 from .Spaceship import Spaceship
@@ -14,7 +13,6 @@ from .Inventory import Inventory
 __all__ = [
     "Bullet",
     "Alien",
-    "Alien_Bullet",
     "Explosion",
     "Powerup",
     "Spaceship",
