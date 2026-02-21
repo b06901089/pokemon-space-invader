@@ -55,7 +55,6 @@ def show_items_menu(screen):
     clock = pygame.time.Clock()
     w, h = screen.get_size()
 
-    title_font = pygame.font.SysFont('Constantia', 36)
     header_font = pygame.font.SysFont('Constantia', 22)
     body_font = pygame.font.SysFont('Constantia', 16)
 
@@ -66,9 +65,11 @@ def show_items_menu(screen):
     # Layout constants
     padding = 16
     thumb_size = (64, 64)
-    left_col_width = w // 2 - padding * 2
-    right_col_x = w // 2 + padding
-
+    item_box_h = 120
+    pu_box_h = 96
+    total_content_height = 8 + 36 + len(items) * (item_box_h + padding) + 8 + 36 + max(0, len(powerups) - 1) * (pu_box_h + padding)
+    
+    scroll_speed = 15
     scroll_y = 0
     max_scroll = 0
 
@@ -81,18 +82,14 @@ def show_items_menu(screen):
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
-            scroll_y = min(scroll_y + 10, 0)
+            scroll_y = min(scroll_y + scroll_speed, 0)
         elif keys[pygame.K_DOWN]:
-            scroll_y = max(scroll_y - 10, -max_scroll)
+            scroll_y = max(scroll_y - scroll_speed, -max_scroll)
         elif keys[pygame.K_SPACE] or keys[pygame.K_RETURN]:
             running = False
 
         # Background overlay
         screen.fill((18, 18, 18))
-
-        # # Title
-        # title_surf = title_font.render('Items & Powerups', True, C.WHITE)
-        # screen.blit(title_surf, (padding, padding))
 
         # Single-column layout: render Items first, then Powerups below
         content_x = padding
@@ -106,7 +103,7 @@ def show_items_menu(screen):
 
         # Items (full-width blocks stacked vertically)
         for key, data in items:
-            rect = pygame.Rect(content_x, content_y, full_w, 120)
+            rect = pygame.Rect(content_x, content_y, full_w, item_box_h)
             pygame.draw.rect(screen, (28, 28, 28), rect)
             pygame.draw.rect(screen, (80, 80, 80), rect, 1)
 
@@ -139,7 +136,7 @@ def show_items_menu(screen):
                 txt = body_font.render(ln, True, (220, 220, 220))
                 screen.blit(txt, (content_x + 8 + thumb_size[0] + 8, content_y + 36 + i * 18))
 
-            content_y += 136
+            content_y += item_box_h + padding
 
         # Small spacer and a header for powerups
         content_y += 8
@@ -153,7 +150,7 @@ def show_items_menu(screen):
                 continue
             path, size = pu
             size = size if size else (64, 64)
-            rect = pygame.Rect(content_x, content_y, full_w, 96)
+            rect = pygame.Rect(content_x, content_y, full_w, pu_box_h)
             pygame.draw.rect(screen, (28, 28, 28), rect)
             pygame.draw.rect(screen, (80, 80, 80), rect, 1)
 
@@ -183,24 +180,15 @@ def show_items_menu(screen):
                 txt = body_font.render(ln, True, (220, 220, 220))
                 screen.blit(txt, (content_x + 8 + size[0] + 8, content_y + 36 + i * 18))
 
-            content_y += 104
+            content_y += pu_box_h + padding
 
-        # compute scroll limits based on final content_y
-        # Determine content start (just below the title) and footer top so we can
-        # compute the visible viewport height exactly instead of using a heuristic.
-        # title_h = title_surf.get_height()
-        # content_start = padding + title_h + 8  # matches how content_y was initially computed
-        content_start = padding + 8
-        # footer_top = h - 40  # we draw the footer at y = h - 40
 
-        total_content_height = content_y - content_start
-        # visible_height = max(0, footer_top - content_start)
-        visible_height = 0
-        max_scroll = max(0, total_content_height - visible_height)
+        footer_hight = h - 40
+        max_scroll = max(0, total_content_height - footer_hight + padding)
 
         # footer
         hint = body_font.render('Press SPACE/ENTER to start the game. Use UP/DOWN to scroll items.', True, (200, 200, 200))
-        screen.blit(hint, (padding, h - 40))
+        screen.blit(hint, (padding, footer_hight))
 
         pygame.display.flip()
 
