@@ -2,25 +2,25 @@
     "fresh-water": {
         "url": "img/pokemon/items/fresh-water.png",
         "effects": {
-            "heal": 50
+            "heal": 5
         }
     },
     "potion":{
         "url": "img/pokemon/items/potion.png",
         "effects": {
-            "heal": 20
+            "heal": 2
         }
     },
     "super-potion":{
         "url": "img/pokemon/items/super-potion.png",
         "effects": {
-            "heal": 50
+            "heal": 5
         }
     },
     "hyper-potion":{
         "url": "img/pokemon/items/hyper-potion.png",
         "effects": {
-            "heal": 200
+            "heal": 20
         }
     },
     "max-potion":{

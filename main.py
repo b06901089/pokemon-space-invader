@@ -368,6 +368,19 @@ while run:
             if clicked_idx is not None:
                 phase_choice_visible = False
                 state += 1
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
+                my_inventory.use_item(0, sprite_groups)
+            elif event.key == pygame.K_w:
+                my_inventory.use_item(1, sprite_groups)
+            elif event.key == pygame.K_e:
+                my_inventory.use_item(2, sprite_groups)
+            elif event.key == pygame.K_a:
+                my_inventory.use_item(3, sprite_groups)
+            elif event.key == pygame.K_s:
+                my_inventory.use_item(4, sprite_groups)
+            elif event.key == pygame.K_d:
+                my_inventory.use_item(5, sprite_groups)
 
     pygame.display.update()
 
