@@ -20,7 +20,8 @@ SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
 SPACESHIP_HEALTH = 25
 SPACESHIP_SPEED = 8
 
-BULLET_PATH = 'img/org_space_invader/bullet.png'
+# BULLET_PATH = 'img/org_space_invader/bullet.png'
+BULLET_PATH_SMOOTH = 'img/edited/smooth_bullet.png'
 BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
 BULLET_X_SPEED = [0, 1, -1, 3, -3] # relative to fixed y speed
 

@@ -9,9 +9,6 @@
                     "health": 200,
                     "speed": 2,
                     "fig": 4,
-                    "shot_cd": 200,
-                    "shot_cnt": 15,
-                    "shot_rest": 2000,
                     "moves": [
                         {
                             "name": "leaf_drop",

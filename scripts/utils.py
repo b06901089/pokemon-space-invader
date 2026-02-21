@@ -19,23 +19,9 @@ def draw_text(screen, text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
-def spawn_boss(sprite_groups, x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest, moves):
-    boss = Boss(x, y, health, speed, fig, shot_cd, shot_cnt, shot_rest, moves)
+def spawn_boss(sprite_groups, x, y, health, speed, fig, moves):
+    boss = Boss(x, y, health, speed, fig, moves)
     sprite_groups['boss'].add(boss)
-
-def spawn_boss_bullet(sprite_groups):
-    for bo in sprite_groups['boss'].sprites():
-        time_now = pygame.time.get_ticks()
-        if time_now - bo.last_shot > bo.shot_cd:
-            if bo.shot_counter < bo.shot_cnt:
-                bo.shot_counter += 1
-                sprite_groups['unbreakable_bullet'].add(Alien_Bullet(bo.rect.centerx, bo.rect.bottom, bu_type=1))
-                sprite_groups['alien_bullet'].add(Alien_Bullet(bo.rect.centerx - 20, bo.rect.bottom, mode=1))
-                sprite_groups['alien_bullet'].add(Alien_Bullet(bo.rect.centerx + 20, bo.rect.bottom, mode=2))
-                bo.last_shot = time_now
-            else:
-                bo.shot_counter = 0
-                bo.last_shot = time_now + bo.shot_rest
 
 def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, schedulers_list):
     if spawn_dir == "rdm_top":
@@ -43,7 +29,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
         y = -50
     elif spawn_dir == "self":
         x = sprite.rect.centerx
-        y = sprite.rect.centery
+        y = sprite.rect.bottom
     elif spawn_dir == "full_rdm":
         max_attempts = 20
         attempts = 0
@@ -60,7 +46,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
         rep = C.MOVE_JSON['moves'][ani][idx]['replicas']
         rep_delay = C.MOVE_JSON['moves'][ani][idx]['replica_delay']
         if rep > 0:
-            scheduler = ReplicaScheduler(sprite_groups, x, y, ani, idx, rep, rep_delay)
+            scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, (spawn_dir == "self"))
             schedulers_list.append(scheduler)
 
 def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):

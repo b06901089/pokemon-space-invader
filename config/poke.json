@@ -1,0 +1,7 @@
+{
+    "spaceship": {
+        "image":  "img/org_space_invader/spaceship.png",
+        "health": 25,
+        "speed": 8
+    }
+}

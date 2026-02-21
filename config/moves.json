@@ -2,6 +2,9 @@
     "sprite": {
         "sprite_sheet_1": {
             "url": "img/edited/Game Boy Advance - Pokemon Ruby _ Sapphire - Battle Effects - Move Effects.png"
+        },
+        "alien_bullet0": {
+            "url": "img/org_space_invader/alien_bullet0.png"
         }
     },
     "animations": {
@@ -40,6 +43,15 @@
             "h": 32,
             "horizontal_or_vertical": 1,
             "frame_counts": 5
+        },
+        "alien_bullet0": {
+            "sprite_sheet": "alien_bullet0",
+            "x": 0,
+            "y": 0,
+            "w": 13,
+            "h": 13,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 1
         }
     },
     "moves": {
@@ -135,6 +147,52 @@
             "rotate_radius": 0,
             "replicas": 0,
             "replica_delay": 0,
+            "power": 1
+        }],
+        "shoot_alien_bullet0": [{
+            "animation": "alien_bullet0",
+            "speed": 600,
+            "repeat": 1,
+            "vx": 0,
+            "vy": 2,
+            "offset_x": 0,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 4,
+            "replica_delay": 25,
+            "power": 1
+        }, {
+            "animation": "alien_bullet0",
+            "speed": 600,
+            "repeat": 1,
+            "vx": -0.25,
+            "vy": 2,
+            "offset_x": -20,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 4,
+            "replica_delay": 25,
+            "power": 1
+        }, {
+            "animation": "alien_bullet0",
+            "speed": 600,
+            "repeat": 1,
+            "vx": 0.25,
+            "vy": 2,
+            "offset_x": 20,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 4,
+            "replica_delay": 25,
             "power": 1
         }]
     }

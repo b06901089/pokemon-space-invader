@@ -9,9 +9,6 @@
                     "health": 15,
                     "speed": 1,
                     "fig": 3,
-                    "shot_cd": 250,
-                    "shot_cnt": 10,
-                    "shot_rest": 3000,
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
@@ -24,9 +21,6 @@
                     "health": 15,
                     "speed": 1,
                     "fig": 3,
-                    "shot_cd": 250,
-                    "shot_cnt": 10,
-                    "shot_rest": 4000,
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
@@ -39,9 +33,6 @@
                     "health": 15,
                     "speed": 1,
                     "fig": 3,
-                    "shot_cd": 250,
-                    "shot_cnt": 10,
-                    "shot_rest": 4000,
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",

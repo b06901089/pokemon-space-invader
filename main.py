@@ -43,7 +43,7 @@ last_boss_shot = pygame.time.get_ticks()
 last_countdown = pygame.time.get_ticks()
 last_alien_team = pygame.time.get_ticks()
 countdown = 3
-game_phase = 1 # modify this to test different phases directly
+game_phase = 2 # modify this to test different phases directly
 state = 0
 killed_aliens = 0
 game_over = 0 # 0 is game not over, 1 is player has won, -1 is player has lost
@@ -212,10 +212,7 @@ while run:
                                    b['pos'][1], 
                                    b['health'], 
                                    b['speed'], 
-                                   b['fig'], 
-                                   b['shot_cd'], 
-                                   b['shot_cnt'], 
-                                   b['shot_rest'],
+                                   b['fig'],
                                    b['moves']
                         )
                         boss_wave_active = True
@@ -244,8 +241,7 @@ while run:
             # if phase_data['data']['spawn_aliens_teams'] != -1:
             #     which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
             #     last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
-            spawn_boss_bullet(sprite_groups)
-
+            
 
             # create random alien bullets
             time_now = pygame.time.get_ticks()
