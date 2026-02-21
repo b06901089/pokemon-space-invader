@@ -8,7 +8,6 @@
         "spawn_powerups": 1,
         "spawn_hong_bao": 1,
         "spawn_aliens": 1,
-        "spawn_aliens_teams": 0,
         "end": {
             "killed_aliens": 20
         },

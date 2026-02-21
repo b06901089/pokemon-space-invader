@@ -49,15 +49,6 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
             scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, (spawn_dir == "self"))
             schedulers_list.append(scheduler)
 
-def spawn_aliens_teams(sprite_groups, last_alien_team, number, which_team):
-    time_now = pygame.time.get_ticks()
-    if time_now - last_alien_team > C.SPAWN_ALIENS_TEAMS_COOLDOWN:
-        x, y, vx, vy, fig, is_flip = C.SPAWN_ALIENS_TEAMS_MAP[which_team]
-        for i in range(number):
-            sprite_groups['alien'].add(PassByAlien(x - vx * 15 * i, y - vy * 15 * i, vx, vy, fig, is_flip))
-        return time_now
-    return last_alien_team
-
 def spawn_alien_bullet(sprite_groups, unbreakable=False):
     random_alien = random.choice(sprite_groups['alien'].sprites())
     if not unbreakable:

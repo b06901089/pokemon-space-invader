@@ -32,10 +32,10 @@ ORG_ALIEN_PATH = [
     'img/org_space_invader/alien4.png',
     'img/org_space_invader/alien5.png',
 ]
-POKEMON_PATH = {
-    '#0043': 'img/pokemon/gen3/oddish.png',
-    '#0458': 'img/pokemon/gen4/mantyke_48.png'
-}
+# POKEMON_PATH = {
+#     '#0043': 'img/pokemon/gen3/oddish.png',
+#     '#0458': 'img/pokemon/gen4/mantyke_48.png'
+# }
 ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
 ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
 ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
@@ -83,34 +83,34 @@ POWERUP_PATH = [
 ]
 SWORD_PATH = 'img/edited/sword.png'
 
-SPAWN_ALIENS_TEAMS_COOLDOWN = 7200
-SPAWN_ALIENS_TEAMS_MAP = [
-    [-50, 100, 2, 5, '#0043', True],
-    [-50, -50, 2, 5, '#0043', True],
-    [-50, -200, 2, 5, '#0043', True],
-    [SCREEN_WIDTH + 50, 100, -2, 5, '#0043', False],
-    [SCREEN_WIDTH + 50, -50, -2, 5, '#0043', False],
-    [SCREEN_WIDTH + 50, -200, -2, 5, '#0043', False],
+# SPAWN_ALIENS_TEAMS_COOLDOWN = 7200
+# SPAWN_ALIENS_TEAMS_MAP = [
+#     [-50, 100, 2, 5, '#0043', True],
+#     [-50, -50, 2, 5, '#0043', True],
+#     [-50, -200, 2, 5, '#0043', True],
+#     [SCREEN_WIDTH + 50, 100, -2, 5, '#0043', False],
+#     [SCREEN_WIDTH + 50, -50, -2, 5, '#0043', False],
+#     [SCREEN_WIDTH + 50, -200, -2, 5, '#0043', False],
 
-    [-50, 100, 2, 4, '#0043', True],
-    [-50, -50, 2, 4, '#0043', True],
-    [-50, -200, 2, 4, '#0043', True],
-    [SCREEN_WIDTH + 50, 100, -2, 4, '#0043', False],
-    [SCREEN_WIDTH + 50, -50, -2, 4, '#0043', False],
-    [SCREEN_WIDTH + 50, -200, -2, 4, '#0043', False],
+#     [-50, 100, 2, 4, '#0043', True],
+#     [-50, -50, 2, 4, '#0043', True],
+#     [-50, -200, 2, 4, '#0043', True],
+#     [SCREEN_WIDTH + 50, 100, -2, 4, '#0043', False],
+#     [SCREEN_WIDTH + 50, -50, -2, 4, '#0043', False],
+#     [SCREEN_WIDTH + 50, -200, -2, 4, '#0043', False],
 
-    [-50, 300, 2, 3, '#0043', True],
-    [-50, 150, 2, 3, '#0043', True],
-    [-50, 0, 2, 3, '#0043', True],
-    [SCREEN_WIDTH + 50, 300, -2, 3, '#0043', False],
-    [SCREEN_WIDTH + 50, 150, -2, 3, '#0043', False],
-    [SCREEN_WIDTH + 50, 0, -2, 3, '#0043', False],
+#     [-50, 300, 2, 3, '#0043', True],
+#     [-50, 150, 2, 3, '#0043', True],
+#     [-50, 0, 2, 3, '#0043', True],
+#     [SCREEN_WIDTH + 50, 300, -2, 3, '#0043', False],
+#     [SCREEN_WIDTH + 50, 150, -2, 3, '#0043', False],
+#     [SCREEN_WIDTH + 50, 0, -2, 3, '#0043', False],
 
-    [-50, SCREEN_HEIGHT - 200, 4, 0, '#0043', True],
-    [-50, SCREEN_HEIGHT - 400, 4, 0, '#0043', True],
-    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 200, -4, 0, '#0043', False],
-    [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0043', False],
-]
+#     [-50, SCREEN_HEIGHT - 200, 4, 0, '#0043', True],
+#     [-50, SCREEN_HEIGHT - 400, 4, 0, '#0043', True],
+#     [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 200, -4, 0, '#0043', False],
+#     [SCREEN_WIDTH + 50, SCREEN_HEIGHT - 400, -4, 0, '#0043', False],
+# ]
 
 # Animation reference
 # https://www.youtube.com/watch?v=mnCPCgA3HvI
@@ -125,3 +125,8 @@ with open(ITEM_JSON_PATH, 'r') as f:
 ITEM_WEIGHTS = [ITEM_JSON[item]['weight'] for item in ITEM_JSON]
 
 INVENTORY_SHOW_KEY = ['q', 'w', 'e', 'a', 's', 'd']
+
+ENEMY_JSON_PATH = 'config/enemy.json'
+with open(ENEMY_JSON_PATH, 'r') as f:
+    ENEMY_JSON = json.load(f)
+ENEMY_JSON_KEYS = list(ENEMY_JSON.keys())

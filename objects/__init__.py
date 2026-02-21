@@ -1,5 +1,5 @@
 from .Bullet import Bullet
-from .Alien import Alien, PassByAlien
+from .Alien import Alien
 from .Alien_Bullet import Alien_Bullet
 from .Explosion import Explosion
 from .Powerup import Powerup
@@ -14,7 +14,6 @@ from .Inventory import Inventory
 __all__ = [
     "Bullet",
     "Alien",
-    "PassByAlien",
     "Alien_Bullet",
     "Explosion",
     "Powerup",

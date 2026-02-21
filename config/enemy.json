@@ -1,0 +1,77 @@
+{
+    "alien1": {
+        "image": "img/org_space_invader/alien1.png",
+        "health": 1,
+        "speed": -1,
+        "exist_type": "stay",
+        "moves": [
+            {
+                "name": "shoot_alien_bullet0",
+                "spawn_dir": "self",
+                "freq": "random",
+                "freq_range": [3000, 7000],
+                "last_move_time": 0
+            }
+        ]
+    }, 
+    "alien2": {
+        "image": "img/org_space_invader/alien2.png",
+        "health": 1,
+        "speed": -1,
+        "exist_type": "stay",
+        "moves": [
+            {
+                "name": "shoot_alien_bullet0",
+                "spawn_dir": "self",
+                "freq": "random",
+                "freq_range": [3000, 7000],
+                "last_move_time": 0
+            }
+        ]
+    }, 
+    "alien3": {
+        "image": "img/org_space_invader/alien3.png",
+        "health": 1,
+        "speed": -1,
+        "exist_type": "stay",
+        "moves": [
+            {
+                "name": "shoot_alien_bullet0",
+                "spawn_dir": "self",
+                "freq": "random",
+                "freq_range": [3000, 7000],
+                "last_move_time": 0
+            }
+        ]
+    }, 
+    "alien4": {
+        "image": "img/org_space_invader/alien4.png",
+        "health": 1,
+        "speed": -1,
+        "exist_type": "stay",
+        "moves": [
+            {
+                "name": "shoot_alien_bullet0",
+                "spawn_dir": "self",
+                "freq": "random",
+                "freq_range": [3000, 7000],
+                "last_move_time": 0
+            }
+        ]
+    }, 
+    "alien5": {
+        "image": "img/org_space_invader/alien5.png",
+        "health": 1,
+        "speed": -1,
+        "exist_type": "stay",
+        "moves": [
+            {
+                "name": "shoot_alien_bullet0",
+                "spawn_dir": "self",
+                "freq": "random",
+                "freq_range": [3000, 7000],
+                "last_move_time": 0
+            }
+        ]
+    }
+}
