@@ -30,7 +30,7 @@ class Inventory:
         item, quantity = self.slots[index]
         spaceship = sprite_groups['spaceship'].sprites()[0]
         if item is not None and quantity > 0:
-            if C.ITEM_JSON[item]['effects']['heal'] > 0:
+            if "heal" in C.ITEM_JSON[item]['effects']:
                 spaceship.health_remaining = min(spaceship.health_remaining + C.ITEM_JSON[item]['effects']['heal'], spaceship.health_start)
             self.slots[index] = (item, quantity - 1)
             if self.slots[index][1] == 0:

@@ -135,4 +135,15 @@ def render_inventory_panel():
     return inventory_panel, inventory_rects
 
 def get_random_three_items():
-    return random.sample(list(C.ITEM_JSON.keys()), 3)
+
+    keys = list(C.ITEM_JSON.keys())
+    weights = C.ITEM_WEIGHTS
+
+    scored = [
+        (random.random() ** (1 / w), k)
+        for k, w in zip(keys, weights)
+    ]
+
+    return [k for _, k in sorted(scored, reverse=True)[:3]]
+    # return random.choices(list(C.ITEM_JSON.keys()), weights=C.ITEM_WEIGHTS, k=3) # this is with replacement, which means you can get duplicates.
+    # return random.sample(list(C.ITEM_JSON.keys()), 3) # this doesn't consider weights.

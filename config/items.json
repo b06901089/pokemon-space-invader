@@ -3,30 +3,63 @@
         "url": "img/pokemon/items/fresh-water.png",
         "effects": {
             "heal": 5
-        }
+        },
+        "weight": 50
     },
     "potion":{
         "url": "img/pokemon/items/potion.png",
         "effects": {
             "heal": 2
-        }
+        },
+        "weight": 100
     },
     "super-potion":{
         "url": "img/pokemon/items/super-potion.png",
         "effects": {
             "heal": 5
-        }
+        },
+        "weight": 50
     },
     "hyper-potion":{
         "url": "img/pokemon/items/hyper-potion.png",
         "effects": {
             "heal": 20
-        }
+        },
+        "weight": 10
     },
     "max-potion":{
         "url": "img/pokemon/items/max-potion.png",
         "effects": {
             "heal": 9999
-        }
+        },
+        "weight": 3
+    },
+    "poke-ball":{
+        "url": "img/pokemon/items/poke-ball.png",
+        "effects": {
+            "capture": 1
+        },
+        "weight": 100
+    },
+    "great-ball":{
+        "url": "img/pokemon/items/great-ball.png",
+        "effects": {
+            "capture": 1.5
+        },
+        "weight": 50
+    },
+    "ultra-ball":{
+        "url": "img/pokemon/items/ultra-ball.png",
+        "effects": {
+            "capture": 2
+        },
+        "weight": 10
+    },
+    "master-ball":{
+        "url": "img/pokemon/items/master-ball.png",
+        "effects": {
+            "capture": 9999
+        },
+        "weight": 0.5
     }
 }

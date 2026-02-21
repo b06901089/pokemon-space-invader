@@ -120,4 +120,6 @@ ITEM_JSON_PATH = 'config/items.json'
 with open(ITEM_JSON_PATH, 'r') as f:
     ITEM_JSON = json.load(f)
 
+ITEM_WEIGHTS = [ITEM_JSON[item]['weight'] for item in ITEM_JSON]
+
 INVENTORY_SHOW_KEY = ['q', 'w', 'e', 'a', 's', 'd']
