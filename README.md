@@ -82,7 +82,8 @@ Mouse Click to retrieve item rewards
 - Add unit tests for non-graphical logic (collision resolver, spawn logic)
 - Keep Improving code qaulity
 
-- Known Bug: when game pause (choose item), time/frame counters won't be stop (e.g. instant refire)
+- Known Issue: when game pause (choose item), time/frame counters won't be stop (e.g. instant refire)
+- Known Issue: having more than 6 kind of items...
 
 ## TODO (Description)
 
