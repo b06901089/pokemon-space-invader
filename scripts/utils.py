@@ -49,6 +49,21 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
             scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, (spawn_dir == "self"))
             schedulers_list.append(scheduler)
 
+def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
+    time_now = pygame.time.get_ticks()
+    for sprite in sprite_group.sprites():
+        for move in sprite.moves:
+            if time_now - move['last_move_time'] > move['freq']:
+                move['last_move_time'] = time_now
+                spawn_animation_for_sprite(
+                    sprite_groups,
+                    sprite,
+                    move['name'],
+                    move['spawn_dir'],
+                    len(C.MOVE_JSON['moves'][move['name']]),
+                    schedulers_list
+                )
+
 def spawn_alien_bullet(sprite_groups, unbreakable=False):
     random_alien = random.choice(sprite_groups['alien'].sprites())
     if not unbreakable:

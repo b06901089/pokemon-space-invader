@@ -149,7 +149,23 @@
             "replica_delay": 0,
             "power": 1
         }],
-        "shoot_alien_bullet0": [{
+        "shoot_1_alien_bullet0": [{
+            "animation": "alien_bullet0",
+            "speed": -1,
+            "repeat": 1,
+            "vx": 0,
+            "vy": 2,
+            "offset_x": 0,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0,
+            "power": 1
+        }],
+        "shoot_3_alien_bullet0": [{
             "animation": "alien_bullet0",
             "speed": -1,
             "repeat": 1,

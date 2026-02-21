@@ -17,7 +17,7 @@
                             "last_move_time": 0
                         }, 
                         {
-                            "name": "shoot_alien_bullet0",
+                            "name": "shoot_3_alien_bullet0",
                             "spawn_dir": "self",
                             "freq": 7000,
                             "last_move_time": 0

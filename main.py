@@ -219,20 +219,9 @@ while run:
 
             schedulers_list = [s for s in schedulers_list if s.update()]
 
-            # create boss moves
-            time_now = pygame.time.get_ticks()
-            for bo in sprite_groups['boss'].sprites():
-                for move in bo.moves:
-                    if time_now - move['last_move_time'] > move['freq']:
-                        move['last_move_time'] = time_now
-                        spawn_animation_for_sprite(
-                            sprite_groups, 
-                            bo, 
-                            move['name'], 
-                            move['spawn_dir'], 
-                            len(C.MOVE_JSON['moves'][move['name']]),
-                            schedulers_list
-                        )
+            # Execute moves for all sprites with moves
+            execute_sprite_moves(sprite_groups['boss'], sprite_groups, schedulers_list)
+            execute_sprite_moves(sprite_groups['alien'], sprite_groups, schedulers_list)
 
             spawn_hong_bao()
             spawn_aliens()  

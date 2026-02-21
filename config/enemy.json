@@ -6,10 +6,9 @@
         "exist_type": "stay",
         "moves": [
             {
-                "name": "shoot_alien_bullet0",
+                "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": "random",
-                "freq_range": [3000, 7000],
+                "freq": 5000,
                 "last_move_time": 0
             }
         ]
@@ -21,10 +20,9 @@
         "exist_type": "stay",
         "moves": [
             {
-                "name": "shoot_alien_bullet0",
+                "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": "random",
-                "freq_range": [3000, 7000],
+                "freq": 5000,
                 "last_move_time": 0
             }
         ]
@@ -36,10 +34,9 @@
         "exist_type": "stay",
         "moves": [
             {
-                "name": "shoot_alien_bullet0",
+                "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": "random",
-                "freq_range": [3000, 7000],
+                "freq": 5000,
                 "last_move_time": 0
             }
         ]
@@ -51,10 +48,9 @@
         "exist_type": "stay",
         "moves": [
             {
-                "name": "shoot_alien_bullet0",
+                "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": "random",
-                "freq_range": [3000, 7000],
+                "freq": 5000,
                 "last_move_time": 0
             }
         ]
@@ -66,10 +62,9 @@
         "exist_type": "stay",
         "moves": [
             {
-                "name": "shoot_alien_bullet0",
+                "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": "random",
-                "freq_range": [3000, 7000],
+                "freq": 5000,
                 "last_move_time": 0
             }
         ]
