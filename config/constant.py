@@ -18,6 +18,7 @@ WHITE = (255, 255, 255)
 # Game object setting
 SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
 SPACESHIP_HEALTH = 25
+SPACESHIP_SPEED = 8
 
 BULLET_PATH = 'img/org_space_invader/bullet.png'
 BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
@@ -30,7 +31,7 @@ ORG_ALIEN_PATH = [
     'img/org_space_invader/alien4.png',
     'img/org_space_invader/alien5.png',
 ]
-ALIEN_PATH = {
+POKEMON_PATH = {
     '#0043': 'img/pokemon/gen3/oddish.png',
     '#0458': 'img/pokemon/gen4/mantyke_48.png'
 }

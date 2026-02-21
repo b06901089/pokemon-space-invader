@@ -9,7 +9,7 @@ class Alien(pygame.sprite.Sprite):
         if not alien_figure:
             self.image = pygame.image.load(C.ORG_ALIEN_PATH[random.randint(0, 4)])
         else:
-            self.image = pygame.image.load(C.ALIEN_PATH[alien_figure])
+            self.image = pygame.image.load(C.POKEMON_PATH[alien_figure])
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.pos = [float(self.rect.x), float(self.rect.y)]
@@ -97,9 +97,9 @@ class PassByAlien(pygame.sprite.Sprite):
     def __init__(self, x, y, vx, vy, alien_figure=None, is_flip=False):
         pygame.sprite.Sprite.__init__(self)
         if not alien_figure:
-            self.image = pygame.image.load("img/alien" + str(random.randint(1, 5)) + ".png")
+            self.image = pygame.image.load(C.ORG_ALIEN_PATH[random.randint(0, 4)])
         else:
-            self.image = pygame.image.load(C.ALIEN_PATH[alien_figure])
+            self.image = pygame.image.load(C.POKEMON_PATH[alien_figure])
         if is_flip:
             self.image = pygame.transform.flip(self.image, True, False)
         self.rect = self.image.get_rect()
