@@ -8,25 +8,30 @@ def resolve_all(sprite_groups, sound_manager):
         "applied_powerups": [],  # (ship, powerup)
     }
 
+    # # bullet vs alien bullets
+    # collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien_bullet'], True, True)
+    # for bullet, _ in collisions.items():
+    #     sound_manager.play("explosion")
+    #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
+
+    # # bullet vs unbreakable bullets (bullets destroy player bullets)
+    # collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['unbreakable_bullet'], True, False)
+    # for bullet, _ in collisions.items():
+    #     sound_manager.play("explosion")
+    #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
+
     # bullet vs aliens
-    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien'], True, True)
+    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien'], True, False)
     for _, aliens in collisions.items():
         for a in aliens:
-            result["killed_aliens"] += 1
+            a.health -= 1
             sound_manager.play("explosion")
-            sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
-
-    # bullet vs alien bullets
-    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien_bullet'], True, True)
-    for bullet, _ in collisions.items():
-        sound_manager.play("explosion")
-        sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
-
-    # bullet vs unbreakable bullets (bullets destroy player bullets)
-    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['unbreakable_bullet'], True, False)
-    for bullet, _ in collisions.items():
-        sound_manager.play("explosion")
-        sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
+            sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
+            if a.health <= 0:
+                sound_manager.play("explosion")
+                sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
+                a.kill()
+                result["killed_aliens"] += 1
 
     # bullet vs boss
     collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['boss'], True, False)
@@ -40,21 +45,21 @@ def resolve_all(sprite_groups, sound_manager):
                 sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 3))
                 b.kill()
 
-    # alien bullets vs spaceship
-    collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
-    for ab, ships in collisions.items():
-        for s in ships:
-            sound_manager.play("explosion2")
-            s.health_remaining -= 1
-            sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
+    # # alien bullets vs spaceship
+    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
+    # for ab, ships in collisions.items():
+    #     for s in ships:
+    #         sound_manager.play("explosion2")
+    #         s.health_remaining -= 1
+    #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
 
-    # unbreakable bullets vs spaceship
-    collisions = pygame.sprite.groupcollide(sprite_groups['unbreakable_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
-    for ab, ships in collisions.items():
-        for s in ships:
-            sound_manager.play("explosion2")
-            s.health_remaining -= 1
-            sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
+    # # unbreakable bullets vs spaceship
+    # collisions = pygame.sprite.groupcollide(sprite_groups['unbreakable_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
+    # for ab, ships in collisions.items():
+    #     for s in ships:
+    #         sound_manager.play("explosion2")
+    #         s.health_remaining -= 1
+    #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
 
     # alien vs spaceship
     collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
@@ -88,11 +93,11 @@ def resolve_all(sprite_groups, sound_manager):
         sound_manager.play("explosion")
         sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
 
-    # alien_bullet vs sword
-    collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['sword'], True, False)
-    for a, _ in collisions.items():
-        sound_manager.play("explosion")
-        sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
+    # # alien_bullet vs sword
+    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['sword'], True, False)
+    # for a, _ in collisions.items():
+    #     sound_manager.play("explosion")
+    #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
 
     # spaceship vs animation
     collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
