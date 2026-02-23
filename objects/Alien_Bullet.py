@@ -1,4 +1,4 @@
-### Deprecated: Alien_Bullet
+### Deprecated
 
 # import pygame
 # import config.constant as C

@@ -1,7 +1,8 @@
 {
     "spaceship": {
-        "image":  "img/org_space_invader/spaceship.png",
+        "url":  "img/org_space_invader/spaceship.png",
         "health": 25,
-        "speed": 8
+        "velocity": 8,
+        "move_cd": [1000, 850, 700, 550, 450, 350, 250, 200, 150, 175, 100, 80, 60, 50]
     }
 }

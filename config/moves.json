@@ -5,6 +5,9 @@
         },
         "alien_bullet0": {
             "url": "img/org_space_invader/alien_bullet0.png"
+        },
+        "type_1_bullet": {
+            "url": "img/edited/type_1_bullet.png"
         }
     },
     "animations": {
@@ -50,6 +53,15 @@
             "y": 0,
             "w": 13,
             "h": 13,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 1
+        },
+        "type_1_bullet": {
+            "sprite_sheet": "type_1_bullet",
+            "x": 0,
+            "y": 0,
+            "w": 11,
+            "h": 11,
             "horizontal_or_vertical": 0,
             "frame_counts": 1
         }
@@ -209,6 +221,53 @@
             "rotate_radius": 0,
             "replicas": 4,
             "replica_delay": 25,
+            "power": 1
+        }],
+        "shoot_type_1_mode_1": [{
+            "animation": "type_1_bullet",
+            "speed": -1,
+            "repeat": 1,
+            "vx": 0,
+            "vy": 7,
+            "offset_x": 0,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0,
+            "power": 1
+        }],
+        "shoot_type_1_mode_2": [{
+            "animation": "type_1_bullet",
+            "speed": -1,
+            "repeat": 1,
+            "vx": 0,
+            "vy": 7,
+            "offset_x": -10,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0,
+            "power": 1
+        }, {
+            "animation": "type_1_bullet",
+            "speed": -1,
+            "repeat": 1,
+            "vx": 0,
+            "vy": 7,
+            "offset_x": 10,
+            "offset_y": 0,
+            "in_game_scaling": 1,
+            "move_direction": 0,
+            "starting_angle": 0,
+            "rotate_radius": 0,
+            "replicas": 0,
+            "replica_delay": 0,
             "power": 1
         }]
     }

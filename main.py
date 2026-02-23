@@ -23,7 +23,6 @@ sound_manager.load("laser", "img/org_space_invader/laser.wav")
 
 # define constants
 powerup_spawn_time = C.POWERUP_SPAWN_TIME
-spaceship_health = C.SPACESHIP_HEALTH
 screen_width = C.SCREEN_WIDTH
 screen_height = C.SCREEN_HEIGHT
 game_title = C.GAME_TITLE
@@ -33,8 +32,8 @@ blue = C.BLUE
 white = C.WHITE
 spawn_alien_repeat = C.SPAWN_ALIEN_REPEAT
 hong_bao_spawn_time = C.HONG_BAO_SPAWN_TIME
-spaceship_fire_modes = C.POWERUP_FIRE_MODES
 bg_scroll_speed = 1  # pixels per frame;
+spaceship_fire_modes = 2 # temp
 
 
 # define other game variables
@@ -108,12 +107,6 @@ def draw_bg():
 draw_bg.bg_y = 0
 
 
-def spawn_bullet(x, y, mode=1):
-    for offset, m in spaceship_fire_modes.get(mode, []):
-        b = Bullet(x + offset, y, m)
-        sprite_groups['bullet'].add(b)
-
-
 def spawn_aliens():
     spawn_aliens.countdown -= 1
     if spawn_aliens.countdown > 0:
@@ -157,7 +150,15 @@ spawn_hong_bao.countdown = hong_bao_spawn_time
 
 def initialize_game():
     # create player spaceship
-    spaceship = Spaceship(screen_width // 2, screen_height - 100, spaceship_health, spawn_bullet)
+    spaceship = MyPokemon(
+        screen_width // 2, 
+        screen_height - 100, 
+        'spaceship', 
+        'shoot_type_1_mode_1',
+        sprite_groups,
+        spawn_animation_for_sprite,
+        schedulers_list
+    )
     sprite_groups['spaceship'].add(spaceship)
 
 
@@ -248,14 +249,13 @@ while run:
                     ship.health_start += C.POWERUP_RECOVER_HEALTH
                     ship.health_remaining += C.POWERUP_RECOVER_HEALTH
                 elif pu_type == 2:
-                    # ship.bullet_cooldown = max(C.POWERUP_COOLDOWN_MIN, ship.bullet_cooldown - C.POWERUP_DECREASE_COOLDOWN)
-                    ship.bullet_cd_state += 1
+                    ship.move_cd_state += 1
                 elif pu_type == 3:
-                    if ship.mode < len(spaceship_fire_modes):
-                        ship.mode += 1
-                    else:
-                        # ship.bullet_cooldown = max(C.POWERUP_COOLDOWN_MIN, ship.bullet_cooldown - C.POWERUP_DECREASE_COOLDOWN)
-                        ship.bullet_cd_state += 1
+                    ship.move_cd_state += 1
+                    # if ship.mode < spaceship_fire_modes:
+                    #     ship.mode += 1
+                    # else:
+                    #     ship.move_cd_state += 1
                 elif pu_type == 4:
                     sprite_groups['sword'].add(Sword(sprite_groups['spaceship'].sprites()[0], angle=math.pi * 1.5))
                     sprite_groups['sword'].add(Sword(sprite_groups['spaceship'].sprites()[0], angle=math.pi * 0.5))

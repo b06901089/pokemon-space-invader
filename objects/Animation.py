@@ -3,7 +3,7 @@ import math
 import config.constant as C
 
 class Animation(pygame.sprite.Sprite):
-    def __init__(self, x, y, ani, index):
+    def __init__(self, x, y, ani, index, spawn_ops):
         pygame.sprite.Sprite.__init__(self)
         move_json = C.MOVE_JSON
 
@@ -37,7 +37,7 @@ class Animation(pygame.sprite.Sprite):
         self.speed = setting['speed']
         self.repeat = setting['repeat']
         self.vx = setting['vx']
-        self.vy = setting['vy']
+        self.vy = setting['vy'] if not spawn_ops else -setting['vy']
         self.move_dir = setting['move_direction']
         self.angle = setting['starting_angle'] * math.pi / 180.0
         self.rotate_radius = setting['rotate_radius']

@@ -4,7 +4,7 @@ from objects import Animation
 class ReplicaScheduler(pygame.sprite.Sprite):
     """Manages spawning animation replicas at fixed intervals."""
     
-    def __init__(self, sprite_groups, sprite, x, y, ani, idx, num_replicas, replica_delay_frames, follow_self=True):
+    def __init__(self, sprite_groups, sprite, x, y, ani, idx, num_replicas, replica_delay_frames, follow_self, spawn_ops):
         """
         Args:
             sprite_groups: The sprite groups dict
@@ -22,7 +22,8 @@ class ReplicaScheduler(pygame.sprite.Sprite):
         self.replicas_remaining = num_replicas
         self.replica_delay = replica_delay_frames
         self.frame_counter = 0
-        self.follow_self = follow_self
+        self.follow_self = (follow_self == 'self')
+        self.spawn_ops = spawn_ops
     
     def update(self):
         """Called every frame. Returns True if still spawning, False when done."""
@@ -34,10 +35,14 @@ class ReplicaScheduler(pygame.sprite.Sprite):
         if self.frame_counter >= self.replica_delay:
             if self.follow_self and self.sprite:
                 self.x = self.sprite.rect.centerx
-                self.y = self.sprite.rect.bottom
-            self.sprite_groups['animation'].add(
-                Animation(self.x, self.y, self.ani, self.idx)
-            )
+                if self.spawn_ops:
+                    self.y = self.sprite.rect.top
+                else:
+                    self.y = self.sprite.rect.bottom
+            if self.spawn_ops:
+                self.sprite_groups['bullet'].add(Animation(self.x, self.y, self.ani, self.idx, self.spawn_ops))
+            else:
+                self.sprite_groups['animation'].add(Animation(self.x, self.y, self.ani, self.idx, self.spawn_ops))
             self.replicas_remaining -= 1
             self.frame_counter = 0
         

@@ -16,14 +16,14 @@ WHITE = (255, 255, 255)
 
 
 # Game object setting
-SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
-SPACESHIP_HEALTH = 25
-SPACESHIP_SPEED = 8
+# SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
+# SPACESHIP_HEALTH = 25
+# SPACESHIP_SPEED = 8
 
 # BULLET_PATH = 'img/org_space_invader/bullet.png'
-BULLET_PATH_SMOOTH = 'img/edited/smooth_bullet.png'
-BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
-BULLET_X_SPEED = [0, 1, -1, 3, -3] # relative to fixed y speed
+# BULLET_PATH_SMOOTH = 'img/edited/smooth_bullet.png'
+# BULLET_COOLDOWN = 1000 # shoot every {#/1000} second at the start
+# BULLET_X_SPEED = [0, 1, -1, 3, -3] # relative to fixed y speed
 
 ORG_ALIEN_PATH = [
     'img/org_space_invader/alien1.png',
@@ -36,11 +36,11 @@ ORG_ALIEN_PATH = [
 #     '#0043': 'img/pokemon/gen3/oddish.png',
 #     '#0458': 'img/pokemon/gen4/mantyke_48.png'
 # }
-ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
+# ALIEN_SHOT_COOLDOWN = 2000 # shoot bullet every {#/1000} second
 # ALIEN_SHOT_RATIO = 5 # one bulet every # aliens
 # ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
-ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
-ALIEN_BULLET_PATH = ['img/org_space_invader/alien_bullet0.png', 'img/org_space_invader/alien_bullet1.png']
+# ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
+# ALIEN_BULLET_PATH = ['img/org_space_invader/alien_bullet0.png', 'img/org_space_invader/alien_bullet1.png']
 SPAWN_ALIEN_COOLDOWN = 120 # spawn a new alien every {#} frames at the beginning
 SPAWN_ALIEN_COOLDOWN_MIN = 10
 SPAWN_ALIEN_COOLDOWN_DECREASE = 5
@@ -60,15 +60,15 @@ POWERUP_SPAWN_TIME = 200 # spawn the first powerup at the {#} frames
 POWERUP_RECOVER_HEALTH = 3
 # POWERUP_COOLDOWN_DECREASE = 150
 # POWERUP_COOLDOWN_MIN = 100
-POWERUP_BULLET_CD = [0, 150, 300, 450, 550, 650, 750, 800, 850, 875, 900, 920, 940, 950]
-POWERUP_FIRE_MODES = {
-    1: [(0, 0)],
-    2: [(-10, 0), (10, 0)],
-    3: [(0, 0), (-20, 0), (20, 0)],
-    4: [(-10, 0), (10, 0), (-30, 1), (30, 2)],
-    5: [(0, 0), (-20, 1), (20, 2), (-40, 1), (40, 2)],
-    6: [(0, 0), (-20, 0), (20, 0), (-40, 1), (40, 2), (-60, 3), (60, 4)],
-}
+# POWERUP_BULLET_CD = [0, 150, 300, 450, 550, 650, 750, 800, 850, 875, 900, 920, 940, 950]
+# POWERUP_FIRE_MODES = {
+#     1: [(0, 0)],
+#     2: [(-10, 0), (10, 0)],
+#     3: [(0, 0), (-20, 0), (20, 0)],
+#     4: [(-10, 0), (10, 0), (-30, 1), (30, 2)],
+#     5: [(0, 0), (-20, 1), (20, 2), (-40, 1), (40, 2)],
+#     6: [(0, 0), (-20, 0), (20, 0), (-40, 1), (40, 2), (-60, 3), (60, 4)],
+# }
 SWORD_RANGE = 250
 HONG_BAO_SPAWN_TIME = 400 # spawn the first hong bao at the {#} frames
 # HONG_BAO_SPAWN_TIME_DECREASE = 60
@@ -130,3 +130,7 @@ ENEMY_JSON_PATH = 'config/enemy.json'
 with open(ENEMY_JSON_PATH, 'r') as f:
     ENEMY_JSON = json.load(f)
 ENEMY_JSON_KEYS = list(ENEMY_JSON.keys())
+
+POKE_JSON_PATH = 'config/poke.json'
+with open(POKE_JSON_PATH, 'r') as f:
+    POKE_JSON = json.load(f)

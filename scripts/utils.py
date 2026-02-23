@@ -23,13 +23,16 @@ def spawn_boss(sprite_groups, x, y, health, speed, fig, moves):
     boss = Boss(x, y, health, speed, fig, moves)
     sprite_groups['boss'].add(boss)
 
-def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, schedulers_list):
+def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops, ani_part, schedulers_list):
     if spawn_dir == "rdm_top":
         x = get_random_x()
         y = -50
     elif spawn_dir == "self":
         x = sprite.rect.centerx
-        y = sprite.rect.bottom
+        if spawn_ops:
+            y = sprite.rect.top
+        else:
+            y = sprite.rect.bottom
     elif spawn_dir == "full_rdm":
         max_attempts = 20
         attempts = 0
@@ -40,13 +43,16 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, ani_part, 
                 break
             attempts += 1
     
-    for idx in range(ani_part):        
-        sprite_groups['animation'].add(Animation(x, y, ani, idx))
+    for idx in range(ani_part):   
+        if spawn_ops:     
+            sprite_groups['bullet'].add(Animation(x, y, ani, idx, spawn_ops))
+        else:
+            sprite_groups['animation'].add(Animation(x, y, ani, idx, spawn_ops))
         
         rep = C.MOVE_JSON['moves'][ani][idx]['replicas']
         rep_delay = C.MOVE_JSON['moves'][ani][idx]['replica_delay']
         if rep > 0:
-            scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, (spawn_dir == "self"))
+            scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops)
             schedulers_list.append(scheduler)
 
 def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
@@ -60,6 +66,7 @@ def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
                     sprite,
                     move['name'],
                     move['spawn_dir'],
+                    False,
                     len(C.MOVE_JSON['moves'][move['name']]),
                     schedulers_list
                 )
