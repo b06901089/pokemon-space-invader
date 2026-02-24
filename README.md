@@ -2,7 +2,7 @@
 
 <img src="img/logo/logo-gpt-v1.png" width="256" height="256">
 
-A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites. It's sometimes playable yes sometimes unplayable due to high frequency of updates.
+A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites.
 
 ## About me and the projects
 
