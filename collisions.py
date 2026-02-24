@@ -9,32 +9,32 @@ def resolve_all(sprite_groups, sound_manager):
     }
 
     # # bullet vs alien bullets
-    # collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien_bullet'], True, True)
+    # collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['alien_bullet'], True, True)
     # for bullet, _ in collisions.items():
     #     sound_manager.play("explosion")
     #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
 
     # # bullet vs unbreakable bullets (bullets destroy player bullets)
-    # collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['unbreakable_bullet'], True, False)
+    # collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['unbreakable_bullet'], True, False)
     # for bullet, _ in collisions.items():
     #     sound_manager.play("explosion")
     #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
 
     # bullet vs aliens
-    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['alien'], True, False)
+    collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['alien'], True, False)
     for _, aliens in collisions.items():
         for a in aliens:
-            a.health -= 1
+            a.health_remaining -= 1
             sound_manager.play("explosion")
             sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
-            if a.health <= 0:
+            if a.health_remaining <= 0:
                 sound_manager.play("explosion")
                 sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
                 a.kill()
                 result["killed_aliens"] += 1
 
     # bullet vs boss
-    collisions = pygame.sprite.groupcollide(sprite_groups['bullet'], sprite_groups['boss'], True, False)
+    collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['boss'], True, False)
     for bullet, bosses in collisions.items():
         for b in bosses:
             b.health_remaining -= 1

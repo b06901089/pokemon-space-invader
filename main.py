@@ -79,10 +79,10 @@ font40 = pygame.font.SysFont("Constantia", 40)
 # create sprites groups
 sprite_groups = {
     'mypoke': pygame.sprite.Group(),
-    'bullet': pygame.sprite.Group(),
+    'my_ani': pygame.sprite.Group(),
     'alien': pygame.sprite.Group(),
-    'alien_bullet': pygame.sprite.Group(),
-    'unbreakable_bullet': pygame.sprite.Group(),
+    # 'alien_bullet': pygame.sprite.Group(),
+    # 'unbreakable_bullet': pygame.sprite.Group(),
     'explosion': pygame.sprite.Group(),
     'powerup': pygame.sprite.Group(),
     'boss': pygame.sprite.Group(),

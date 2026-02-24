@@ -45,7 +45,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
     
     for idx in range(ani_part):   
         if spawn_ops:     
-            sprite_groups['bullet'].add(Animation(x, y, ani, idx, spawn_ops))
+            sprite_groups['my_ani'].add(Animation(x, y, ani, idx, spawn_ops))
         else:
             sprite_groups['animation'].add(Animation(x, y, ani, idx, spawn_ops))
         

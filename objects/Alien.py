@@ -15,7 +15,8 @@ class Alien(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.pos = [float(self.rect.x), float(self.rect.y)]
-        self.health = C.ENEMY_JSON[name]['health']
+        self.health_start = C.ENEMY_JSON[name]['health']
+        self.health_remaining = C.ENEMY_JSON[name]['health']
         self.moves = copy.deepcopy(C.ENEMY_JSON[name]['moves'])
         
         if exist_type is not None:

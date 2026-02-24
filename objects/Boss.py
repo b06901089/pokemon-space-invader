@@ -10,7 +10,7 @@ class Boss(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.health_start = health
-        self.health_remaining = self.health_start
+        self.health_remaining = health
         self.move_speed = speed
         self.y_limit = C.SCREEN_HEIGHT // 2 - random.randint(0, 200)
         self.moves = moves
