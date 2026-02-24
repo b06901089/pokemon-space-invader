@@ -26,12 +26,11 @@ class Inventory:
     #                 return False  # Not enough quantity to remove
     #     return False  # Item not found
     
-    def use_item(self, index, sprite_groups):
+    def use_item(self, index, sprite):
         item, quantity = self.slots[index]
-        spaceship = sprite_groups['spaceship'].sprites()[0]
         if item is not None and quantity > 0:
-            if "heal" in C.ITEM_JSON[item]['effects']:
-                spaceship.health_remaining = min(spaceship.health_remaining + C.ITEM_JSON[item]['effects']['heal'], spaceship.health_start)
+            if "heal" in C.ITEM_JSON[item]['effects'] and getattr(sprite, 'health_remaining', None):
+                sprite.health_remaining = min(sprite.health_remaining + C.ITEM_JSON[item]['effects']['heal'], sprite.health_start)
             self.slots[index] = (item, quantity - 1)
             if self.slots[index][1] == 0:
                 self.slots[index] = (None, 0)

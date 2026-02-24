@@ -45,24 +45,24 @@ def resolve_all(sprite_groups, sound_manager):
                 sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 3))
                 b.kill()
 
-    # # alien bullets vs spaceship
-    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
+    # # alien bullets vs mypoke
+    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
     # for ab, ships in collisions.items():
     #     for s in ships:
     #         sound_manager.play("explosion2")
     #         s.health_remaining -= 1
     #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
 
-    # # unbreakable bullets vs spaceship
-    # collisions = pygame.sprite.groupcollide(sprite_groups['unbreakable_bullet'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
+    # # unbreakable bullets vs mypoke
+    # collisions = pygame.sprite.groupcollide(sprite_groups['unbreakable_bullet'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
     # for ab, ships in collisions.items():
     #     for s in ships:
     #         sound_manager.play("explosion2")
     #         s.health_remaining -= 1
     #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
 
-    # alien vs spaceship
-    collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['spaceship'], True, False, pygame.sprite.collide_mask)
+    # alien vs mypoke
+    collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
     for alien, ships in collisions.items():
         result["killed_aliens"] += 1
         for s in ships:
@@ -70,15 +70,15 @@ def resolve_all(sprite_groups, sound_manager):
             s.health_remaining -= 1
             sprite_groups['explosion'].add(Explosion(alien.rect.centerx, alien.rect.centery, 2))
 
-    # spaceship vs powerups
-    collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['powerup'], False, True, pygame.sprite.collide_mask)
+    # mypoke vs powerups
+    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['powerup'], False, True, pygame.sprite.collide_mask)
     for ship, powerups in collisions.items():
         for pu in powerups:
             pu_type = getattr(pu, 'pu_type', None)
             result["applied_powerups"].append((ship, pu_type))
 
-    # spaceship vs hong_bao
-    collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['hong_bao'], False, True, pygame.sprite.collide_mask)
+    # mypoke vs hong_bao
+    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['hong_bao'], False, True, pygame.sprite.collide_mask)
     collected = 0
     for ship, hbs in collisions.items():
         for _ in hbs:
@@ -99,8 +99,8 @@ def resolve_all(sprite_groups, sound_manager):
     #     sound_manager.play("explosion")
     #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
 
-    # spaceship vs animation
-    collisions = pygame.sprite.groupcollide(sprite_groups['spaceship'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
+    # mypoke vs animation
+    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
     for s, anis in collisions.items():
         for ani in anis:
             sound_manager.play("explosion2")

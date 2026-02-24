@@ -78,7 +78,7 @@ font40 = pygame.font.SysFont("Constantia", 40)
 
 # create sprites groups
 sprite_groups = {
-    'spaceship': pygame.sprite.Group(),
+    'mypoke': pygame.sprite.Group(),
     'bullet': pygame.sprite.Group(),
     'alien': pygame.sprite.Group(),
     'alien_bullet': pygame.sprite.Group(),
@@ -149,8 +149,7 @@ spawn_hong_bao.countdown = hong_bao_spawn_time
 
 
 def initialize_game():
-    # create player spaceship
-    spaceship = MyPokemon(
+    starting_poke = MyPokemon(
         screen_width // 2, 
         screen_height - 100, 
         'spaceship', 
@@ -159,7 +158,7 @@ def initialize_game():
         spawn_animation_for_sprite,
         schedulers_list
     )
-    sprite_groups['spaceship'].add(spaceship)
+    sprite_groups['mypoke'].add(starting_poke)
 
 
 # show items/powerups UI before starting the game
@@ -187,7 +186,7 @@ while run:
     if countdown == 0 and not phase_choice_visible:
 
         # Check Game Over
-        if len(sprite_groups['spaceship']) == 0:
+        if len(sprite_groups['mypoke']) == 0:
             game_over = -1
         if game_phase >= 5:
             game_over = 1
@@ -226,9 +225,6 @@ while run:
             spawn_aliens()  
             if powerup_collected < phase_data['data']['powerup_cnt_limit']:
                 spawn_powerups()  
-            # if phase_data['data']['spawn_aliens_teams'] != -1:
-            #     which_team = random.randint(0, len(C.SPAWN_ALIENS_TEAMS_MAP) - 1)
-            #     last_alien_team = spawn_aliens_teams(sprite_groups, last_alien_team, 5, which_team)
 
             # update sprite group
             for k in sprite_groups:
@@ -257,8 +253,8 @@ while run:
                     # else:
                     #     ship.move_cd_state += 1
                 elif pu_type == 4:
-                    sprite_groups['sword'].add(Sword(sprite_groups['spaceship'].sprites()[0], angle=math.pi * 1.5))
-                    sprite_groups['sword'].add(Sword(sprite_groups['spaceship'].sprites()[0], angle=math.pi * 0.5))
+                    sprite_groups['sword'].add(Sword(sprite_groups['mypoke'].sprites()[0], angle=math.pi * 1.5))
+                    sprite_groups['sword'].add(Sword(sprite_groups['mypoke'].sprites()[0], angle=math.pi * 0.5))
 
 
             # Check Phase Transition
@@ -278,17 +274,15 @@ while run:
 
     # draw sprite groups
     for k in sprite_groups:
-        if k != 'spaceship' and k != 'boss':
-            sprite_groups[k].draw(screen)
-        else:
-            sprite_groups[k].draw(screen)
+        sprite_groups[k].draw(screen)
+        if k == 'mypoke' or k == 'boss':
             for obj in sprite_groups[k].sprites():
                 obj.draw_healthbar(screen)
 
     draw_text(screen, "aliens killed: {0}".format(killed_aliens), font20, white, screen_width // 2 + 100, 20)
     draw_text(screen, "hong bao collected: {0}".format(hong_bao_collected), font20, white, screen_width // 2 + 100, 50)
-    if len(sprite_groups['spaceship']) > 0:
-        s = sprite_groups['spaceship'].sprites()[0]
+    if len(sprite_groups['mypoke']) > 0:
+        s = sprite_groups['mypoke'].sprites()[0]
         draw_text(screen, "heath: {0} / {1}".format(s.health_remaining, s.health_start), font20, white, screen_width // 2 + 100, 80)
     if game_over == -1:
         draw_text(screen, "GAME OVER!", font40, white, screen_width // 2 - 120, screen_height // 2 + 50)
@@ -343,17 +337,17 @@ while run:
                 state += 1
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
-                my_inventory.use_item(0, sprite_groups)
+                my_inventory.use_item(0, sprite_groups['mypoke'].sprites()[0])
             elif event.key == pygame.K_w:
-                my_inventory.use_item(1, sprite_groups)
+                my_inventory.use_item(1, sprite_groups['mypoke'].sprites()[0])
             elif event.key == pygame.K_e:
-                my_inventory.use_item(2, sprite_groups)
+                my_inventory.use_item(2, sprite_groups['mypoke'].sprites()[0])
             elif event.key == pygame.K_a:
-                my_inventory.use_item(3, sprite_groups)
+                my_inventory.use_item(3, sprite_groups['mypoke'].sprites()[0])
             elif event.key == pygame.K_s:
-                my_inventory.use_item(4, sprite_groups)
+                my_inventory.use_item(4, sprite_groups['mypoke'].sprites()[0])
             elif event.key == pygame.K_d:
-                my_inventory.use_item(5, sprite_groups)
+                my_inventory.use_item(5, sprite_groups['mypoke'].sprites()[0])
 
     pygame.display.update()
 

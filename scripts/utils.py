@@ -8,9 +8,9 @@ from objects import *
 def get_random_x():
     return random.randint(0, C.SCREEN_WIDTH)
 
-def is_too_close_to_spaceship(spaceship, x, y, exclusion_radius_2=14400):
-    dx = x - spaceship.rect.centerx
-    dy = y - spaceship.rect.centery
+def is_too_close_to_mypoke(mypoke, x, y, exclusion_radius_2=14400):
+    dx = x - mypoke.rect.centerx
+    dy = y - mypoke.rect.centery
     distance = (dx ** 2 + dy ** 2)
     
     return distance < exclusion_radius_2
@@ -39,7 +39,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
         while attempts < max_attempts:
             x = random.randint(32, C.SCREEN_WIDTH - 32)
             y = random.randint(32, C.SCREEN_HEIGHT + 32)
-            if sprite_groups['spaceship'] and not is_too_close_to_spaceship(sprite_groups['spaceship'].sprites()[0], x, y, exclusion_radius_2=14400):
+            if sprite_groups['mypoke'] and not is_too_close_to_mypoke(sprite_groups['mypoke'].sprites()[0], x, y, exclusion_radius_2=14400):
                 break
             attempts += 1
     
