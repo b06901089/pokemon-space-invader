@@ -2,7 +2,7 @@
 
 <img src="img/logo/logo-gpt-v1.png" width="256" height="256">
 
-A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites.g
+A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites. Give me a star if you wish to support me!
 
 ## About me and the projects
 
