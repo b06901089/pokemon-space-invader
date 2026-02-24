@@ -4,107 +4,96 @@ from objects import Explosion
 def resolve_all(sprite_groups, sound_manager):
     result = {
         "killed_aliens": 0,
+        "killed_bosses": 0,
         "hong_bao_collected": 0,
         "applied_powerups": [],  # (ship, powerup)
     }
 
-    # # bullet vs alien bullets
-    # collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['alien_bullet'], True, True)
-    # for bullet, _ in collisions.items():
-    #     sound_manager.play("explosion")
-    #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
+    # my attack vs enemy attack
+    collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['animation'], False, False)
+    for my_ani, en_anis in collisions.items():
+        for en_ani in en_anis:
+            if my_ani.power > en_ani.power:
+                sound_manager.play('explosion')
+                sprite_groups['explosion'].add(Explosion(en_ani.rect.centerx, en_ani.rect.centery, 1))
+                en_ani.kill()
+            elif my_ani.power < en_ani.power:
+                sound_manager.play('explosion')
+                sprite_groups['explosion'].add(Explosion(my_ani.rect.centerx, my_ani.rect.centery, 1))
+                my_ani.kill()
+            else:
+                sound_manager.play('explosion')
+                sprite_groups['explosion'].add(Explosion(en_ani.rect.centerx, en_ani.rect.centery, 1))
+                en_ani.kill()
+                my_ani.kill()
 
-    # # bullet vs unbreakable bullets (bullets destroy player bullets)
-    # collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['unbreakable_bullet'], True, False)
-    # for bullet, _ in collisions.items():
-    #     sound_manager.play("explosion")
-    #     sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
-
-    # bullet vs aliens
+    # my attack vs aliens
     collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['alien'], True, False)
-    for _, aliens in collisions.items():
+    for ani, aliens in collisions.items():
         for a in aliens:
-            a.health_remaining -= 1
-            sound_manager.play("explosion")
-            sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
+            a.health_remaining -= ani.power
+            sound_manager.play('explosion')
             if a.health_remaining <= 0:
-                sound_manager.play("explosion")
                 sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
                 a.kill()
-                result["killed_aliens"] += 1
+                result['killed_aliens'] += 1
+            else:
+                sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
 
-    # bullet vs boss
+    # my attack vs boss
     collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['boss'], True, False)
-    for bullet, bosses in collisions.items():
+    for ani, bosses in collisions.items():
         for b in bosses:
-            b.health_remaining -= 1
-            sound_manager.play("explosion")
-            sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 1))
+            b.health_remaining -= ani.power
+            sound_manager.play('explosion')
             if b.health_remaining <= 0:
-                sound_manager.play("explosion")
-                sprite_groups['explosion'].add(Explosion(bullet.rect.centerx, bullet.rect.centery, 3))
+                sprite_groups['explosion'].add(Explosion(b.rect.centerx, b.rect.centery, 3))
                 b.kill()
+                result['killed_bosses'] += 1
+            else:
+                sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
 
-    # # alien bullets vs mypoke
-    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
-    # for ab, ships in collisions.items():
-    #     for s in ships:
-    #         sound_manager.play("explosion2")
-    #         s.health_remaining -= 1
-    #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
-
-    # # unbreakable bullets vs mypoke
-    # collisions = pygame.sprite.groupcollide(sprite_groups['unbreakable_bullet'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
-    # for ab, ships in collisions.items():
-    #     for s in ships:
-    #         sound_manager.play("explosion2")
-    #         s.health_remaining -= 1
-    #         sprite_groups['explosion'].add(Explosion(ab.rect.centerx, ab.rect.centery, 1))
-
-    # alien vs mypoke
-    collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['mypoke'], True, False, pygame.sprite.collide_mask)
-    for alien, ships in collisions.items():
-        result["killed_aliens"] += 1
-        for s in ships:
-            sound_manager.play("explosion2")
+    # mypoke vs alien
+    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['alien'], False, True, pygame.sprite.collide_mask)
+    for s, aliens in collisions.items():
+        for a in aliens:
             s.health_remaining -= 1
-            sprite_groups['explosion'].add(Explosion(alien.rect.centerx, alien.rect.centery, 2))
+            sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
+            sound_manager.play("explosion2")
+            result["killed_aliens"] += 1
+
+    # mypoke vs animation
+    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
+    for s, anis in collisions.items():
+        for ani in anis:
+            s.health_remaining -= ani.power
+            sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
+            sound_manager.play("explosion2")
 
     # mypoke vs powerups
     collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['powerup'], False, True, pygame.sprite.collide_mask)
-    for ship, powerups in collisions.items():
+    for s, powerups in collisions.items():
         for pu in powerups:
             pu_type = getattr(pu, 'pu_type', None)
-            result["applied_powerups"].append((ship, pu_type))
+            result["applied_powerups"].append((s, pu_type))
 
     # mypoke vs hong_bao
     collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['hong_bao'], False, True, pygame.sprite.collide_mask)
-    collected = 0
-    for ship, hbs in collisions.items():
+    for s, hbs in collisions.items():
         for _ in hbs:
-            collected += 1
-            # ship.health_remaining = min(ship.health_start, ship.health_remaining + 1)
-    result["hong_bao_collected"] = collected
+            result["hong_bao_collected"] += 1
 
-    # alien vs sword
-    collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['sword'], True, False)
-    for a, _ in collisions.items():
-        result["killed_aliens"] += 1
-        sound_manager.play("explosion")
-        sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
+    # # alien vs sword
+    # collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['sword'], True, False)
+    # for a, _ in collisions.items():
+    #     result["killed_aliens"] += 1
+    #     sound_manager.play("explosion")
+    #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
 
     # # alien_bullet vs sword
     # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['sword'], True, False)
     # for a, _ in collisions.items():
     #     sound_manager.play("explosion")
     #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
-
-    # mypoke vs animation
-    collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
-    for s, anis in collisions.items():
-        for ani in anis:
-            sound_manager.play("explosion2")
-            s.health_remaining -= ani.power
-            sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
 
     return result

@@ -40,7 +40,7 @@ class ReplicaScheduler(pygame.sprite.Sprite):
                 else:
                     self.y = self.sprite.rect.bottom
             if self.spawn_ops:
-                self.sprite_groups['bullet'].add(Animation(self.x, self.y, self.ani, self.idx, self.spawn_ops))
+                self.sprite_groups['my_ani'].add(Animation(self.x, self.y, self.ani, self.idx, self.spawn_ops))
             else:
                 self.sprite_groups['animation'].add(Animation(self.x, self.y, self.ani, self.idx, self.spawn_ops))
             self.replicas_remaining -= 1
