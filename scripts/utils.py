@@ -49,11 +49,13 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
         else:
             sprite_groups['animation'].add(Animation(x, y, ani, idx, spawn_ops))
         
-        rep = C.MOVE_JSON['moves'][ani][idx]['replicas']
-        rep_delay = C.MOVE_JSON['moves'][ani][idx]['replica_delay']
-        if rep > 0:
-            scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops)
-            schedulers_list.append(scheduler)
+        move_data = C.MOVE_JSON['moves'][ani][idx]
+        if 'replicas' in move_data:
+            rep = move_data['replicas']
+            rep_delay = move_data['replica_delay']
+            if rep > 0:
+                scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops)
+                schedulers_list.append(scheduler)
 
 def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
     time_now = pygame.time.get_ticks()

@@ -21,7 +21,7 @@ class Sword(pygame.sprite.Sprite):
         self.damage_cooldown = damage_cooldown  # Frames between damage to same enemy
     
     def update(self):
-        self.angle += math.pi / 150.0
+        self.angle += math.pi / 240.0
         self.rect.centerx = self.target.rect.centerx + C.SWORD_RANGE * math.cos(self.angle)
         self.rect.centery = self.target.rect.centery + C.SWORD_RANGE * math.sin(self.angle)
     
