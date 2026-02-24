@@ -33,7 +33,6 @@ white = C.WHITE
 spawn_alien_repeat = C.SPAWN_ALIEN_REPEAT
 hong_bao_spawn_time = C.HONG_BAO_SPAWN_TIME
 bg_scroll_speed = 1  # pixels per frame;
-spaceship_fire_modes = 2 # temp
 
 
 # define other game variables
@@ -250,11 +249,10 @@ while run:
                 elif pu_type == 2:
                     ship.move_cd_state += 1
                 elif pu_type == 3:
-                    ship.move_cd_state += 1
-                    # if ship.mode < spaceship_fire_modes:
-                    #     ship.mode += 1
-                    # else:
-                    #     ship.move_cd_state += 1
+                    if ship.update_move():
+                        continue
+                    else:
+                        ship.move_cd_state += 1
                 elif pu_type == 4:
                     sprite_groups['sword'].add(Sword(sprite_groups['mypoke'].sprites()[0], angle=math.pi * 1.5))
                     sprite_groups['sword'].add(Sword(sprite_groups['mypoke'].sprites()[0], angle=math.pi * 0.5))

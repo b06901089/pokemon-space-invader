@@ -1,5 +1,6 @@
 import pygame
 import config.constant as C
+import re
 
 from config import sound_manager
 
@@ -27,6 +28,17 @@ class MyPokemon(pygame.sprite.Sprite):
         pygame.draw.rect(surface, C.RED, (self.rect.x, self.rect.bottom + 5, self.rect.width, 5))
         if self.health_remaining > 0:
             pygame.draw.rect(surface, C.GREEN, (self.rect.x, self.rect.bottom + 5, int(self.rect.width * (self.health_remaining / self.health_start)), 5))
+
+    def update_move(self):
+        m = re.search(r"(.*_mode_)(\d+)$", self.move)
+        if m:
+            prefix, num = m.groups()
+            new_move = f"{prefix}{int(num) + 1}"
+            if new_move in C.MOVE_JSON['moves'].keys():
+                self.move = new_move
+                print(new_move)
+                return True
+        return False 
 
     def update(self):
         key = pygame.key.get_pressed()
