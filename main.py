@@ -42,12 +42,13 @@ last_boss_shot = pygame.time.get_ticks()
 last_countdown = pygame.time.get_ticks()
 last_alien_team = pygame.time.get_ticks()
 countdown = 3
-game_phase = 2 # modify this to test different phases directly
+game_phase = 1 # modify this to test different phases directly
 state = 0
 killed_aliens = 0
 game_over = 0 # 0 is game not over, 1 is player has won, -1 is player has lost
 hong_bao_collected = 0
 powerup_collected = 0
+current_frame = 0  # Track frame number for sword cooldown
 boss_wave_active = False
 schedulers_list = []
 
@@ -235,7 +236,9 @@ while run:
             collision_results = resolve_all(
                 sprite_groups,
                 sound_manager,
+                current_frame,
             )
+            current_frame += 1  # Increment frame counter for next iteration
             killed_aliens += collision_results['killed_aliens']
             hong_bao_collected += collision_results['hong_bao_collected']
             # PowerUP Effect Resolver

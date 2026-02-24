@@ -1,7 +1,7 @@
 import pygame
 from objects import Explosion
 
-def resolve_all(sprite_groups, sound_manager):
+def resolve_all(sprite_groups, sound_manager, current_frame=0):
     result = {
         "killed_aliens": 0,
         "killed_bosses": 0,
@@ -27,7 +27,7 @@ def resolve_all(sprite_groups, sound_manager):
                 en_ani.kill()
                 my_ani.kill()
 
-    # my attack vs aliens
+    # my attack vs alien
     collisions = pygame.sprite.groupcollide(sprite_groups['my_ani'], sprite_groups['alien'], True, False)
     for ani, aliens in collisions.items():
         for a in aliens:
@@ -62,7 +62,7 @@ def resolve_all(sprite_groups, sound_manager):
             sound_manager.play("explosion2")
             result["killed_aliens"] += 1
 
-    # mypoke vs animation
+    # mypoke vs enemy attack
     collisions = pygame.sprite.groupcollide(sprite_groups['mypoke'], sprite_groups['animation'], False, True, pygame.sprite.collide_mask)
     for s, anis in collisions.items():
         for ani in anis:
@@ -83,17 +83,41 @@ def resolve_all(sprite_groups, sound_manager):
         for _ in hbs:
             result["hong_bao_collected"] += 1
 
-    # # alien vs sword
-    # collisions = pygame.sprite.groupcollide(sprite_groups['alien'], sprite_groups['sword'], True, False)
-    # for a, _ in collisions.items():
-    #     result["killed_aliens"] += 1
-    #     sound_manager.play("explosion")
-    #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
+    # sword vs alien
+    collisions = pygame.sprite.groupcollide(sprite_groups['sword'], sprite_groups['alien'], False, False)
+    for sword, aliens in collisions.items():
+        for a in aliens:
+            if sword.can_damage(a, current_frame):
+                a.health_remaining -= sword.power
+                sound_manager.play("explosion")
+                if a.health_remaining <= 0:
+                    sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 2))
+                    a.kill()
+                    result["killed_aliens"] += 1
+                else:
+                    sprite_groups['explosion'].add(Explosion(sword.rect.centerx, sword.rect.centery, 1))
 
-    # # alien_bullet vs sword
-    # collisions = pygame.sprite.groupcollide(sprite_groups['alien_bullet'], sprite_groups['sword'], True, False)
-    # for a, _ in collisions.items():
-    #     sound_manager.play("explosion")
-    #     sprite_groups['explosion'].add(Explosion(a.rect.centerx, a.rect.centery, 1))
+    # sword vs boss
+    collisions = pygame.sprite.groupcollide(sprite_groups['sword'], sprite_groups['boss'], False, False)
+    for sword, bosses in collisions.items():
+        for b in bosses:
+            if sword.can_damage(b, current_frame):
+                b.health_remaining -= sword.power
+                sound_manager.play("explosion")
+                if b.health_remaining <= 0:
+                    sprite_groups['explosion'].add(Explosion(b.rect.centerx, b.rect.centery, 3))
+                    b.kill()
+                    result["killed_bosses"] += 1
+                else:
+                    sprite_groups['explosion'].add(Explosion(sword.rect.centerx, sword.rect.centery, 1))
+
+    # sword vs enemy attack
+    collisions = pygame.sprite.groupcollide(sprite_groups['sword'], sprite_groups['animation'], False, False)
+    for sword, anis in collisions.items():
+        for ani in anis:
+            if sword.can_damage(ani, current_frame) and sword.power >= ani.power:
+                sound_manager.play("explosion")
+                sprite_groups['explosion'].add(Explosion(ani.rect.centerx, ani.rect.centery, 1))
+                ani.kill()
 
     return result

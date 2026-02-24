@@ -159,7 +159,7 @@
             "rotate_radius": 0,
             "replicas": 0,
             "replica_delay": 0,
-            "power": 1
+            "power": 3
         }],
         "shoot_1_alien_bullet0": [{
             "animation": "alien_bullet0",
