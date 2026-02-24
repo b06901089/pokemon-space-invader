@@ -30,7 +30,7 @@ On some systems you may need `python3` and `pip3` instead of `python`/`pip`.
 
 - Download the images for pokemon
 
-Gen2 sprites came with white backgrounds. I use [piskelapp.com](https://www.piskelapp.com/) to eliminate background.
+Gen2 sprites came with white backgrounds. Can use [piskelapp.com](https://www.piskelapp.com/) to eliminate background if you need it.
 
 ```
 mkdir img/pokemon
@@ -41,9 +41,7 @@ python3 download_pokemon_sprites.py
 
 - Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons). Extract it and put it under `img/`
 
-- Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and put it under `img/`
-
-Extract it and move `64x64/` under the root `Free - Raven Fantasy Icons/` folder.
+- Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and put it under `img/`. Move the subfolder `64x64/` to be directly under the root `Free - Raven Fantasy Icons/` folder.
 
 ## Running the game
 
