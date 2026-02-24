@@ -2,7 +2,7 @@
 
 <img src="img/logo/logo-gpt-v1.png" width="256" height="256">
 
-A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites.
+A simple Space-Invader-style game implemented in Python using Pygame and Pokemon-themed sprites.g
 
 ## About me and the projects
 
@@ -28,7 +28,7 @@ pip install pygame
 
 On some systems you may need `python3` and `pip3` instead of `python`/`pip`.
 
-Download the images for pokemon
+- Download the images for pokemon
 
 Gen2 sprites came with white backgrounds. I use [piskelapp.com](https://www.piskelapp.com/) to eliminate background.
 
@@ -39,9 +39,9 @@ python3 download_pokemon_sprites.py
 ```
 
 
-Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons). Extract it and put it under `img/`
+- Download the images for Hong Bao from [here](https://witpop.itch.io/sprite-pack-hred-envelope-icons). Extract it and put it under `img/`
 
-Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and put it under `img/`
+- Dwonload the images for other sprites from [here](https://clockworkraven.itch.io/raven-fantasy-icons). Extract it and put it under `img/`
 
 Extract it and move `64x64/` under the root `Free - Raven Fantasy Icons/` folder.
 
