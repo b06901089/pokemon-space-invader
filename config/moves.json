@@ -47,6 +47,33 @@
             "horizontal_or_vertical": 1,
             "frame_counts": 5
         },
+        "thunder": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 440,
+            "y": 1334,
+            "w": 32,
+            "h": 32,
+            "horizontal_or_vertical": 1,
+            "frame_counts": 5
+        },
+        "thunder_ball": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 51,
+            "y": 119,
+            "w": 32,
+            "h": 32,
+            "horizontal_or_vertical": 1,
+            "frame_counts": 6
+        },
+        "blue_orbs": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 407,
+            "y": 1320,
+            "w": 32,
+            "h": 32,
+            "horizontal_or_vertical": 1,
+            "frame_counts": 4
+        },
         "alien_bullet0": {
             "sprite_sheet": "alien_bullet0",
             "x": 0,
@@ -126,6 +153,31 @@
             "vy": 0,
             "in_game_scaling": 2,
             "power": 3
+        }],
+        "thunder": [{
+            "animation": "thunder",
+            "speed": 10,
+            "vx": 0,
+            "vy": 0,
+            "in_game_scaling": 1.5,
+            "power": 2
+        }],
+        "thunder_ball": [{
+            "animation": "thunder_ball",
+            "speed": 5,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 1.5,
+            "power": 2
+        }],
+        "blue_orbs": [{
+            "animation": "blue_orbs",
+            "speed": 15,
+            "repeat": 10,
+            "vx": 0,
+            "vy": 3,
+            "in_game_scaling": 1.5,
+            "power": 2
         }],
         "shoot_1_alien_bullet0": [{
             "animation": "alien_bullet0",

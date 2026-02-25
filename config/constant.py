@@ -114,6 +114,19 @@ SWORD_PATH = 'img/edited/sword.png'
 
 # Animation reference
 # https://www.youtube.com/watch?v=mnCPCgA3HvI
+# the video is arranged roughly according to aphabetical order
+# gust 13:42
+# whirlwind 26:11
+# sacred fire 28:26
+# bite 29:28
+# surf 29:54
+# shadow ball 30:13
+# shock wave 30:36
+# sky attack 31:40
+# slash 32:00
+# steel wing 34:25
+# thunder (series) 37:30
+
 MOVE_JSON_PATH = 'config/moves.json'
 with open(MOVE_JSON_PATH, 'r') as f:
     MOVE_JSON = json.load(f)
