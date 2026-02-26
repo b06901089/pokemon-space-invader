@@ -21,15 +21,21 @@ ANIMATION SETTING KEYS:
 		Number of times to loop through all animation frames.
 		Default: 1
     
-    - vx (float):
+    - rotate (float, optional):
+        Rotation of the sprite. Positive numbers indicate counter-clock wise.
+        Default: 0
+
+    - vx (float, optional):
 		Horizontal velocity. Pixel movement per update in x-direction.
 		Can be negative for leftward movement.
 		Default: Required field, no default.
+        Default: 0
     
-    - vy (float):
+    - vy (float, optional):
 		Vertical velocity. Pixel movement per update in y-direction.
 		Direction can be inverted based on spawn_ops parameter.
 		Default: Required field, no default.
+        Default: 0
     
     - offset_x (int, optional):
 		Horizontal offset from spawn position for initial placement.
@@ -97,6 +103,9 @@ class Animation(pygame.sprite.Sprite):
         self.repeat = 1
         if 'repeat' in setting:
             self.repeat = setting['repeat']
+        self.rotate = 0
+        if 'rotate' in setting:
+            self.rotate = setting['rotate']
         self.in_game_scaling = 1
         if 'in_game_scaling' in setting:
             self.in_game_scaling = setting['in_game_scaling']
@@ -109,7 +118,12 @@ class Animation(pygame.sprite.Sprite):
         self.offset_y = 0
         if 'offset_y' in setting:
             self.offset_y = setting['offset_y']
-
+        self.vx = 0
+        if 'vx' in setting:
+            self.vx = setting['vx']
+        self.vy = 0
+        if 'vy' in setting:
+            self.vy = setting['vy'] if not spawn_ops else -setting['vy']
 
         # Load the spritesheet and extract the frames
         spritesheet = pygame.image.load(sheet_path).convert_alpha()
@@ -121,6 +135,8 @@ class Animation(pygame.sprite.Sprite):
             else:
                 sprite.blit(spritesheet, (0, 0), pygame.Rect(data['x'], data['y'] + data['h'] * num, data['w'], data['h']))
             sprite = pygame.transform.scale(sprite, (data['w'] * self.in_game_scaling, data['h'] * self.in_game_scaling))
+            if self.rotate != 0:
+                sprite = pygame.transform.rotate(sprite, self.rotate)
             self.images.append(sprite)
 
         # Basics
@@ -130,10 +146,6 @@ class Animation(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = (x + self.offset_x, y + self.offset_y)
         self.pos = [x + self.offset_x, y + self.offset_y]
-
-        # Store velocity settings
-        self.vx = setting['vx']
-        self.vy = setting['vy'] if not spawn_ops else -setting['vy']
         
         # Store direction settings
         if self.move_dir == 1:
@@ -144,6 +156,9 @@ class Animation(pygame.sprite.Sprite):
 
         # power settings
         self.power = setting['power']
+
+        # don't delete before it appears for the first time
+        self.appear = False
         
     def update(self):
 
@@ -151,19 +166,22 @@ class Animation(pygame.sprite.Sprite):
         if self.move_dir == 1:
             self.rotate_center[0] += self.vx
             self.rotate_center[1] += self.vy
-            self.angle += math.pi / 30.0
-            self.rect.x = self.rotate_center[0] + self.rotate_radius * math.cos(self.angle)
-            self.rect.y = self.rotate_center[1] + self.rotate_radius * math.sin(self.angle)
+            self.angle += math.pi / 20.0
+            self.rect.centerx = self.rotate_center[0] + self.rotate_radius * math.cos(self.angle)
+            self.rect.centery = self.rotate_center[1] + self.rotate_radius * math.sin(self.angle)
         else:
             self.pos[0] += self.vx
             self.pos[1] += self.vy
-            self.rect.x = int(self.pos[0])
-            self.rect.y = int(self.pos[1])
+            self.rect.centerx = int(self.pos[0])
+            self.rect.centery = int(self.pos[1])
 
         # static objects
         if self.speed == -1:
-            if self.rect.bottom < 0 or self.rect.right < 0 or self.rect.left > C.SCREEN_WIDTH:
-                self.kill()
+            if self.rect.bottom < 0 or self.rect.right < 0 or self.rect.left > C.SCREEN_WIDTH or self.rect.top > C.SCREEN_HEIGHT:
+                if self.appear:
+                    self.kill()
+            else:
+                self.appear = True
             return
 
         self.counter += 1

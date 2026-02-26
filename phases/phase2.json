@@ -8,10 +8,10 @@
                     "pos": [0, -100],
                     "health": 10,
                     "speed": 1,
-                    "fig": 2,
+                    "fig": "gen2_fearow",
                     "moves": [
                         {
-                            "name": "tornado",
+                            "name": "tornado_mode_1",
                             "spawn_dir": "self",
                             "freq": 5000,
                             "last_move_time": 0
@@ -20,24 +20,6 @@
                             "name": "shoot_3_alien_bullet0",
                             "spawn_dir": "self",
                             "freq": 7000,
-                            "last_move_time": 0
-                        },
-                        {
-                            "name": "thunder",
-                            "spawn_dir": "full_rdm",
-                            "freq": 500,
-                            "last_move_time": 0
-                        },
-                        {
-                            "name": "blue_orbs",
-                            "spawn_dir": "self",
-                            "freq": 3000,
-                            "last_move_time": 0
-                        },
-                        {
-                            "name": "thunder_ball",
-                            "spawn_dir": "self",
-                            "freq": 2000,
                             "last_move_time": 0
                         }
                     ]
@@ -50,6 +32,6 @@
         "end": {
             "killed_aliens": -1
         },
-        "powerup_cnt_limit": 20
+        "powerup_cnt_limit": 18
     }
 }

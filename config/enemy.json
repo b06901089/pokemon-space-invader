@@ -8,7 +8,7 @@
             {
                 "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": 5000,
+                "freq": 10000,
                 "last_move_time": 0
             }
         ]
@@ -22,7 +22,7 @@
             {
                 "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": 5000,
+                "freq": 10000,
                 "last_move_time": 0
             }
         ]
@@ -36,7 +36,7 @@
             {
                 "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": 5000,
+                "freq": 10000,
                 "last_move_time": 0
             }
         ]
@@ -50,7 +50,7 @@
             {
                 "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": 5000,
+                "freq": 10000,
                 "last_move_time": 0
             }
         ]
@@ -64,7 +64,7 @@
             {
                 "name": "shoot_1_alien_bullet0",
                 "spawn_dir": "self",
-                "freq": 5000,
+                "freq": 10000,
                 "last_move_time": 0
             }
         ]

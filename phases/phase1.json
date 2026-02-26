@@ -11,6 +11,6 @@
         "end": {
             "killed_aliens": 20
         },
-        "powerup_cnt_limit": 15
+        "powerup_cnt_limit": 12
     }
 }

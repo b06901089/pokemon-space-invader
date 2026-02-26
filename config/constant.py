@@ -14,6 +14,8 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 
+STARTING_PHASE = 1 # modify this to test different phases directly
+MAX_PHASE = 6
 
 # Game object setting
 # SPACESHIP_PATH = 'img/org_space_invader/spaceship.png'
@@ -41,22 +43,24 @@ ORG_ALIEN_PATH = [
 # ALIEN_UNBREAKABLE_SHOT_RATIO = 20 # one unbreakable bulet every # aliens
 # ALIEN_BULLET_X_SPEED = [0, 0.25, -0.25]
 # ALIEN_BULLET_PATH = ['img/org_space_invader/alien_bullet0.png', 'img/org_space_invader/alien_bullet1.png']
-SPAWN_ALIEN_COOLDOWN = 120 # spawn a new alien every {#} frames at the beginning
+SPAWN_ALIEN_COOLDOWN = 180 # spawn a new alien every {#} frames at the beginning
 SPAWN_ALIEN_COOLDOWN_MIN = 10
 SPAWN_ALIEN_COOLDOWN_DECREASE = 5
-SPAWN_ALIEN_REPEAT = 2
+SPAWN_ALIEN_REPEAT = 4
 
 
 BOSS_PATH = {
     # 2: ['img/edited/boss1.png', (160, 160)],
-    2: ['img/pokemon/gen2/fearow.png', (56, 56)],
     # 3: ['img/edited/boss2.png', (60, 45)],
-    3: ['img/pokemon/gen3/torchic.png', (64, 64)],
-    4: ['img/pokemon/gen5/exeggutor.png', (96, 96)],
+    'gen2_fearow': ['img/pokemon/gen2/fearow.png', (56, 56)],
+    'gen3_torchic': ['img/pokemon/gen3/torchic.png', (64, 64)],
+    'gen5_exeggutor': ['img/pokemon/gen5/exeggutor.png', (96, 96)],
+    'gen5_altaria': ['img/pokemon/gen5/altaria.png', (96, 96)],
+    'gen5_zapdos': ['img/pokemon/gen5/zapdos.png', (120, 120)],
 }
 
 
-POWERUP_SPAWN_TIME = 200 # spawn the first powerup at the {#} frames
+POWERUP_SPAWN_TIME = 400 # spawn the first powerup at the {#} frames
 POWERUP_RECOVER_HEALTH = 3
 # POWERUP_COOLDOWN_DECREASE = 150
 # POWERUP_COOLDOWN_MIN = 100

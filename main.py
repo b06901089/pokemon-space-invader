@@ -22,6 +22,7 @@ sound_manager.load("laser", "img/org_space_invader/laser.wav")
 
 
 # define constants
+game_phase = C.STARTING_PHASE
 powerup_spawn_time = C.POWERUP_SPAWN_TIME
 screen_width = C.SCREEN_WIDTH
 screen_height = C.SCREEN_HEIGHT
@@ -41,7 +42,6 @@ last_boss_shot = pygame.time.get_ticks()
 last_countdown = pygame.time.get_ticks()
 last_alien_team = pygame.time.get_ticks()
 countdown = 3
-game_phase = 1 # modify this to test different phases directly
 state = 0
 killed_aliens = 0
 game_over = 0 # 0 is game not over, 1 is player has won, -1 is player has lost
@@ -188,7 +188,7 @@ while run:
         # Check Game Over
         if len(sprite_groups['mypoke']) == 0:
             game_over = -1
-        if game_phase >= 5:
+        if game_phase > C.MAX_PHASE:
             game_over = 1
 
         # Start

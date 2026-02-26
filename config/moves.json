@@ -74,6 +74,15 @@
             "horizontal_or_vertical": 1,
             "frame_counts": 4
         },
+        "bird_shadow": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 66,
+            "y": 1861,
+            "w": 64,
+            "h": 64,
+            "horizontal_or_vertical": 0,
+            "frame_counts": 1
+        },
         "alien_bullet0": {
             "sprite_sheet": "alien_bullet0",
             "x": 0,
@@ -98,7 +107,6 @@
             "animation": "leaf_drop",
             "speed": 10,
             "repeat": 4,
-            "vx": 0,
             "vy": 3,
             "in_game_scaling": 2,
             "power": 1
@@ -107,19 +115,18 @@
             "animation": "leaf_attack",
             "speed": 10,
             "repeat": 30,
-            "vx": 0,
             "vy": 5,
             "in_game_scaling": 2,
             "replicas": 5,
             "replica_delay": 2,
             "power": 1
         }],
-        "tornado": [{
+        "tornado_mode_1": [{
             "animation": "tornado",
             "speed": 10,
             "repeat": 35,
-            "vx": 0,
             "vy": 3,
+            "in_game_scaling": 0.8,
             "move_direction": 1,
             "starting_angle": 0,
             "rotate_radius": 16,
@@ -128,8 +135,8 @@
             "animation": "tornado",
             "speed": 10,
             "repeat": 35,
-            "vx": 0,
             "vy": 3,
+            "in_game_scaling": 0.8,
             "move_direction": 1,
             "starting_angle": 120,
             "rotate_radius": 16,
@@ -138,8 +145,75 @@
             "animation": "tornado",
             "speed": 10,
             "repeat": 35,
-            "vx": 0,
             "vy": 3,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 240,
+            "rotate_radius": 16,
+            "power": 2
+        }],
+        "tornado_mode_2": [{
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": -30,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 0,
+            "rotate_radius": 16,
+            "power": 2
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": -30,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 120,
+            "rotate_radius": 16,
+            "power": 2
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": -30,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 240,
+            "rotate_radius": 16,
+            "power": 2
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": 30,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 0,
+            "rotate_radius": 16,
+            "power": 2
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": 30,
+            "in_game_scaling": 0.8,
+            "move_direction": 1,
+            "starting_angle": 120,
+            "rotate_radius": 16,
+            "power": 2
+        }, {
+            "animation": "tornado",
+            "speed": 10,
+            "repeat": 35,
+            "vy": 3,
+            "offset_x": 30,
+            "in_game_scaling": 0.8,
             "move_direction": 1,
             "starting_angle": 240,
             "rotate_radius": 16,
@@ -149,7 +223,6 @@
             "animation": "ember",
             "speed": 5,
             "repeat": 5,
-            "vx": 0,
             "vy": 0,
             "in_game_scaling": 2,
             "power": 3
@@ -157,16 +230,32 @@
         "thunder": [{
             "animation": "thunder",
             "speed": 10,
-            "vx": 0,
             "vy": 0,
             "in_game_scaling": 1.5,
             "power": 2
         }],
-        "thunder_ball": [{
+        "thunder_ball_mode_1": [{
             "animation": "thunder_ball",
-            "speed": 5,
-            "vx": 0,
-            "vy": 3,
+            "speed": 3,
+            "repeat": 12,
+            "vy": 5,
+            "in_game_scaling": 1.5,
+            "power": 2
+        }],
+        "thunder_ball_mode_2": [{
+            "animation": "thunder_ball",
+            "speed": 3,
+            "repeat": 12,
+            "vx": 3,
+            "vy": 5,
+            "in_game_scaling": 1.5,
+            "power": 2
+        }, {
+            "animation": "thunder_ball",
+            "speed": 3,
+            "repeat": 12,
+            "vx": -3,
+            "vy": 5,
             "in_game_scaling": 1.5,
             "power": 2
         }],
@@ -174,20 +263,17 @@
             "animation": "blue_orbs",
             "speed": 15,
             "repeat": 10,
-            "vx": 0,
             "vy": 3,
             "in_game_scaling": 1.5,
             "power": 2
         }],
         "shoot_1_alien_bullet0": [{
             "animation": "alien_bullet0",
-            "vx": 0,
             "vy": 2,
             "power": 1
         }],
         "shoot_3_alien_bullet0": [{
             "animation": "alien_bullet0",
-            "vx": 0,
             "vy": 2,
             "replicas": 4,
             "replica_delay": 25,
@@ -211,22 +297,27 @@
             "replica_delay": 25,
             "power": 1
         }],
+        "bird_shadow": [{
+            "animation": "bird_shadow",
+            "rotate": 135,
+            "vx": -9,
+            "vy": 9,
+            "offset_x": 600,
+            "power": 3
+        }],
         "shoot_type_1_mode_1": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "power": 1
         }],
         "shoot_type_1_mode_2": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": -10,
             "offset_y": 0,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": 10,
             "offset_y": 0,
@@ -234,19 +325,16 @@
         }],
         "shoot_type_1_mode_3": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": -20,
             "offset_y": 0,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": 20,
             "offset_y": 0,
@@ -254,14 +342,12 @@
         }],
         "shoot_type_1_mode_4": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": -10,
             "offset_y": 0,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": 10,
             "offset_y": 0,
@@ -283,7 +369,6 @@
         }],
         "shoot_type_1_mode_5": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "power": 1
         }, {
@@ -317,19 +402,16 @@
         }],
         "shoot_type_1_mode_6": [{
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": -20,
             "offset_y": 0,
             "power": 1
         }, {
             "animation": "type_1_bullet",
-            "vx": 0,
             "vy": 7,
             "offset_x": 20,
             "offset_y": 0,

@@ -34,5 +34,5 @@
 #         self.rect.x -= self.bullet_dir
 #         self.rect.y -= 7
 
-#         if self.rect.bottom < 0 or self.rect.right < 0 or self.rect.left > C.SCREEN_WIDTH:
+#         if self.rect.bottom < 0 or self.rect.right < 0 or self.rect.left > C.SCREEN_WIDTH or self.rect.top > C.SCREEN_HEIGHT:
 #             self.kill()

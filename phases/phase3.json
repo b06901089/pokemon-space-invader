@@ -8,7 +8,7 @@
                     "pos": [0, -100],
                     "health": 15,
                     "speed": 1,
-                    "fig": 3,
+                    "fig": "gen3_torchic",
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
@@ -20,7 +20,7 @@
                     "pos": [-100, -100],
                     "health": 15,
                     "speed": 1,
-                    "fig": 3,
+                    "fig": "gen3_torchic",
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
@@ -32,7 +32,7 @@
                     "pos": [100, -100],
                     "health": 15,
                     "speed": 1,
-                    "fig": 3,
+                    "fig": "gen3_torchic",
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
@@ -48,6 +48,6 @@
         "end": {
             "killed_aliens": -1
         },
-        "powerup_cnt_limit": 25
+        "powerup_cnt_limit": 22
     }
 }
