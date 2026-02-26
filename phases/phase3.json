@@ -12,7 +12,7 @@
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
-                            "freq": 5000,
+                            "freq": 3000,
                             "last_move_time": 0
                     }]
                 },
@@ -24,7 +24,7 @@
                     "moves": [{
                             "name": "ember",
                             "spawn_dir": "full_rdm",
-                            "freq": 5000,
+                            "freq": 4000,
                             "last_move_time": 0
                     }]
                 },
