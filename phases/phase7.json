@@ -1,0 +1,31 @@
+{
+    "data": {
+        "init": 1,
+        "init_data": {
+            "create_aliens_grid": [],
+            "spawn_boss": [
+                {
+                    "pos": [0, -100],
+                    "health": 30,
+                    "speed": 1,
+                    "fig": "gen3_mankey",
+                    "moves": [
+                        {
+                            "name": "scratch",
+                            "spawn_dir": "full_rdm",
+                            "freq": 2000,
+                            "last_move_time": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        "spawn_powerups": 1,
+        "spawn_hong_bao": 1,
+        "spawn_aliens": 0,
+        "end": {
+            "killed_aliens": -1
+        },
+        "powerup_cnt_limit": 30
+    }
+}

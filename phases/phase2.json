@@ -8,7 +8,7 @@
                     "pos": [0, -100],
                     "health": 10,
                     "speed": 1,
-                    "fig": "gen2_fearow",
+                    "fig": "gen3_fearow",
                     "moves": [
                         {
                             "name": "tornado_mode_1",

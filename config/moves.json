@@ -83,6 +83,15 @@
             "horizontal_or_vertical": 0,
             "frame_counts": 1
         },
+        "scratch": {
+            "sprite_sheet": "sprite_sheet_1",
+            "x": 440,
+            "y": 1495,
+            "w": 32,
+            "h": 32,
+            "horizontal_or_vertical": 1,
+            "frame_counts": 5
+        },
         "alien_bullet0": {
             "sprite_sheet": "alien_bullet0",
             "x": 0,
@@ -265,7 +274,13 @@
             "repeat": 10,
             "vy": 3,
             "in_game_scaling": 1.5,
-            "power": 2,
+            "power": 2
+        }],
+        "scratch": [{
+            "animation": "scratch",
+            "speed": 5,
+            "in_game_scaling": 2,
+            "power": 3,
             "pre_move": "back_step_mode_1"
         }],
         "shoot_1_alien_bullet0": [{

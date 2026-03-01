@@ -14,8 +14,8 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 
-STARTING_PHASE = 5 # modify this to test different phases directly
-MAX_PHASE = 6
+STARTING_PHASE = 1 # modify this to test different phases directly
+MAX_PHASE = 7
 
 ORG_ALIEN_PATH = [
     'img/org_space_invader/alien1.png',
@@ -32,8 +32,9 @@ SPAWN_ALIEN_REPEAT = 4
 BOSS_PATH = {
     # 2: ['img/edited/boss1.png', (160, 160)],
     # 3: ['img/edited/boss2.png', (60, 45)],
-    'gen2_fearow': ['img/pokemon/gen3/fearow.png', (56, 56)],
+    'gen3_fearow': ['img/pokemon/gen3/fearow.png', (56, 56)],
     'gen3_torchic': ['img/pokemon/gen3/torchic.png', (64, 64)],
+    'gen3_mankey': ['img/pokemon/gen3/mankey.png', (64, 64)],
     'gen5_exeggutor': ['img/pokemon/gen5/exeggutor.png', (96, 96)],
     'gen5_altaria': ['img/pokemon/gen5/altaria.png', (96, 96)],
     'gen5_zapdos': ['img/pokemon/gen5/zapdos.png', (120, 120)],
