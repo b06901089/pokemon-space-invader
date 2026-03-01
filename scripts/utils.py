@@ -29,7 +29,16 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
             rep_delay = move_data['replica_delay']
             spawn_reset = move_data['spawn_reset']
             if rep > 0:
-                scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops, spawn_reset)
+                scheduler = ReplicaScheduler(
+                    sprite_groups, 
+                    sprite, 
+                    x, y, 
+                    ani, idx, 
+                    rep, rep_delay, spawn_dir, 
+                    spawn_ops, 
+                    spawn_reset, 
+                    get_animation_spawn_location
+                )
                 schedulers_list.append(scheduler)
         if 'pre_move' in move_data:
             sprite.register_movement(move_data['pre_move'])

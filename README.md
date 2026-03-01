@@ -82,7 +82,6 @@ Mouse Click to retrieve item rewards
 - Known Issue: when game pause (choose item), time/frame counters won't be stop (e.g. instant refire)
 - Known Issue: having more than 6 kind of items...
 - Known Issue: During pre-move animation still spawn, causing chance to collide
-- Known Issue: ReplicaScheduler import issue, temporary fix with runtime import
 
 ## TODO (Description)
 
