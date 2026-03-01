@@ -61,7 +61,6 @@ class MyPokemon(pygame.sprite.Sprite):
                 self.move,
                 "self",
                 True,
-                len(C.MOVE_JSON['moves'][self.move]),
                 self.schedulers_list
             )
             self.last_move_time = time_now

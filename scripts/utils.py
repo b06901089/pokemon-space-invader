@@ -23,7 +23,7 @@ def spawn_boss(sprite_groups, x, y, health, speed, fig, moves):
     boss = Boss(x, y, health, speed, fig, moves)
     sprite_groups['boss'].add(boss)
 
-def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops, ani_part, schedulers_list):
+def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops, schedulers_list):
     if spawn_dir == "rdm_top":
         x = get_random_x()
         y = -50
@@ -43,7 +43,7 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
                 break
             attempts += 1
     
-    for idx in range(ani_part):   
+    for idx in range(len(C.MOVE_JSON['moves'][ani])):   
         if spawn_ops:     
             sprite_groups['my_ani'].add(Animation(x, y, ani, idx, spawn_ops))
         else:
@@ -56,6 +56,8 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
             if rep > 0:
                 scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops)
                 schedulers_list.append(scheduler)
+        if 'pre_move' in move_data:
+            sprite.register_movement(move_data['pre_move'])
 
 def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
     time_now = pygame.time.get_ticks()
@@ -69,7 +71,6 @@ def execute_sprite_moves(sprite_group, sprite_groups, schedulers_list):
                     move['name'],
                     move['spawn_dir'],
                     False,
-                    len(C.MOVE_JSON['moves'][move['name']]),
                     schedulers_list
                 )
 

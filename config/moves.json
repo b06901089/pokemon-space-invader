@@ -265,7 +265,8 @@
             "repeat": 10,
             "vy": 3,
             "in_game_scaling": 1.5,
-            "power": 2
+            "power": 2,
+            "pre_move": "back_step_mode_1"
         }],
         "shoot_1_alien_bullet0": [{
             "animation": "alien_bullet0",

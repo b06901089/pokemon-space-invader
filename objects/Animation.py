@@ -78,6 +78,12 @@ ANIMATION SETTING KEYS:
 		Distance from rotation center point for circular movement.
 		Defines the orbit radius when move_direction=1.
 		Default: Only used when move_direction=1, no default value.
+
+    - pre_move (string, optional):
+        Define the movement of Boss or Attacker before starting the attack animation. 
+        The movement is meant to used as a hint before attacking.
+        Default: None
+
 """
 
 import pygame
@@ -94,7 +100,6 @@ class Animation(pygame.sprite.Sprite):
         ani_part_name = setting['animation']
         data = move_json['animations'][ani_part_name]
         sheet_path = move_json['sprite'][data['sprite_sheet']]['url']
-        
 
         # Optional keys
         self.speed = -1
@@ -124,6 +129,10 @@ class Animation(pygame.sprite.Sprite):
         self.vy = 0
         if 'vy' in setting:
             self.vy = setting['vy'] if not spawn_ops else -setting['vy']
+        self.pre_move = None
+        self.time_delay = 0
+        if 'pre_move' in setting:
+            self.pre_move, self.time_delay = self.parse_pre_move(C.PRE_MOVE_JSON[setting['pre_move']])
 
         # Load the spritesheet and extract the frames
         spritesheet = pygame.image.load(sheet_path).convert_alpha()
@@ -160,7 +169,19 @@ class Animation(pygame.sprite.Sprite):
         # don't delete before it appears for the first time
         self.appear = False
         
+    def parse_pre_move(self, lst):
+        if len(lst) % 3 != 0:
+            raise ValueError("List length must be a multiple of 3")
+        rows = [lst[i:i+3] for i in range(0, len(lst), 3)]
+        last_sum = sum(row[-1] for row in rows)
+
+        return rows, last_sum
+
     def update(self):
+
+        if self.time_delay > 0:
+            self.time_delay -= 1
+            return
 
         # rotate around the center if move_dir is 1 (counter-clockwise)
         if self.move_dir == 1:

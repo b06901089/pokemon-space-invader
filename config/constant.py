@@ -14,7 +14,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 WHITE = (255, 255, 255)
 
-STARTING_PHASE = 1 # modify this to test different phases directly
+STARTING_PHASE = 5 # modify this to test different phases directly
 MAX_PHASE = 6
 
 ORG_ALIEN_PATH = [
@@ -120,3 +120,7 @@ ENEMY_JSON_KEYS = list(ENEMY_JSON.keys())
 POKE_JSON_PATH = 'config/poke.json'
 with open(POKE_JSON_PATH, 'r') as f:
     POKE_JSON = json.load(f)
+
+PRE_MOVE_PATH = 'config/pre_moves.json'
+with open(PRE_MOVE_PATH, 'r') as f:
+    PRE_MOVE_JSON = json.load(f)
