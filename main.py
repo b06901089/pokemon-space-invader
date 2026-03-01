@@ -7,7 +7,7 @@ import config.constant as C
 from objects import *
 from config import sound_manager
 from collisions import resolve_all
-from scripts.utils import *
+from scripts import *
 from items_menu import show_items_menu
 
 

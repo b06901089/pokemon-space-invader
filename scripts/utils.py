@@ -4,30 +4,7 @@ import random
 import config.constant as C
 
 from objects import *
-
-def get_random_x():
-    return random.randint(0, C.SCREEN_WIDTH)
-
-def is_too_close_to_mypoke(mypoke, x, y, exclusion_radius_2=14400):
-    dx = x - mypoke.rect.centerx
-    dy = y - mypoke.rect.centery
-    distance = (dx ** 2 + dy ** 2)
-    
-    return distance < exclusion_radius_2
-
-def get_random_coord_infront_of_sprite(sprite, distance, box_width, box_height):
-    x = sprite.rect.centerx
-    y = sprite.rect.centery
-
-    half_width = box_width // 2
-    half_height = box_height // 2
-    offset_x = random.randint(-half_width, half_width)
-    offset_y = random.randint(-half_height, half_height)
-    
-    x = x + offset_x
-    y = y + offset_y + distance
-    
-    return x, y
+from .math_utils import *
 
 def draw_text(screen, text, font, text_col, x, y):
     img = font.render(text, True, text_col)
@@ -38,26 +15,7 @@ def spawn_boss(sprite_groups, x, y, health, speed, fig, moves):
     sprite_groups['boss'].add(boss)
 
 def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops, schedulers_list):
-    if spawn_dir == "rdm_top":
-        x = get_random_x()
-        y = -50
-    elif spawn_dir == "self":
-        x = sprite.rect.centerx
-        if spawn_ops:
-            y = sprite.rect.top
-        else:
-            y = sprite.rect.bottom
-    elif spawn_dir == "full_rdm":
-        max_attempts = 20
-        attempts = 0
-        while attempts < max_attempts:
-            x = random.randint(32, C.SCREEN_WIDTH - 32)
-            y = random.randint(32, C.SCREEN_HEIGHT + 32)
-            if sprite_groups['mypoke'] and not is_too_close_to_mypoke(sprite_groups['mypoke'].sprites()[0], x, y, exclusion_radius_2=14400):
-                break
-            attempts += 1
-    elif spawn_dir == "infront_rdm_mid":
-        x, y = get_random_coord_infront_of_sprite(sprite, 350, 200, 250)
+    x, y = get_animation_spawn_location(sprite_groups, sprite, spawn_dir, spawn_ops)
     
     for idx in range(len(C.MOVE_JSON['moves'][ani])):   
         if spawn_ops:     
@@ -69,8 +27,9 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
         if 'replicas' in move_data:
             rep = move_data['replicas']
             rep_delay = move_data['replica_delay']
+            spawn_reset = move_data['spawn_reset']
             if rep > 0:
-                scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops)
+                scheduler = ReplicaScheduler(sprite_groups, sprite, x, y, ani, idx, rep, rep_delay, spawn_dir, spawn_ops, spawn_reset)
                 schedulers_list.append(scheduler)
         if 'pre_move' in move_data:
             sprite.register_movement(move_data['pre_move'])

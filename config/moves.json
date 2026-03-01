@@ -128,6 +128,7 @@
             "in_game_scaling": 2,
             "replicas": 5,
             "replica_delay": 2,
+            "spawn_reset": 1,
             "power": 1
         }],
         "tornado_mode_1": [{
@@ -280,6 +281,9 @@
             "animation": "scratch",
             "speed": 5,
             "in_game_scaling": 2,
+            "replicas": 5,
+            "replica_delay": 20,
+            "spawn_reset": 1,
             "power": 3,
             "pre_move": "back_step_mode_1"
         }],
@@ -293,6 +297,7 @@
             "vy": 2,
             "replicas": 4,
             "replica_delay": 25,
+            "spawn_reset": 1,
             "power": 1
         }, {
             "animation": "alien_bullet0",
@@ -302,6 +307,7 @@
             "offset_y": 0,
             "replicas": 4,
             "replica_delay": 25,
+            "spawn_reset": 1,
             "power": 1
         }, {
             "animation": "alien_bullet0",
@@ -311,6 +317,7 @@
             "offset_y": 0,
             "replicas": 4,
             "replica_delay": 25,
+            "spawn_reset": 1,
             "power": 1
         }],
         "bird_shadow": [{
