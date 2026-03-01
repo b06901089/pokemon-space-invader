@@ -59,13 +59,13 @@ ANIMATION SETTING KEYS:
 		0 means spawn only the primary animation.
 		Default: 0
     
-    - replica_delay (int, optional):
-		Frame delay between spawning each replica in the sequence.
-		Default: 0
+        - replica_delay (int):
+            Frame delay between spawning each replica in the sequence.
+            Default: 0
 
-    - spawn_reset (bool, optional):
-        Does the replicas' spawn locations reset with each replica.
-        Default: 0
+        - spawn_reset (bool):
+            Does the replicas' spawn locations reset with each replica.
+            Default: 0
     
     - move_direction (int, optional):
 		Movement pattern type.
