@@ -15,6 +15,20 @@ def is_too_close_to_mypoke(mypoke, x, y, exclusion_radius_2=14400):
     
     return distance < exclusion_radius_2
 
+def get_random_coord_infront_of_sprite(sprite, distance, box_width, box_height):
+    x = sprite.rect.centerx
+    y = sprite.rect.centery
+
+    half_width = box_width // 2
+    half_height = box_height // 2
+    offset_x = random.randint(-half_width, half_width)
+    offset_y = random.randint(-half_height, half_height)
+    
+    x = x + offset_x
+    y = y + offset_y + distance
+    
+    return x, y
+
 def draw_text(screen, text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
@@ -42,6 +56,8 @@ def spawn_animation_for_sprite(sprite_groups, sprite, ani, spawn_dir, spawn_ops,
             if sprite_groups['mypoke'] and not is_too_close_to_mypoke(sprite_groups['mypoke'].sprites()[0], x, y, exclusion_radius_2=14400):
                 break
             attempts += 1
+    elif spawn_dir == "infront_rdm_mid":
+        x, y = get_random_coord_infront_of_sprite(sprite, 350, 200, 250)
     
     for idx in range(len(C.MOVE_JSON['moves'][ani])):   
         if spawn_ops:     

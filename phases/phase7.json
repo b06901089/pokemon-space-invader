@@ -12,8 +12,32 @@
                     "moves": [
                         {
                             "name": "scratch",
-                            "spawn_dir": "full_rdm",
-                            "freq": 2000,
+                            "spawn_dir": "infront_rdm_mid",
+                            "freq": 7000,
+                            "last_move_time": 0
+                        },
+                        {
+                            "name": "scratch",
+                            "spawn_dir": "infront_rdm_mid",
+                            "freq": 7000,
+                            "last_move_time": 0
+                        },
+                        {
+                            "name": "scratch",
+                            "spawn_dir": "infront_rdm_mid",
+                            "freq": 7000,
+                            "last_move_time": 0
+                        },
+                        {
+                            "name": "scratch",
+                            "spawn_dir": "infront_rdm_mid",
+                            "freq": 7000,
+                            "last_move_time": 0
+                        },
+                        {
+                            "name": "scratch",
+                            "spawn_dir": "infront_rdm_mid",
+                            "freq": 7000,
                             "last_move_time": 0
                         }
                     ]

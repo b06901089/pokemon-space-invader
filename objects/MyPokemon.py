@@ -36,7 +36,6 @@ class MyPokemon(pygame.sprite.Sprite):
             new_move = f"{prefix}{int(num) + 1}"
             if new_move in C.MOVE_JSON['moves'].keys():
                 self.move = new_move
-                print(new_move)
                 return True
         return False 
 
